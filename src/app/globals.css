@@ -20,7 +20,7 @@
   --color-soft-white: #e0d0ff;
   --color-muted: #7b6b9e;
   --font-family-pixel: "VT323", "Courier New", monospace;
-  --font-family-mono: "Share Tech Mono", "Courier New", monospace;
+  --font-family-edge: "Rubik Glitch", "VT323", monospace;
   --font-family-body: "Share Tech Mono", monospace;
 }
 
@@ -30,6 +30,15 @@
   font-weight: 400;
   font-display: swap;
   src: url("https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJA.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Rubik Glitch";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/rubikglitch/v2/qkBSXv8b_ZTDnhjIhq7vOsBSww.woff2")
     format("woff2");
 }
 
@@ -58,8 +67,6 @@ body {
   font-size: 15px;
   line-height: 1.6;
   overflow-x: hidden;
-
-  /* tiled grid background */
   background-image:
     linear-gradient(rgba(5, 217, 232, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(5, 217, 232, 0.03) 1px, transparent 1px),
@@ -71,13 +78,13 @@ body {
 
 a {
   color: var(--color-neon-cyan);
-  text-decoration: underline;
-  text-decoration-style: dashed;
   cursor: pointer;
 }
 a:hover {
   color: var(--color-hot-pink);
-  text-decoration-style: wavy;
+}
+a.no-underline {
+  text-decoration: none;
 }
 
 /* ═══ SCROLLBAR ═══ */
@@ -119,47 +126,11 @@ a:hover {
   animation: blink 1s step-end infinite;
 }
 
-/* ═══ RAINBOW SHIFT ═══ */
-@keyframes rainbow {
-  0% { color: var(--color-hot-pink); }
-  20% { color: var(--color-neon-orange); }
-  40% { color: var(--color-neon-yellow); }
-  60% { color: var(--color-lime); }
-  80% { color: var(--color-neon-cyan); }
-  100% { color: var(--color-hot-pink); }
-}
-.rainbow-text {
-  animation: rainbow 4s linear infinite;
-}
-
-/* ═══ HUESHIFT ═══ */
-@keyframes hueshift {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-.hue-rotate-bg:hover {
-  animation: hueshift 2s linear infinite;
-}
-
-/* ═══ GLITCH ═══ */
-@keyframes jitter {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(-1px, 1px) rotate(-0.5deg); }
-  50% { transform: translate(1px, -1px) rotate(0.5deg); }
-  75% { transform: translate(-1px, -1px) rotate(-0.3deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
-}
-
 /* ═══ DECORATIVE DIVIDERS ═══ */
 .divider-dots {
   border: none;
   border-top: 3px dotted var(--color-neon-cyan);
   opacity: 0.5;
-}
-.divider-dashes {
-  border: none;
-  border-top: 2px dashed var(--color-hot-pink);
-  opacity: 0.4;
 }
 .divider-blocks {
   text-align: center;
@@ -173,11 +144,11 @@ a:hover {
 /* ═══ MASONRY ═══ */
 .masonry {
   columns: 3;
-  column-gap: 20px;
+  column-gap: 18px;
 }
 .masonry > * {
   break-inside: avoid;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 @media (max-width: 1024px) {
   .masonry { columns: 2; }
@@ -186,15 +157,17 @@ a:hover {
   .masonry { columns: 1; }
 }
 
-/* ═══ CARD CHAOS — rotation & accent cycling ═══ */
-.masonry > *:nth-child(5n+1) { transform: rotate(-0.8deg); }
-.masonry > *:nth-child(5n+2) { transform: rotate(0.5deg); }
-.masonry > *:nth-child(5n+3) { transform: rotate(-0.3deg); }
-.masonry > *:nth-child(5n+4) { transform: rotate(1deg); }
-.masonry > *:nth-child(5n+5) { transform: rotate(-0.6deg); }
+/* ═══ CARD CHAOS — rotation ═══ */
+.masonry > *:nth-child(7n+1) { transform: rotate(-1deg); }
+.masonry > *:nth-child(7n+2) { transform: rotate(0.6deg); }
+.masonry > *:nth-child(7n+3) { transform: rotate(-0.4deg); }
+.masonry > *:nth-child(7n+4) { transform: rotate(1.2deg); }
+.masonry > *:nth-child(7n+5) { transform: rotate(-0.7deg); }
+.masonry > *:nth-child(7n+6) { transform: rotate(0.3deg); }
+.masonry > *:nth-child(7n+7) { transform: rotate(-0.9deg); }
 
 .masonry > *:hover {
-  transform: rotate(0deg) scale(1.02) !important;
+  transform: rotate(0deg) scale(1.03) !important;
   z-index: 10;
 }
 
@@ -206,52 +179,63 @@ a:hover {
 .card-accent-5 { --accent: var(--color-neon-orange); }
 .card-accent-6 { --accent: var(--color-neon-purple); }
 
-/* ═══ CARD BASE ═══ */
+/* ═══ IMAGE CARD ═══ */
 .feed-card {
-  background: var(--color-card-dark);
-  padding: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
+  overflow: hidden;
+  border: 3px solid var(--accent, var(--color-hot-pink));
+  box-shadow: 4px 4px 0px var(--accent, var(--color-hot-pink));
+  background: var(--color-card-dark);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 .feed-card:hover {
-  box-shadow: 4px 4px 0px var(--accent, var(--color-hot-pink));
+  box-shadow: 6px 6px 0px var(--accent, var(--color-hot-pink)),
+    0 0 20px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
-/* link cards — thick dashed border */
-.card-link {
-  border: 2px dashed var(--accent, var(--color-neon-cyan));
+.feed-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+}
+.feed-card:hover img {
+  filter: brightness(0.3) saturate(0.5);
 }
 
-/* image cards — chunky solid border + hard shadow */
-.card-image {
-  border: 3px solid var(--accent, var(--color-hot-pink));
-  box-shadow: 5px 5px 0px var(--accent, var(--color-hot-pink));
+/* ═══ HOVER OVERLAY ═══ */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.feed-card:hover .card-overlay {
+  opacity: 1;
+}
+.card-overlay-text {
+  font-family: var(--font-family-pixel);
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: var(--color-soft-white);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
 }
 
-/* text cards — double border, terminal vibes */
-.card-text {
-  border: 3px double var(--accent, var(--color-lime));
-  background: var(--color-card-mid);
-}
-
-/* embed cards — ridge border, retro TV */
-.card-embed {
-  border: 4px ridge var(--accent, var(--color-neon-purple));
-}
-
-/* ═══ TAGS — colorful hashtags ═══ */
+/* ═══ TAGS ═══ */
 .tag {
   font-family: var(--font-family-pixel);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--accent, var(--color-neon-cyan));
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .tag::before {
   content: "#";
-}
-.tag:hover {
-  opacity: 1;
-  text-decoration: underline wavy;
 }
 
 /* ═══ WEBRING BUTTONS ═══ */
@@ -285,13 +269,14 @@ a:hover {
   line-height: 1.2;
 }
 
-.terminal-prompt::before {
-  content: "> ";
-  color: var(--color-lime);
+.edge-title {
+  font-family: var(--font-family-edge);
+  line-height: 1.1;
 }
 
 .crt-flicker {
   text-shadow:
     0 0 5px currentColor,
-    0 0 10px currentColor;
+    0 0 15px currentColor,
+    0 0 30px currentColor;
 }

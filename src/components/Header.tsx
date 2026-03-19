@@ -42,10 +42,10 @@ export default function Header() {
 
       {/* Main title */}
       <div className="text-center my-6">
-        <h1 className="pixel-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker leading-none">
+        <h1 className="edge-title text-5xl sm:text-7xl md:text-8xl text-hot-pink crt-flicker leading-none">
           YOU ALREADY LIVE
         </h1>
-        <h1 className="pixel-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan mt-1 leading-none">
+        <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-neon-cyan mt-1 leading-none">
           IN CYBERPUNK
         </h1>
         <div className="mt-3 text-muted text-sm">

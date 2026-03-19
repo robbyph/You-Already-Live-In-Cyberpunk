@@ -1,156 +1,114 @@
 [
   {
     "id": "1",
-    "type": "link",
-    "title": "Neuralink Patient Plays Video Games With His Mind",
-    "source": "Reuters",
-    "url": "https://www.reuters.com/technology/neuralink",
-    "description": "First human Neuralink patient demonstrates ability to control computer cursor and play games using only brain signals. The cyberpunk future isn't coming — it's here.",
+    "imageUrl": "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=600&q=80",
+    "description": "Neuralink patient plays video games with his mind. Brain-computer interfaces are consumer products now.",
+    "link": "https://www.reuters.com/technology/neuralink",
     "tags": ["biotech", "neural-interface"],
-    "date": "2025-03-15",
-    "size": "large"
+    "date": "2025-03-15"
   },
   {
     "id": "2",
-    "type": "image",
-    "title": "Tokyo at Night",
-    "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80",
     "description": "The neon-drenched streets of Shinjuku — indistinguishable from concept art.",
     "tags": ["aesthetic", "cities"],
-    "date": "2025-02-20",
-    "size": "medium"
+    "date": "2025-02-20"
   },
   {
     "id": "3",
-    "type": "link",
-    "title": "AI-Generated Deepfakes Now Indistinguishable From Reality",
-    "source": "MIT Technology Review",
-    "url": "https://www.technologyreview.com",
-    "description": "New research shows humans can no longer reliably distinguish AI-generated faces and voices from real ones. Identity is now a question mark.",
+    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
+    "description": "AI-generated deepfakes now indistinguishable from reality. Identity is a question mark.",
+    "link": "https://www.technologyreview.com",
     "tags": ["AI", "deepfakes"],
-    "date": "2025-01-10",
-    "size": "small"
+    "date": "2025-01-10"
   },
   {
     "id": "4",
-    "type": "text",
-    "title": "We Have Megacorps",
-    "content": "Five companies control most of what you see, buy, and think. They have more power than most governments. They operate above the law. They surveil billions. This isn't dystopian fiction — it's your Tuesday.",
-    "tags": ["commentary", "megacorps"],
-    "date": "2025-03-01",
-    "size": "medium"
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",
+    "description": "Five companies control most of what you see, buy, and think. They have more power than most governments.",
+    "tags": ["megacorps", "commentary"],
+    "date": "2025-03-01"
   },
   {
     "id": "5",
-    "type": "image",
-    "title": "Cybertruck On The Streets",
-    "imageUrl": "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80",
     "description": "Low-poly vehicles straight out of a PS1 fever dream are now real consumer products.",
     "tags": ["vehicles", "aesthetic"],
-    "date": "2025-02-15",
-    "size": "large"
+    "date": "2025-02-15"
   },
   {
     "id": "6",
-    "type": "link",
-    "title": "Cities Deploy Facial Recognition Despite Bans",
-    "source": "The Verge",
-    "url": "https://www.theverge.com",
-    "description": "Multiple cities quietly deploying real-time facial recognition surveillance networks in public spaces, bypassing existing moratoriums.",
+    "imageUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&q=80",
+    "description": "Cities deploy real-time facial recognition despite bans. Surveillance networks in every public space.",
+    "link": "https://www.theverge.com",
     "tags": ["surveillance", "privacy"],
-    "date": "2025-03-10",
-    "size": "small"
+    "date": "2025-03-10"
   },
   {
     "id": "7",
-    "type": "text",
-    "title": "The Gig Economy Is Just Day Labor With An App",
-    "content": "No benefits. No stability. An algorithm decides if you eat this week. But hey, you're your own boss. Welcome to the future of work — same exploitation, sleeker interface.",
-    "tags": ["commentary", "labor"],
-    "date": "2025-01-25",
-    "size": "small"
+    "imageUrl": "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80",
+    "description": "The gig economy is just day labor with an app. An algorithm decides if you eat this week.",
+    "tags": ["labor", "commentary"],
+    "date": "2025-01-25"
   },
   {
     "id": "8",
-    "type": "link",
-    "title": "Gene-Edited Babies: Second Known Case Confirmed",
-    "source": "Nature",
-    "url": "https://www.nature.com",
-    "description": "Scientists confirm a second case of CRISPR-edited human embryos brought to term. Designer babies are no longer hypothetical.",
+    "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=80",
+    "description": "Gene-edited babies: second known case confirmed. Designer humans are no longer hypothetical.",
+    "link": "https://www.nature.com",
     "tags": ["biotech", "genetics"],
-    "date": "2025-02-28",
-    "size": "medium"
+    "date": "2025-02-28"
   },
   {
     "id": "9",
-    "type": "embed",
-    "title": "Robot Dogs Patrol San Francisco",
-    "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "embedType": "youtube",
-    "description": "Boston Dynamics robots now patrol corporate campuses and city streets. Fully autonomous. Armed with cameras. Definitely not dystopian at all.",
+    "imageUrl": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80",
+    "description": "Robot dogs patrol corporate campuses and city streets. Fully autonomous. Armed with cameras.",
     "tags": ["robotics", "surveillance"],
-    "date": "2025-03-05",
-    "size": "large"
+    "date": "2025-03-05"
   },
   {
     "id": "10",
-    "type": "link",
-    "title": "Billionaire Builds Underground Bunker City",
-    "source": "Bloomberg",
-    "url": "https://www.bloomberg.com",
-    "description": "Tech billionaire completes construction of a self-sustaining underground compound in New Zealand. Capacity: 5,000 people. The rich are preparing for the collapse they're causing.",
+    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
+    "description": "Tech billionaire builds self-sustaining underground bunker city in New Zealand. The rich are preparing for the collapse they're causing.",
+    "link": "https://www.bloomberg.com",
     "tags": ["inequality", "collapse"],
-    "date": "2025-01-18",
-    "size": "medium"
+    "date": "2025-01-18"
   },
   {
     "id": "11",
-    "type": "image",
-    "title": "Hong Kong Density",
-    "imageUrl": "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=600&q=80",
     "description": "Stacked living units stretching into infinity. Blade Runner called it — we just call it rent.",
-    "tags": ["aesthetic", "cities", "housing"],
-    "date": "2025-02-05",
-    "size": "small"
+    "tags": ["cities", "housing"],
+    "date": "2025-02-05"
   },
   {
     "id": "12",
-    "type": "text",
-    "title": "Your Fridge Snitches On You",
-    "content": "Smart refrigerators now track your eating habits and share data with insurance companies. Your appliances work for corporations. You pay for the privilege. This is fine.",
-    "tags": ["surveillance", "IoT", "commentary"],
-    "date": "2025-03-12",
-    "size": "small"
+    "imageUrl": "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=600&q=80",
+    "description": "Smart refrigerators track your eating habits and share data with insurance companies. Your appliances work for corporations.",
+    "tags": ["surveillance", "IoT"],
+    "date": "2025-03-12"
   },
   {
     "id": "13",
-    "type": "link",
-    "title": "Brain-Computer Interface Lets Paralyzed Woman Speak Again",
-    "source": "UCSF Neuroscience",
-    "url": "https://www.ucsf.edu",
-    "description": "A brain implant translates neural signals directly into speech at 62 words per minute. The line between human and machine blurs further.",
+    "imageUrl": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80",
+    "description": "Brain implant translates neural signals directly into speech at 62 words per minute. The line between human and machine blurs.",
+    "link": "https://www.ucsf.edu",
     "tags": ["biotech", "neural-interface"],
-    "date": "2025-02-22",
-    "size": "large"
+    "date": "2025-02-22"
   },
   {
     "id": "14",
-    "type": "link",
-    "title": "Amazon Workers Tracked By AI Every Second Of Their Shift",
-    "source": "The Guardian",
-    "url": "https://www.theguardian.com",
-    "description": "Warehouse workers monitored by AI systems that track bathroom breaks, hand movements, and 'time off task' down to the second.",
-    "tags": ["surveillance", "labor", "AI"],
-    "date": "2025-01-30",
-    "size": "medium"
+    "imageUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80",
+    "description": "Amazon workers tracked by AI every second of their shift. Bathroom breaks monitored. Time off task calculated to the second.",
+    "link": "https://www.theguardian.com",
+    "tags": ["surveillance", "labor"],
+    "date": "2025-01-30"
   },
   {
     "id": "15",
-    "type": "text",
-    "title": "Reminder",
-    "content": "Cyberpunk was supposed to be a warning, not a roadmap.",
+    "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+    "description": "Cyberpunk was supposed to be a warning, not a roadmap.",
     "tags": ["commentary"],
-    "date": "2025-03-18",
-    "size": "small"
+    "date": "2025-03-18"
   }
 ]
