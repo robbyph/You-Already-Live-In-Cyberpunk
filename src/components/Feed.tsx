@@ -14,12 +14,20 @@ export default function Feed({ posts }: { posts: FeedPost[] }) {
   const shuffled = shuffleArray(posts);
 
   return (
-    <section className="px-4 sm:px-6 max-w-7xl mx-auto pb-20">
+    <section className="px-4 sm:px-6 max-w-6xl mx-auto pb-10">
+      <div className="text-center text-xs text-muted mb-6 select-none">
+        <span className="text-hot-pink">[</span>{" "}
+        {posts.length} dispatches from the dystopia{" "}
+        <span className="text-hot-pink">]</span>
+      </div>
+
       <div className="masonry">
         {shuffled.map((post) => (
           <FeedCard key={post.id} post={post} />
         ))}
       </div>
+
+      <hr className="divider-dots mt-10 mb-6" />
     </section>
   );
 }

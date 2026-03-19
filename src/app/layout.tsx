@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "You Already Live In Cyberpunk",
+  title: "YOU ALREADY LIVE IN CYBERPUNK",
   description:
-    "The dystopian future is now. A curated feed from the world they warned us about.",
+    "A collection of proof that the dystopian future is now. Updated whenever reality gets too cyberpunk.",
   openGraph: {
-    title: "You Already Live In Cyberpunk",
-    description: "The dystopian future is now.",
+    title: "YOU ALREADY LIVE IN CYBERPUNK",
+    description: "The dystopia is now. Here's the proof.",
     type: "website",
   },
 };
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="scanlines noise min-h-screen">{children}</body>
+      <body className="min-h-screen">{children}</body>
     </html>
   );
 }
