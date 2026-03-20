@@ -16,11 +16,20 @@ function getAccentClass(id: string) {
   return ACCENT_CLASSES[num % ACCENT_CLASSES.length];
 }
 
+function isRecent(dateStr: string) {
+  const postDate = new Date(dateStr);
+  const now = new Date();
+  const diffDays = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24);
+  return diffDays < 30;
+}
+
 export default function FeedCard({ post }: { post: FeedPost }) {
   const accentClass = getAccentClass(post.id);
+  const recent = isRecent(post.date);
 
   const inner = (
     <div className={`feed-card ${accentClass} group`}>
+      {recent && <div className="new-tag">NEW!</div>}
       <img
         src={post.imageUrl}
         alt={post.description}
