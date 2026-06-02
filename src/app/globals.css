@@ -156,8 +156,8 @@ a.no-underline:hover {
 
 /* ═══ MARQUEE ═══ */
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 .marquee-track {
   overflow: hidden;
@@ -165,7 +165,7 @@ a.no-underline:hover {
 }
 .marquee-text {
   display: inline-block;
-  animation: marquee 25s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 /* ═══ BLINK ═══ */
