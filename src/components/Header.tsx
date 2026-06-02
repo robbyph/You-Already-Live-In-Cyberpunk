@@ -20,10 +20,9 @@ export default function Header() {
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
       <div className="pixel-border p-4 sm:p-6 mb-4">
-        {/* Pixel art eye + title row */}
+        {/* Pulsar stars + title row */}
         <div className="flex items-center justify-center gap-4 flex-wrap">
-          {/* CSS pixel art eye */}
-          <div className="pixel-eye hidden sm:block flex-shrink-0" aria-hidden="true" />
+          <div className="pixel-star hidden sm:block flex-shrink-0" aria-hidden="true" />
 
           <div className="text-center">
             <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker leading-none">
@@ -34,14 +33,13 @@ export default function Header() {
             </h1>
           </div>
 
-          {/* CSS pixel art eye (mirrored) */}
-          <div className="pixel-eye hidden sm:block flex-shrink-0" style={{ transform: "scale(3) scaleX(-1)" }} aria-hidden="true" />
+          <div className="pixel-star hidden sm:block flex-shrink-0" aria-hidden="true" />
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
-          <span className="text-neon-cyan">&#9608;</span>{" "}
+          <span className="text-neon-cyan">&#10022;</span>{" "}
           a collection of proof that the dystopia is now{" "}
-          <span className="text-neon-cyan">&#9608;</span>
+          <span className="text-neon-cyan">&#10022;</span>
         </div>
       </div>
 
@@ -56,7 +54,7 @@ export default function Header() {
 
       {/* Decorative divider */}
       <div className="divider-blocks select-none my-2">
-        ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░
+        ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦
       </div>
     </header>
   );
