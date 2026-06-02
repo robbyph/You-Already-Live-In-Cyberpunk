@@ -431,47 +431,8 @@ a.no-underline:hover {
     0 0 30px currentColor;
 }
 
-/* ═══ CSS PIXEL ART — pulsar/star icon ═══ */
-.pixel-star {
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow:
-    /* vertical beam */
-    4px 0 0 var(--color-neon-cyan),
-    4px 1px 0 var(--color-neon-cyan),
-    4px 2px 0 var(--color-neon-cyan),
-    4px 3px 0 var(--color-neon-cyan),
-    4px 5px 0 var(--color-neon-cyan),
-    4px 6px 0 var(--color-neon-cyan),
-    4px 7px 0 var(--color-neon-cyan),
-    4px 8px 0 var(--color-neon-cyan),
-    /* horizontal beam */
-    0 4px 0 var(--color-neon-cyan),
-    1px 4px 0 var(--color-neon-cyan),
-    2px 4px 0 var(--color-neon-cyan),
-    3px 4px 0 var(--color-neon-cyan),
-    5px 4px 0 var(--color-neon-cyan),
-    6px 4px 0 var(--color-neon-cyan),
-    7px 4px 0 var(--color-neon-cyan),
-    8px 4px 0 var(--color-neon-cyan),
-    /* center — bright core */
-    4px 4px 0 var(--color-hot-pink),
-    /* diagonal rays */
-    1px 1px 0 var(--color-soft-white),
-    2px 2px 0 var(--color-neon-cyan),
-    3px 3px 0 var(--color-neon-cyan),
-    5px 5px 0 var(--color-neon-cyan),
-    6px 6px 0 var(--color-neon-cyan),
-    7px 7px 0 var(--color-soft-white),
-    7px 1px 0 var(--color-soft-white),
-    6px 2px 0 var(--color-neon-cyan),
-    5px 3px 0 var(--color-neon-cyan),
-    3px 5px 0 var(--color-neon-cyan),
-    2px 6px 0 var(--color-neon-cyan),
-    1px 7px 0 var(--color-soft-white);
-  transform: scale(3);
-  margin: 10px 30px;
+/* ═══ PULSAR GLOW ═══ */
+.pulsar-glow {
   animation: pulsar-glow 2s ease-in-out infinite;
 }
 

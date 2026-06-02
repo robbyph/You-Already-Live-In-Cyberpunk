@@ -20,20 +20,13 @@ export default function Header() {
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
       <div className="pixel-border p-4 sm:p-6 mb-4">
-        {/* Pulsar stars + title row */}
-        <div className="flex items-center justify-center gap-4 flex-wrap">
-          <div className="pixel-star hidden sm:block flex-shrink-0" aria-hidden="true" />
-
-          <div className="text-center">
-            <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker leading-none">
-              YOU ALREADY LIVE
-            </h1>
-            <h1 className="emphasis-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan crt-flicker mt-1 leading-none">
-              IN CYBERPUNK
-            </h1>
-          </div>
-
-          <div className="pixel-star hidden sm:block flex-shrink-0" aria-hidden="true" />
+        <div className="text-center">
+          <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker pulsar-glow leading-none">
+            YOU ALREADY LIVE
+          </h1>
+          <h1 className="emphasis-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan crt-flicker pulsar-glow mt-1 leading-none">
+            IN CYBERPUNK
+          </h1>
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
