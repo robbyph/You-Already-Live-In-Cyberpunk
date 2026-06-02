@@ -437,12 +437,16 @@ a.no-underline:hover {
 }
 
 @keyframes pulsar-glow {
-  0%, 100% { opacity: 1; }
+  0% { opacity: 0.85; }
+  25% { opacity: 1; }
+  50% { opacity: 0.85; }
+  75% { opacity: 1; }
   92% { opacity: 1; }
   94% { opacity: 0.5; }
   96% { opacity: 0.9; }
   97% { opacity: 0.4; }
   99% { opacity: 1; }
+  100% { opacity: 0.85; }
 }
 
 /* ═══ WEBRING NAV ═══ */
