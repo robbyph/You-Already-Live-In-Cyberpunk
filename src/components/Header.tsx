@@ -49,7 +49,7 @@ export default function Header() {
       <div className="border-y-2 border-dashed border-hot-pink/40 py-1 my-3">
         <div className="marquee-track">
           <span className="marquee-text text-neon-purple pixel-title text-sm sm:text-base tracking-widest">
-            {ticker}
+            {ticker + "  ╱╱╱  " + ticker + "  ╱╱╱  "}
           </span>
         </div>
       </div>
