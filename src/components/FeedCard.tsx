@@ -26,17 +26,18 @@ export default function FeedCard({ post }: { post: FeedPost }) {
   const recent = isRecent(post.date);
 
   const inner = (
-    <div className={`feed-card ${accentClass} group`}>
-      {recent && <div className="new-tag">NEW!</div>}
-      <img
-        src={post.imageUrl}
-        alt={post.description}
-        className="w-full block"
-        loading="lazy"
-      />
-      {/* Hover overlay */}
-      <div className="card-overlay">
-        <p className="card-overlay-text">{post.description}</p>
+    <div className={`feed-card ${accentClass}`}>
+      <div className="relative">
+        {recent && <div className="new-tag">NEW!</div>}
+        <img
+          src={post.imageUrl}
+          alt={post.description}
+          className="w-full block"
+          loading="lazy"
+        />
+      </div>
+      <div className="card-body">
+        <p className="card-body-text">{post.description}</p>
         <div className="flex flex-wrap gap-x-2 gap-y-1 mt-2">
           {post.tags.map((tag) => (
             <span key={tag} className="tag">{tag}</span>
@@ -44,7 +45,7 @@ export default function FeedCard({ post }: { post: FeedPost }) {
         </div>
         {post.link && (
           <div className="mt-2 text-xs pixel-title text-neon-cyan">
-            <span className="blink">&gt;</span> click to read more
+            <span className="blink">&gt;</span> read more
           </div>
         )}
       </div>
