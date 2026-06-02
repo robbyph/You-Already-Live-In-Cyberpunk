@@ -21,7 +21,7 @@
   --font-family-pixel: "VT323", "Courier New", monospace;
   --font-family-edge: "Rubik Glitch", "VT323", monospace;
   --font-family-body: "Share Tech Mono", monospace;
-  --font-family-emphasis: "Permanent Marker", "Rubik Glitch", cursive;
+  --font-family-emphasis: "Orbitron", "Rubik Glitch", sans-serif;
 }
 
 @font-face {
@@ -43,11 +43,11 @@
 }
 
 @font-face {
-  font-family: "Permanent Marker";
+  font-family: "Orbitron";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004HaqI.woff2")
+  src: url("https://fonts.gstatic.com/s/orbitron/v31/yMJRMIlzdpvBhQQL_Qq7dy0.woff2")
     format("woff2");
 }
 
@@ -418,8 +418,10 @@ a.no-underline:hover {
 
 .emphasis-title {
   font-family: var(--font-family-emphasis);
+  font-weight: 700;
   line-height: 1.1;
-  font-style: italic;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .crt-flicker {
