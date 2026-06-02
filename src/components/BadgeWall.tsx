@@ -1,14 +1,14 @@
 const BADGES = [
-  { text: "BEST VIEWED AT 2AM", bg: "#1a0a3e", border: "#ff2a6d", color: "#ff2a6d" },
-  { text: "MADE WITH HTML", bg: "#0d0221", border: "#05d9e8", color: "#05d9e8" },
-  { text: "ANTI-NFT", bg: "#2a0020", border: "#ff2a6d", color: "#ff2a6d" },
-  { text: "WEB 1.0 4EVER", bg: "#0d0221", border: "#2de2a0", color: "#2de2a0" },
-  { text: "NO AI SLOP", bg: "#1a0a3e", border: "#b44aff", color: "#b44aff" },
-  { text: "RESIST ALGO", bg: "#0d0221", border: "#b44aff", color: "#b44aff" },
-  { text: "NO COOKIES (ironic)", bg: "#1a0a3e", border: "#c4165c", color: "#c4165c" },
-  { text: "MADE W/ INSOMNIA", bg: "#0d0221", border: "#05d9e8", color: "#05d9e8" },
-  { text: "HUMAN CURATED", bg: "#150535", border: "#2de2a0", color: "#2de2a0" },
-  { text: "ANTI-CORPO", bg: "#2a0020", border: "#ff2a6d", color: "#ff2a6d" },
+  { text: "BEST VIEWED AT 2AM", bg: "var(--color-card-dark)", border: "var(--color-hot-pink)", color: "var(--color-hot-pink)" },
+  { text: "MADE WITH HTML", bg: "var(--color-bg)", border: "var(--color-neon-cyan)", color: "var(--color-neon-cyan)" },
+  { text: "ANTI-NFT", bg: "var(--color-card-mid)", border: "var(--color-hot-pink)", color: "var(--color-hot-pink)" },
+  { text: "WEB 1.0 4EVER", bg: "var(--color-bg)", border: "var(--color-mint)", color: "var(--color-mint)" },
+  { text: "NO AI SLOP", bg: "var(--color-card-dark)", border: "var(--color-neon-purple)", color: "var(--color-neon-purple)" },
+  { text: "RESIST ALGO", bg: "var(--color-bg)", border: "var(--color-neon-purple)", color: "var(--color-neon-purple)" },
+  { text: "NO COOKIES (ironic)", bg: "var(--color-card-dark)", border: "var(--color-deep-rose)", color: "var(--color-deep-rose)" },
+  { text: "MADE W/ INSOMNIA", bg: "var(--color-bg)", border: "var(--color-neon-cyan)", color: "var(--color-neon-cyan)" },
+  { text: "HUMAN CURATED", bg: "var(--color-bg-alt)", border: "var(--color-mint)", color: "var(--color-mint)" },
+  { text: "ANTI-CORPO", bg: "var(--color-card-mid)", border: "var(--color-hot-pink)", color: "var(--color-hot-pink)" },
 ];
 
 export default function BadgeWall() {

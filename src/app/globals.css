@@ -7,17 +7,17 @@
    ============================================ */
 
 @theme {
-  --color-bg: #0d0221;
-  --color-bg-alt: #150535;
-  --color-card-dark: #1a0a3e;
-  --color-card-mid: #0f0326;
-  --color-hot-pink: #ff2a6d;
-  --color-neon-cyan: #05d9e8;
-  --color-neon-purple: #b44aff;
-  --color-deep-rose: #c4165c;
-  --color-mint: #2de2a0;
-  --color-soft-white: #e0d0ff;
-  --color-muted: #7b6b9e;
+  --color-bg: #0a0e17;
+  --color-bg-alt: #111827;
+  --color-card-dark: #131a2b;
+  --color-card-mid: #0c1220;
+  --color-hot-pink: #e0405e;
+  --color-neon-cyan: #38bdf8;
+  --color-neon-purple: #8b5cf6;
+  --color-deep-rose: #a83254;
+  --color-mint: #34d399;
+  --color-soft-white: #cbd5e1;
+  --color-muted: #64748b;
   --font-family-pixel: "VT323", "Courier New", monospace;
   --font-family-edge: "Rubik Glitch", "VT323", monospace;
   --font-family-body: "Share Tech Mono", monospace;
@@ -69,11 +69,11 @@ body {
   overflow-x: hidden;
   background-image:
     /* circuit-trace tile pattern */
-    url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='60' height='60' fill='none'/%3E%3Cpath d='M0 30h15m10 0h10m10 0h15M30 0v15m0 10v10m0 10v15' stroke='%2305d9e8' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%2305d9e8' opacity='0.05'/%3E%3Ccircle cx='0' cy='0' r='1' fill='%23ff2a6d' opacity='0.04'/%3E%3Ccircle cx='60' cy='60' r='1' fill='%23ff2a6d' opacity='0.04'/%3E%3Crect x='25' y='25' width='10' height='10' fill='none' stroke='%23b44aff' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='60' height='60' fill='none'/%3E%3Cpath d='M0 30h15m10 0h10m10 0h15M30 0v15m0 10v10m0 10v15' stroke='%2338bdf8' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='30' cy='30' r='2' fill='%2338bdf8' opacity='0.05'/%3E%3Ccircle cx='0' cy='0' r='1' fill='%23e0405e' opacity='0.04'/%3E%3Ccircle cx='60' cy='60' r='1' fill='%23e0405e' opacity='0.04'/%3E%3Crect x='25' y='25' width='10' height='10' fill='none' stroke='%238b5cf6' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E"),
     /* color bleed gradients on top */
-    radial-gradient(ellipse at 15% 50%, rgba(255, 42, 109, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 15%, rgba(5, 217, 232, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 85%, rgba(180, 74, 255, 0.07) 0%, transparent 50%);
+    radial-gradient(ellipse at 15% 50%, rgba(224, 64, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(139, 92, 246, 0.07) 0%, transparent 50%);
   background-size: 60px 60px, 100% 100%, 100% 100%, 100% 100%;
 }
 
@@ -99,18 +99,18 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(5, 217, 232, 0.4), transparent),
-    radial-gradient(1px 1px at 30% 70%, rgba(255, 42, 109, 0.3), transparent),
-    radial-gradient(1px 1px at 50% 10%, rgba(180, 74, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 70% 40%, rgba(5, 217, 232, 0.3), transparent),
-    radial-gradient(1px 1px at 90% 80%, rgba(255, 42, 109, 0.3), transparent),
-    radial-gradient(1px 1px at 15% 90%, rgba(180, 74, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 45% 45%, rgba(5, 217, 232, 0.2), transparent),
-    radial-gradient(1px 1px at 80% 60%, rgba(196, 22, 92, 0.3), transparent),
-    radial-gradient(1.5px 1.5px at 25% 35%, rgba(5, 217, 232, 0.5), transparent),
-    radial-gradient(1.5px 1.5px at 65% 85%, rgba(180, 74, 255, 0.4), transparent),
-    radial-gradient(1px 1px at 5% 55%, rgba(255, 42, 109, 0.2), transparent),
-    radial-gradient(1px 1px at 95% 25%, rgba(5, 217, 232, 0.2), transparent);
+    radial-gradient(1px 1px at 10% 20%, rgba(56, 189, 248, 0.4), transparent),
+    radial-gradient(1px 1px at 30% 70%, rgba(224, 64, 94, 0.3), transparent),
+    radial-gradient(1px 1px at 50% 10%, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(1px 1px at 70% 40%, rgba(56, 189, 248, 0.3), transparent),
+    radial-gradient(1px 1px at 90% 80%, rgba(224, 64, 94, 0.3), transparent),
+    radial-gradient(1px 1px at 15% 90%, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(1px 1px at 45% 45%, rgba(56, 189, 248, 0.2), transparent),
+    radial-gradient(1px 1px at 80% 60%, rgba(168, 50, 84, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 25% 35%, rgba(56, 189, 248, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 65% 85%, rgba(139, 92, 246, 0.4), transparent),
+    radial-gradient(1px 1px at 5% 55%, rgba(224, 64, 94, 0.2), transparent),
+    radial-gradient(1px 1px at 95% 25%, rgba(56, 189, 248, 0.2), transparent);
   animation: drift 60s linear infinite;
   pointer-events: none;
   z-index: 0;
@@ -303,28 +303,6 @@ a.no-underline:hover {
   .masonry { columns: 1; }
 }
 
-/* ═══ CARD CHAOS — rotation + border variety ═══ */
-.masonry > *:nth-child(7n+1) { transform: rotate(-1.2deg); }
-.masonry > *:nth-child(7n+2) { transform: rotate(0.8deg); }
-.masonry > *:nth-child(7n+3) { transform: rotate(-0.5deg); }
-.masonry > *:nth-child(7n+4) { transform: rotate(1.5deg); }
-.masonry > *:nth-child(7n+5) { transform: rotate(-0.9deg); }
-.masonry > *:nth-child(7n+6) { transform: rotate(0.4deg); }
-.masonry > *:nth-child(7n+7) { transform: rotate(-1.1deg); }
-
-.masonry > *:hover {
-  transform: rotate(0deg) scale(1.04) !important;
-  z-index: 10;
-}
-
-/* border variety */
-.masonry > .feed-card:nth-child(6n+1) { border-style: solid; border-width: 3px; }
-.masonry > .feed-card:nth-child(6n+2) { border-style: dashed; border-width: 3px; }
-.masonry > .feed-card:nth-child(6n+3) { border-style: double; border-width: 4px; }
-.masonry > .feed-card:nth-child(6n+4) { border-style: ridge; border-width: 4px; }
-.masonry > .feed-card:nth-child(6n+5) { border-style: dotted; border-width: 3px; }
-.masonry > .feed-card:nth-child(6n+6) { border-style: groove; border-width: 4px; }
-
 /* card accent color cycling */
 .card-accent-1 { --accent: var(--color-hot-pink); }
 .card-accent-2 { --accent: var(--color-neon-cyan); }
@@ -335,48 +313,31 @@ a.no-underline:hover {
 .feed-card {
   position: relative;
   overflow: hidden;
-  border-color: var(--accent, var(--color-hot-pink));
-  box-shadow: 5px 5px 0px var(--accent, var(--color-hot-pink));
+  border: 2px solid var(--accent, var(--color-muted));
   background: var(--color-card-dark);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
   cursor: pointer;
 }
 .feed-card:hover {
-  box-shadow: 7px 7px 0px var(--accent, var(--color-hot-pink)),
-    0 0 25px color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .feed-card img {
   display: block;
   width: 100%;
   height: auto;
-  transition: filter 0.3s ease;
-}
-.feed-card:hover img {
-  filter: brightness(0.25) saturate(0.4);
 }
 
-/* ═══ HOVER OVERLAY ═══ */
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 14px;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
+/* ═══ CARD BODY (below image) ═══ */
+.card-body {
+  padding: 10px 12px;
+  border-top: 1px solid color-mix(in srgb, var(--accent, var(--color-muted)) 30%, transparent);
 }
-.feed-card:hover .card-overlay {
-  opacity: 1;
-}
-.card-overlay-text {
-  font-family: var(--font-family-pixel);
-  font-size: 1.15rem;
-  line-height: 1.3;
+.card-body-text {
+  font-family: var(--font-family-body);
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--color-soft-white);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* ═══ NEW TAG ═══ */
