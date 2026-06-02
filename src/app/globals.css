@@ -21,6 +21,7 @@
   --font-family-pixel: "VT323", "Courier New", monospace;
   --font-family-edge: "Rubik Glitch", "VT323", monospace;
   --font-family-body: "Share Tech Mono", monospace;
+  --font-family-emphasis: "Permanent Marker", "Rubik Glitch", cursive;
 }
 
 @font-face {
@@ -38,6 +39,15 @@
   font-weight: 400;
   font-display: swap;
   src: url("https://fonts.gstatic.com/s/rubikglitch/v2/qkBSXv8b_ZTDnhjIhq7vOsBSww.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Permanent Marker";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004HaqI.woff2")
     format("woff2");
 }
 
@@ -404,6 +414,12 @@ a.no-underline:hover {
 .edge-title {
   font-family: var(--font-family-edge);
   line-height: 1.1;
+}
+
+.emphasis-title {
+  font-family: var(--font-family-emphasis);
+  line-height: 1.1;
+  font-style: italic;
 }
 
 .crt-flicker {

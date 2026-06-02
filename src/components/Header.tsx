@@ -29,7 +29,7 @@ export default function Header() {
             <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker leading-none">
               YOU ALREADY LIVE
             </h1>
-            <h1 className="edge-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan mt-1 leading-none">
+            <h1 className="emphasis-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan crt-flicker mt-1 leading-none">
               IN CYBERPUNK
             </h1>
           </div>
