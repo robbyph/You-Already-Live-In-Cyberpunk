@@ -43,17 +43,17 @@ export default function Sidebar() {
       </div>
 
       {/* ═══ STATUS ═══ */}
-      <div className="sidebar-panel" style={{ borderColor: "var(--color-lime)", borderStyle: "dashed" }}>
-        <div className="sidebar-panel-title" style={{ color: "var(--color-lime)", borderColor: "var(--color-lime)" }}>
+      <div className="sidebar-panel" style={{ borderColor: "var(--color-neon-cyan)", borderStyle: "dashed" }}>
+        <div className="sidebar-panel-title" style={{ color: "var(--color-neon-cyan)", borderColor: "var(--color-neon-cyan)" }}>
           &#9670; current status
         </div>
         <div className="text-xs">
-          <span className="text-neon-orange">mood:</span>{" "}
-          <span className="text-lime">{status}</span>
+          <span className="text-deep-rose">mood:</span>{" "}
+          <span className="text-neon-cyan">{status}</span>
         </div>
         <div className="text-xs mt-1">
-          <span className="text-neon-orange">visitors:</span>{" "}
-          <span className="text-neon-yellow pixel-title text-sm">{visitorCount.toLocaleString()}</span>
+          <span className="text-deep-rose">visitors:</span>{" "}
+          <span className="text-neon-cyan pixel-title text-sm">{visitorCount.toLocaleString()}</span>
         </div>
         <div className="text-xs mt-1">
           <span className="text-hot-pink blink">&#9679;</span>{" "}
@@ -82,8 +82,8 @@ export default function Sidebar() {
       </div>
 
       {/* ═══ WEBRING ═══ */}
-      <div className="sidebar-panel" style={{ borderColor: "var(--color-neon-orange)", borderStyle: "dotted" }}>
-        <div className="sidebar-panel-title" style={{ color: "var(--color-neon-orange)", borderColor: "var(--color-neon-orange)" }}>
+      <div className="sidebar-panel" style={{ borderColor: "var(--color-neon-purple)", borderStyle: "dotted" }}>
+        <div className="sidebar-panel-title" style={{ color: "var(--color-neon-purple)", borderColor: "var(--color-neon-purple)" }}>
           &#9670; webring
         </div>
         <div className="webring-nav">
@@ -97,8 +97,8 @@ export default function Sidebar() {
       </div>
 
       {/* ═══ LINKS ═══ */}
-      <div className="sidebar-panel" style={{ borderColor: "var(--color-neon-yellow)", borderStyle: "solid" }}>
-        <div className="sidebar-panel-title" style={{ color: "var(--color-neon-yellow)", borderColor: "var(--color-neon-yellow)" }}>
+      <div className="sidebar-panel" style={{ borderColor: "var(--color-neon-cyan)", borderStyle: "solid" }}>
+        <div className="sidebar-panel-title" style={{ color: "var(--color-neon-cyan)", borderColor: "var(--color-neon-cyan)" }}>
           &#9670; cool links
         </div>
         <div className="text-xs flex flex-col gap-1 text-muted">

@@ -39,16 +39,16 @@ export default function Header() {
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
-          <span className="text-lime">&#9608;</span>{" "}
+          <span className="text-neon-cyan">&#9608;</span>{" "}
           a collection of proof that the dystopia is now{" "}
-          <span className="text-lime">&#9608;</span>
+          <span className="text-neon-cyan">&#9608;</span>
         </div>
       </div>
 
       {/* Marquee ticker */}
       <div className="border-y-2 border-dashed border-hot-pink/40 py-1 my-3">
         <div className="marquee-track">
-          <span className="marquee-text text-neon-yellow pixel-title text-sm sm:text-base tracking-widest">
+          <span className="marquee-text text-neon-purple pixel-title text-sm sm:text-base tracking-widest">
             {ticker}
           </span>
         </div>

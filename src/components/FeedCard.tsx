@@ -7,8 +7,6 @@ const ACCENT_CLASSES = [
   "card-accent-2",
   "card-accent-3",
   "card-accent-4",
-  "card-accent-5",
-  "card-accent-6",
 ];
 
 function getAccentClass(id: string) {
