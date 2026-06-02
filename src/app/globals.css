@@ -433,12 +433,16 @@ a.no-underline:hover {
 
 /* ═══ PULSAR GLOW ═══ */
 .pulsar-glow {
-  animation: pulsar-glow 2s ease-in-out infinite;
+  animation: pulsar-glow 4s linear infinite;
 }
 
 @keyframes pulsar-glow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  94% { opacity: 0.5; }
+  96% { opacity: 0.9; }
+  97% { opacity: 0.4; }
+  99% { opacity: 1; }
 }
 
 /* ═══ WEBRING NAV ═══ */
