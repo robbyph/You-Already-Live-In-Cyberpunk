@@ -31,7 +31,7 @@ export default function Header() {
 
         <div className="mt-4 text-center text-muted text-sm">
           <span className="text-neon-cyan">&#10022;</span>{" "}
-          a collection of proof that the dystopia is now{" "}
+          dystopia is now{" "}
           <span className="text-neon-cyan">&#10022;</span>
         </div>
       </div>
