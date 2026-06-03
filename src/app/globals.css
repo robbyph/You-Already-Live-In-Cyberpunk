@@ -501,13 +501,13 @@ a.no-underline:hover {
 }
 
 @keyframes star-twinkle {
-  0%   { opacity: 0.6; transform: scale(1); }
-  15%  { opacity: 0.15; transform: scale(0.7); }
-  30%  { opacity: 1; transform: scale(1.2); }
-  45%  { opacity: 0.8; transform: scale(1); }
-  70%  { opacity: 0.2; transform: scale(0.75); }
-  85%  { opacity: 0.95; transform: scale(1.15); }
-  100% { opacity: 0.6; transform: scale(1); }
+  0%   { opacity: 0.6; transform: scale(1) translateY(var(--y, 0px)); }
+  15%  { opacity: 0.15; transform: scale(0.7) translateY(var(--y, 0px)); }
+  30%  { opacity: 1; transform: scale(1.2) translateY(var(--y, 0px)); }
+  45%  { opacity: 0.8; transform: scale(1) translateY(var(--y, 0px)); }
+  70%  { opacity: 0.2; transform: scale(0.75) translateY(var(--y, 0px)); }
+  85%  { opacity: 0.95; transform: scale(1.15) translateY(var(--y, 0px)); }
+  100% { opacity: 0.6; transform: scale(1) translateY(var(--y, 0px)); }
 }
 
 /* ═══ STAR PULSE ═══ */
