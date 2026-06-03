@@ -75,7 +75,7 @@ export default function Header() {
   return (
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
-      <div className="p-4 sm:p-6 mb-4 relative" style={{ background: 'var(--color-card-dark)', outline: '1px solid rgba(56, 189, 248, 0.3)', outlineOffset: '4px' }}>
+      <div className="marquee-panel p-4 sm:p-6 mb-4 relative">
         <MarqueeBorder />
         {/* Pixel art eye + title row */}
         <div className="flex items-center justify-center gap-4 flex-wrap">

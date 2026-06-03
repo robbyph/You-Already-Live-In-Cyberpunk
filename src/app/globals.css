@@ -214,6 +214,17 @@ a.no-underline:hover {
   background: var(--color-card-dark);
 }
 
+/* ═══ MARQUEE PANEL ═══ */
+.marquee-panel {
+  background: var(--color-card-dark);
+  box-shadow:
+    0 0 0 5px var(--color-bg),
+    0 0 0 6px rgba(56, 189, 248, 0.18),
+    0 0 0 9px var(--color-bg),
+    0 0 0 10px rgba(139, 92, 246, 0.14),
+    0 0 20px 10px rgba(56, 189, 248, 0.03);
+}
+
 /* ═══ MARQUEE DOTS BORDER ═══ */
 .marquee-dots {
   fill: none;
