@@ -39,12 +39,6 @@ export default function Feed({ posts }: { posts: FeedPost[] }) {
 
   return (
     <section className="pb-6" id="feed">
-      <div className="text-center text-xs text-muted mb-4 select-none pixel-title">
-        <span className="text-hot-pink">[</span>{" "}
-        {posts.length} dispatches from the dystopia{" "}
-        <span className="text-hot-pink">]</span>
-      </div>
-
       <div className="masonry">
         {elements}
       </div>
