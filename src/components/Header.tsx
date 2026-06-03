@@ -39,9 +39,9 @@ function MarqueeBorder() {
   const right = `M${cx},${h} L${w},${h} L${w},0 L${cx},0`;
 
   return (
-    <div ref={ref} className="absolute inset-[-8px] pointer-events-none z-10">
+    <div ref={ref} className="absolute inset-[-2px] pointer-events-none z-10">
       {w > 0 && (
-        <svg width={w} height={h} aria-hidden="true">
+        <svg width={w} height={h} style={{ overflow: 'visible' }} aria-hidden="true">
           <defs>
             <filter id="marquee-glow">
               <feGaussianBlur stdDeviation="2" result="blur" />
@@ -51,8 +51,8 @@ function MarqueeBorder() {
               </feMerge>
             </filter>
           </defs>
-          <path d={left} pathLength={100} className="marquee-dots" />
-          <path d={right} pathLength={100} className="marquee-dots" />
+          <path d={left} className="marquee-dots" />
+          <path d={right} className="marquee-dots" />
         </svg>
       )}
     </div>
@@ -75,7 +75,7 @@ export default function Header() {
   return (
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
-      <div className="pixel-border p-4 sm:p-6 mb-4 relative">
+      <div className="p-4 sm:p-6 mb-4 relative" style={{ background: 'var(--color-card-dark)' }}>
         <MarqueeBorder />
         {/* Pixel art eye + title row */}
         <div className="flex items-center justify-center gap-4 flex-wrap">
