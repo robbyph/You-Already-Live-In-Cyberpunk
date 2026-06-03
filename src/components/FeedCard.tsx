@@ -38,11 +38,6 @@ export default function FeedCard({ post }: { post: FeedPost }) {
       </div>
       <div className="card-body">
         <p className="card-body-text">{post.description}</p>
-        <div className="flex flex-wrap gap-x-2 gap-y-1 mt-2">
-          {post.tags.map((tag) => (
-            <span key={tag} className="tag">{tag}</span>
-          ))}
-        </div>
         {post.link && (
           <div className="mt-2 text-xs pixel-title text-neon-cyan">
             <span className="blink">&gt;</span> read more
