@@ -19,14 +19,23 @@ export default function Header() {
   return (
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
-      <div className="pixel-border-animated p-4 sm:p-6 mb-4">
-        <div className="text-center">
-          <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker pulsar-glow leading-none">
-            YOU ALREADY LIVE
-          </h1>
-          <h1 className="emphasis-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan crt-flicker pulsar-glow mt-1 leading-none">
-            IN CYBERPUNK
-          </h1>
+      <div className="pixel-border neon-cycle p-4 sm:p-6 mb-4">
+        {/* Pixel art eye + title row */}
+        <div className="flex items-center justify-center gap-4 flex-wrap">
+          {/* CSS pixel art eye */}
+          <div className="pixel-eye hidden sm:block flex-shrink-0" aria-hidden="true" />
+
+          <div className="text-center">
+            <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker leading-none">
+              YOU ALREADY LIVE
+            </h1>
+            <h1 className="edge-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan crt-flicker mt-1 leading-none">
+              IN CYBERPUNK
+            </h1>
+          </div>
+
+          {/* CSS pixel art eye (mirrored) */}
+          <div className="pixel-eye hidden sm:block flex-shrink-0" style={{ transform: "scale(3) scaleX(-1)" }} aria-hidden="true" />
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
