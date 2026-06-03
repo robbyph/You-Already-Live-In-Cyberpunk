@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useEffect, useState } from "react";
+
 const TICKER_PHRASES = [
   "YOUR TOASTER HAS A CPU MORE POWERFUL THAN THE APOLLO MISSIONS",
   "MEGACORPS OWN YOUR DNA SEQUENCE",
@@ -13,13 +15,58 @@ const TICKER_PHRASES = [
   "WELCOME TO THE FUTURE NOBODY ASKED FOR",
 ];
 
+function MarqueeBorder() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ w: 0, h: 0 });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => {
+      setSize({
+        w: Math.round(e.contentRect.width),
+        h: Math.round(e.contentRect.height),
+      });
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const { w, h } = size;
+  const cx = w / 2;
+
+  const left = `M${cx},${h} L0,${h} L0,0 L${cx},0`;
+  const right = `M${cx},${h} L${w},${h} L${w},0 L${cx},0`;
+
+  return (
+    <div ref={ref} className="absolute inset-[-3px] pointer-events-none z-10">
+      {w > 0 && (
+        <svg width={w} height={h} aria-hidden="true">
+          <defs>
+            <filter id="marquee-glow">
+              <feGaussianBlur stdDeviation="2" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <path d={left} pathLength={100} className="marquee-dots" />
+          <path d={right} pathLength={100} className="marquee-dots" />
+        </svg>
+      )}
+    </div>
+  );
+}
+
 export default function Header() {
-  const ticker = TICKER_PHRASES.join("  \u2571\u2571\u2571  ");
+  const ticker = TICKER_PHRASES.join("  ╱╱╱  ");
 
   return (
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
-      <div className="pixel-border neon-cycle p-4 sm:p-6 mb-4">
+      <div className="pixel-border p-4 sm:p-6 mb-4 relative">
+        <MarqueeBorder />
         {/* Pixel art eye + title row */}
         <div className="flex items-center justify-center gap-4 flex-wrap">
           {/* CSS pixel art eye */}
@@ -29,19 +76,23 @@ export default function Header() {
             <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker leading-none">
               YOU ALREADY LIVE
             </h1>
-            <h1 className="emphasis-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan crt-flicker mt-1 leading-none">
+            <h1 className="edge-title text-3xl sm:text-5xl md:text-6xl text-neon-cyan crt-flicker mt-1 leading-none">
               IN CYBERPUNK
             </h1>
           </div>
 
           {/* CSS pixel art eye (mirrored) */}
-          <div className="pixel-eye hidden sm:block flex-shrink-0" style={{ transform: "scale(3) scaleX(-1)" }} aria-hidden="true" />
+          <div
+            className="pixel-eye hidden sm:block flex-shrink-0"
+            style={{ transform: "scale(3) scaleX(-1)" }}
+            aria-hidden="true"
+          />
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
-          <span className="text-neon-cyan">&#9608;</span>{" "}
-          a collection of proof that the dystopia is now{" "}
-          <span className="text-neon-cyan">&#9608;</span>
+          <span className="text-neon-cyan">&#10022;</span>{" "}
+          dystopia is now{" "}
+          <span className="text-neon-cyan">&#10022;</span>
         </div>
       </div>
 
@@ -56,7 +107,7 @@ export default function Header() {
 
       {/* Decorative divider */}
       <div className="divider-blocks select-none my-2">
-        ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░
+        ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦
       </div>
     </header>
   );
