@@ -116,8 +116,10 @@ export default function Header() {
       </div>
 
       {/* Decorative divider */}
-      <div className="divider-blocks select-none my-2">
-        ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦
+      <div className="divider-blocks select-none my-2" aria-hidden="true">
+        {"✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦".split(" ").map((ch, i) => (
+          <span key={i} className="star-twinkle" style={{ animationDelay: `${(i * 0.7 + Math.sin(i * 2.3) * 1.5 + 1.5).toFixed(2)}s` }}>{ch}</span>
+        ))}
       </div>
     </header>
   );

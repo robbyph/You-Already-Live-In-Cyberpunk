@@ -493,6 +493,23 @@ a.no-underline:hover {
   100% { opacity: 0.85; }
 }
 
+/* ═══ STAR TWINKLE (divider) ═══ */
+.star-twinkle {
+  display: inline-block;
+  animation: star-twinkle 4s ease-in-out infinite;
+  margin: 0 1px;
+}
+
+@keyframes star-twinkle {
+  0%   { opacity: 0.6; transform: scale(1); }
+  15%  { opacity: 0.15; transform: scale(0.7); }
+  30%  { opacity: 1; transform: scale(1.2); }
+  45%  { opacity: 0.8; transform: scale(1); }
+  70%  { opacity: 0.2; transform: scale(0.75); }
+  85%  { opacity: 0.95; transform: scale(1.15); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
+
 /* ═══ STAR PULSE ═══ */
 .star-pulse {
   display: inline-block;
