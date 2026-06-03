@@ -61,6 +61,16 @@ function MarqueeBorder() {
 
 export default function Header() {
   const ticker = TICKER_PHRASES.join("  ╱╱╱  ");
+  const star1Ref = useRef<HTMLSpanElement>(null);
+  const star2Ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const s1 = star1Ref.current;
+    const s2 = star2Ref.current;
+    if (!s1 || !s2) return;
+    const t = document.timeline.currentTime as number;
+    [...s1.getAnimations(), ...s2.getAnimations()].forEach(a => { a.startTime = t; });
+  }, []);
 
   return (
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
@@ -90,9 +100,9 @@ export default function Header() {
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
-          <span className="text-neon-cyan star-pulse">&#10022;</span>{" "}
+          <span ref={star1Ref} className="text-neon-cyan star-pulse">&#10022;</span>{" "}
           dystopia is now!{" "}
-          <span className="text-neon-cyan star-pulse">&#10022;</span>
+          <span ref={star2Ref} className="text-neon-cyan star-pulse">&#10022;</span>
         </div>
       </div>
 
