@@ -221,7 +221,7 @@ a.no-underline:hover {
   stroke-width: 3;
   stroke-dasharray: 2 8;
   stroke-linecap: round;
-  animation: marquee-dots 4s linear infinite;
+  animation: marquee-dots 1s linear infinite;
   filter: url(#marquee-glow);
 }
 
