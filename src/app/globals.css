@@ -60,6 +60,12 @@
     format("woff2");
 }
 
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -206,6 +212,54 @@ a.no-underline:hover {
     0 0 0 2px var(--color-bg),
     4px 4px 0 0 var(--color-hot-pink);
   background: var(--color-card-dark);
+}
+
+/* ═══ ANIMATED PIXEL BORDER ═══ */
+.pixel-border-animated {
+  position: relative;
+  background: var(--color-card-dark);
+  border: none;
+  box-shadow: none;
+}
+
+.pixel-border-animated::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--border-angle),
+    var(--color-neon-cyan),
+    var(--color-hot-pink),
+    var(--color-neon-purple),
+    var(--color-neon-cyan)
+  );
+  animation: border-rotate 4s linear infinite;
+  box-shadow:
+    4px 4px 0 0 var(--color-neon-purple),
+    0 0 15px rgba(56, 189, 248, 0.3),
+    0 0 30px rgba(217, 70, 239, 0.15);
+}
+
+.pixel-border-animated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-card-dark);
+  z-index: -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-border-animated::before {
+    animation: none;
+    background: conic-gradient(
+      from 45deg,
+      var(--color-neon-cyan),
+      var(--color-hot-pink),
+      var(--color-neon-purple),
+      var(--color-neon-cyan)
+    );
+  }
 }
 
 /* ═══ ANIMATED DIVIDERS ═══ */
@@ -429,6 +483,11 @@ a.no-underline:hover {
     0 0 5px currentColor,
     0 0 15px currentColor,
     0 0 30px currentColor;
+}
+
+@keyframes border-rotate {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
 }
 
 /* ═══ PULSAR GLOW ═══ */
