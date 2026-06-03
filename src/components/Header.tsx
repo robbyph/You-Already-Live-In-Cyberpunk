@@ -91,8 +91,8 @@ export default function Header() {
 
         <div className="mt-4 text-center text-muted text-sm">
           <span className="text-neon-cyan star-pulse">&#10022;</span>{" "}
-          dystopia is now{" "}
-          <span className="text-neon-cyan star-pulse" style={{ animationDelay: "-2.9s" }}>&#10022;</span>
+          dystopia is now!{" "}
+          <span className="text-neon-cyan star-pulse">&#10022;</span>
         </div>
       </div>
 
