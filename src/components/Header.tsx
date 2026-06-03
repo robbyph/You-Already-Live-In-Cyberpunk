@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
-      <div className="pixel-border p-4 sm:p-6 mb-4">
+      <div className="pixel-border-animated p-4 sm:p-6 mb-4">
         {/* Pixel art eye + title row */}
         <div className="flex items-center justify-center gap-4 flex-wrap">
           {/* CSS pixel art eye */}
