@@ -497,7 +497,7 @@ a.no-underline:hover {
 .star-twinkle {
   display: inline-block;
   animation: star-twinkle 4s ease-in-out infinite;
-  margin: 0 1px;
+  margin: 0 6px;
 }
 
 @keyframes star-twinkle {
