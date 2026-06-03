@@ -39,7 +39,7 @@ function MarqueeBorder() {
   const right = `M${cx},${h} L${w},${h} L${w},0 L${cx},0`;
 
   return (
-    <div ref={ref} className="absolute inset-[-3px] pointer-events-none z-10">
+    <div ref={ref} className="absolute inset-[-8px] pointer-events-none z-10">
       {w > 0 && (
         <svg width={w} height={h} aria-hidden="true">
           <defs>
