@@ -219,7 +219,7 @@ a.no-underline:hover {
   fill: none;
   stroke: var(--color-neon-cyan);
   stroke-width: 4;
-  stroke-dasharray: 4 3;
+  stroke-dasharray: 4 4;
   stroke-linecap: butt;
   animation: marquee-dots 0.25s linear infinite;
   filter: url(#marquee-glow);
@@ -227,7 +227,7 @@ a.no-underline:hover {
 
 @keyframes marquee-dots {
   0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -7; }
+  100% { stroke-dashoffset: -8; }
 }
 
 @media (prefers-reduced-motion: reduce) {
