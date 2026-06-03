@@ -51,8 +51,8 @@ function MarqueeBorder() {
               </feMerge>
             </filter>
           </defs>
-          <path d={left} pathLength={100} className="marquee-dots" />
-          <path d={right} pathLength={100} className="marquee-dots" />
+          <path d={left} className="marquee-dots" />
+          <path d={right} className="marquee-dots" />
         </svg>
       )}
     </div>
