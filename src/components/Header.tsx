@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="relative px-4 pt-4 pb-2 max-w-[1300px] mx-auto" id="top">
       {/* Pixel-bordered header panel */}
-      <div className="pixel-border p-4 sm:p-6 mb-4">
+      <div className="pixel-border-animated p-4 sm:p-6 mb-4">
         <div className="text-center">
           <h1 className="edge-title text-4xl sm:text-6xl md:text-7xl text-hot-pink crt-flicker pulsar-glow leading-none">
             YOU ALREADY LIVE
