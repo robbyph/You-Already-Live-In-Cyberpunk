@@ -482,6 +482,26 @@ a.no-underline:hover {
   100% { opacity: 0.85; }
 }
 
+/* ═══ STAR PULSE ═══ */
+.star-pulse {
+  display: inline-block;
+  animation: star-pulse 6.4s ease-in-out infinite;
+}
+
+@keyframes star-pulse {
+  0%   { opacity: 1;    transform: scale(1); }
+  8%   { opacity: 0.25; transform: scale(0.82); }
+  15%  { opacity: 0.95; transform: scale(1.1); }
+  23%  { opacity: 0.6;  transform: scale(0.9); }
+  32%  { opacity: 1;    transform: scale(1); }
+  58%  { opacity: 1;    transform: scale(1); }
+  63%  { opacity: 0.15; transform: scale(0.78); }
+  70%  { opacity: 0.9;  transform: scale(1.12); }
+  77%  { opacity: 0.5;  transform: scale(0.88); }
+  85%  { opacity: 1;    transform: scale(1); }
+  100% { opacity: 1;    transform: scale(1); }
+}
+
 /* ═══ WEBRING NAV ═══ */
 .webring-nav {
   display: flex;
