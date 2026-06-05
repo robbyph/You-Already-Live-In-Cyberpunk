@@ -279,6 +279,7 @@ a.no-underline:hover {
   font-size: 0.7rem;
   letter-spacing: 4px;
   user-select: none;
+  white-space: nowrap;
 }
 .divider-glitch {
   text-align: center;
