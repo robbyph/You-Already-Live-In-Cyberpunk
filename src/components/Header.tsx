@@ -59,10 +59,23 @@ function MarqueeBorder() {
   );
 }
 
+// Row offsets for 3-row vertical distribution (px)
+const ROW_OFFSETS = [-7, 0, 7] as const;
+// Conservative px-per-star estimate (char + margins + letter-spacing)
+const STAR_PX = 27;
+
+function starY(i: number): number {
+  const rowIndex = Math.floor(Math.abs(Math.sin(i * 127.1)) * 3) % 3;
+  const noise = Math.sin(i * 3.7 + 0.9) * 2;
+  return ROW_OFFSETS[rowIndex] + noise;
+}
+
 export default function Header() {
   const ticker = TICKER_PHRASES.join("  ╱╱╱  ");
   const star1Ref = useRef<HTMLSpanElement>(null);
   const star2Ref = useRef<HTMLSpanElement>(null);
+  const dividerRef = useRef<HTMLDivElement>(null);
+  const [starCount, setStarCount] = useState(0);
 
   useEffect(() => {
     const s1 = star1Ref.current;
@@ -70,6 +83,19 @@ export default function Header() {
     if (!s1 || !s2) return;
     const t = document.timeline.currentTime as number;
     [...s1.getAnimations(), ...s2.getAnimations()].forEach(a => { a.startTime = t; });
+  }, []);
+
+  useEffect(() => {
+    const el = dividerRef.current;
+    if (!el) return;
+    const measure = () => {
+      const w = el.getBoundingClientRect().width;
+      setStarCount(Math.max(3, Math.floor(w / STAR_PX)));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
 
   return (
@@ -115,10 +141,19 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Decorative divider */}
-      <div className="divider-blocks select-none my-2" aria-hidden="true">
-        {"✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦".split(" ").map((ch, i) => (
-          <span key={i} className="star-twinkle" style={{ animationDelay: `${-(i * 0.7 + Math.sin(i * 2.3) * 1.5 + 1.5).toFixed(2)}s`, '--y': `${(Math.sin(i * 1.7) * 3).toFixed(1)}px` } as React.CSSProperties}>{ch}</span>
+      {/* Decorative divider — count driven by container width, never wraps */}
+      <div ref={dividerRef} className="divider-blocks select-none my-2 py-2" aria-hidden="true">
+        {Array.from({ length: starCount }, (_, i) => (
+          <span
+            key={i}
+            className="star-twinkle"
+            style={{
+              animationDelay: `${-(i * 0.7 + Math.sin(i * 2.3) * 1.5 + 1.5).toFixed(2)}s`,
+              '--y': `${starY(i).toFixed(1)}px`,
+            } as React.CSSProperties}
+          >
+            {i % 2 === 0 ? '✦' : '✧'}
+          </span>
         ))}
       </div>
     </header>
