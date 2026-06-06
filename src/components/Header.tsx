@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState, useMemo } from "react";
+import { useRef, useEffect, useState } from "react";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -84,7 +84,8 @@ function starY(i: number): number {
 }
 
 export default function Header() {
-  const shuffled = useMemo(() => shuffle(TICKER_PHRASES), []);
+  const [shuffled, setShuffled] = useState(TICKER_PHRASES);
+  useEffect(() => { setShuffled(shuffle(TICKER_PHRASES)); }, []);
   const ticker = shuffled.join("  ╱╱╱  ");
   const star1Ref = useRef<HTMLSpanElement>(null);
   const star2Ref = useRef<HTMLSpanElement>(null);
