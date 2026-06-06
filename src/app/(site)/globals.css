@@ -317,10 +317,33 @@ a.no-underline:hover {
 
 /* ═══ SIDEBAR PANELS ═══ */
 .sidebar-panel {
+  position: relative;
+  overflow: hidden;
   background: var(--color-card-dark);
-  border: 2px solid var(--color-muted);
+  border: none !important;
+  box-shadow: none !important;
   margin-bottom: 12px;
   padding: 10px;
+}
+.sidebar-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-hot-pink),
+    var(--color-neon-cyan),
+    var(--color-neon-purple),
+    var(--color-hot-pink)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
 }
 .sidebar-panel-title {
   font-family: var(--font-family-pixel);
@@ -363,26 +386,7 @@ a.no-underline:hover {
   transition: box-shadow 0.2s ease;
   cursor: pointer;
 }
-.feed-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--color-hot-pink),
-    var(--color-neon-cyan),
-    var(--color-neon-purple),
-    var(--color-hot-pink)
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 1;
-}
+/* no shimmer border on feed cards */
 .feed-card:hover {
   box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 25%, transparent);
 }
