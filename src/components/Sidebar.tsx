@@ -51,6 +51,31 @@ export default function Sidebar() {
           <span>&#9733; <a href="https://artificial-art.neocities.org//" target="_blank" rel="noopener noreferrer">artificial-art.neocities.org</a></span>
         </div>
       </div>
+
+      {/* ═══ LINKS ═══ */}
+      <div className="sidebar-panel" style={{ borderColor: "var(--color-neon-cyan)", borderStyle: "solid" }}>
+        <div className="sidebar-panel-title" style={{ color: "var(--color-neon-cyan)", borderColor: "var(--color-neon-cyan)" }}>
+          &#9670; check out
+        </div>
+        <div className="text-xs flex flex-col gap-1 text-muted">
+          <strong>Texts</strong>
+          <span >&#9733; Principles of Communism</span>
+          <span>&#9733; Towards a New Socialism</span>
+          <span>&#9733; Cybernetic Revolutionaries</span>
+          <span>&#9733; How Not to Network a Nation</span>
+          <span>&#9733; Cyber-Marx</span>
+          <span>&#9733; Cyber-Proletariat</span>
+          <span className="pb-1">&#9733; The Dispossessed</span>
+          <strong>Games</strong>
+          <span >&#9733; Disco Elysium</span>
+          <span className="pb-1">&#9733; Deus Ex</span>
+          <strong>Film</strong>
+          <span >&#9733; Ghost in the Shell</span>
+          <span className="pb-1">&#9733; Akira</span>
+          <strong>Television</strong>
+          <span className="pb-1">&#9733; Severance</span>
+        </div>
+      </div>
     </aside>
   );
 }
