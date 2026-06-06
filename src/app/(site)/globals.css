@@ -72,7 +72,7 @@
 
 html {
   scroll-behavior: auto;
-  cursor: crosshair;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M2 8L2 2L8 2' fill='none' stroke='%2338bdf8' stroke-width='2.5'/%3E%3Cpath d='M16 2L22 2L22 8' fill='none' stroke='%2338bdf8' stroke-width='2.5'/%3E%3Cpath d='M2 16L2 22L8 22' fill='none' stroke='%2338bdf8' stroke-width='2.5'/%3E%3Cpath d='M16 22L22 22L22 16' fill='none' stroke='%2338bdf8' stroke-width='2.5'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%2338bdf8'/%3E%3C/svg%3E") 12 12, crosshair;
 }
 
 /* ═══ TILED CIRCUIT BOARD BACKGROUND ═══ */
@@ -134,7 +134,7 @@ body::before {
 
 a {
   color: var(--color-neon-cyan);
-  cursor: pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M1 9L1 1L9 1' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 1L31 1L31 9' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M1 23L1 31L9 31' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 31L31 31L31 23' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%238b5cf6'/%3E%3C/svg%3E") 16 16, pointer;
   text-decoration: underline;
   text-decoration-style: dashed;
 }
@@ -391,7 +391,7 @@ a.no-underline:hover {
   border: none;
   background: var(--color-card-dark);
   transition: box-shadow 0.2s ease;
-  cursor: pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M1 9L1 1L9 1' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 1L31 1L31 9' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M1 23L1 31L9 31' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 31L31 31L31 23' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%238b5cf6'/%3E%3C/svg%3E") 16 16, pointer;
 }
 /* no shimmer border on feed cards */
 .feed-card {
@@ -420,18 +420,12 @@ a.no-underline:hover {
   left: 0;
   right: 0;
   padding: 10px 12px;
-  background: linear-gradient(
-    to top,
-    rgba(10, 14, 23, 0.92) 0%,
-    rgba(10, 14, 23, 0.75) 60%,
-    transparent 100%
-  );
+  background: rgba(10, 14, 23, 0.80);
   transform: translateY(100%);
   transition: transform 0.25s ease, opacity 0.25s ease;
   opacity: 0;
   pointer-events: none;
   z-index: 2;
-  border-top: 1px solid color-mix(in srgb, var(--accent, var(--color-neon-cyan)) 30%, transparent);
 }
 .card-overlay-text {
   font-family: var(--font-family-body);
@@ -540,7 +534,7 @@ a.no-underline:hover {
   text-align: center;
   border: 1px solid;
   text-decoration: none;
-  cursor: pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M1 9L1 1L9 1' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 1L31 1L31 9' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M1 23L1 31L9 31' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 31L31 31L31 23' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%238b5cf6'/%3E%3C/svg%3E") 16 16, pointer;
   user-select: none;
   padding: 2px;
   letter-spacing: 0.5px;
@@ -681,7 +675,7 @@ a.no-underline:hover {
 }
 .webring-arrow {
   color: var(--color-neon-cyan);
-  cursor: pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M1 9L1 1L9 1' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 1L31 1L31 9' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M1 23L1 31L9 31' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Cpath d='M23 31L31 31L31 23' fill='none' stroke='%238b5cf6' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%238b5cf6'/%3E%3C/svg%3E") 16 16, pointer;
   user-select: none;
   text-decoration: none;
   font-size: 1.2rem;
