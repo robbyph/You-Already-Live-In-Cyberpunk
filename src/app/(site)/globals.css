@@ -367,7 +367,7 @@ a.no-underline:hover {
   content: '';
   position: absolute;
   inset: 0;
-  padding: 2px;
+  padding: 3px;
   background: linear-gradient(
     90deg,
     var(--color-hot-pink),
