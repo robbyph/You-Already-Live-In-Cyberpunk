@@ -393,16 +393,98 @@ a.no-underline:hover {
   height: auto;
 }
 
-/* ═══ CARD BODY (below image) ═══ */
-.card-body {
-  padding: 10px 12px;
-  border-top: 1px solid color-mix(in srgb, var(--accent, var(--color-muted)) 30%, transparent);
+/* ═══ CARD IMAGE WRAPPER ═══ */
+.card-image-wrap {
+  position: relative;
+  overflow: hidden;
 }
-.card-body-text {
+
+/* ═══ CARD OVERLAY (hidden by default, revealed on hover/tap) ═══ */
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px;
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 23, 0.92) 0%,
+    rgba(10, 14, 23, 0.75) 60%,
+    transparent 100%
+  );
+  transform: translateY(100%);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  border-top: 1px solid color-mix(in srgb, var(--accent, var(--color-neon-cyan)) 30%, transparent);
+}
+.card-overlay-text {
   font-family: var(--font-family-body);
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.82rem;
+  line-height: 1.45;
   color: var(--color-soft-white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-overlay-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-family: var(--font-family-pixel);
+  font-size: 0.75rem;
+  color: var(--color-neon-cyan);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.card-overlay-link:hover {
+  color: var(--color-hot-pink);
+  text-decoration: none;
+}
+
+/* desktop hover reveal */
+@media (hover: hover) {
+  .feed-card:hover .card-overlay {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+/* keyboard focus reveal */
+.feed-card:focus-within .card-overlay {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+/* mobile tap reveal (JS-toggled class) */
+.feed-card.overlay-revealed .card-overlay {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* mobile info hint */
+@media (hover: none) {
+  .card-image-wrap::after {
+    content: '[ i ]';
+    position: absolute;
+    bottom: 6px;
+    right: 8px;
+    font-family: var(--font-family-pixel);
+    font-size: 0.6rem;
+    color: var(--color-neon-cyan);
+    opacity: 0.5;
+    z-index: 3;
+    pointer-events: none;
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px var(--color-neon-cyan);
+    transition: opacity 0.2s;
+  }
+  .feed-card.overlay-revealed .card-image-wrap::after {
+    opacity: 0;
+  }
 }
 
 /* ═══ NEW TAG ═══ */

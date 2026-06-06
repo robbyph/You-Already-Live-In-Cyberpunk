@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import { FeedPost } from "@/data/types";
 
 const ACCENT_CLASSES = [
@@ -24,11 +25,41 @@ function isRecent(dateStr: string) {
 export default function FeedCard({ post }: { post: FeedPost }) {
   const accentClass = getAccentClass(post.id);
   const recent = isRecent(post.date);
+  const [revealed, setRevealed] = useState(false);
 
-  const inner = (
-    <div className={`feed-card ${accentClass}`}>
+  const dismiss = useCallback(() => setRevealed(false), []);
+
+  useEffect(() => {
+    if (!revealed) return;
+    const handle = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".feed-card")) dismiss();
+    };
+    document.addEventListener("click", handle);
+    return () => document.removeEventListener("click", handle);
+  }, [revealed, dismiss]);
+
+  const handleClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest("a")) return;
+
+    const isTouch = window.matchMedia("(hover: none)").matches;
+    if (isTouch && post.description && post.imageUrl) {
+      if (!revealed) {
+        setRevealed(true);
+        return;
+      }
+    }
+    if (post.link) {
+      window.open(post.link, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  return (
+    <div
+      className={`feed-card ${accentClass}${revealed ? " overlay-revealed" : ""}`}
+      onClick={handleClick}
+    >
       {post.imageUrl ? (
-        <div className="relative">
+        <div className="card-image-wrap">
           {recent && <div className="new-tag">NEW!</div>}
           <img
             src={post.imageUrl}
@@ -36,6 +67,22 @@ export default function FeedCard({ post }: { post: FeedPost }) {
             className="w-full block"
             loading="lazy"
           />
+          {post.description && (
+            <div className="card-overlay">
+              <p className="card-overlay-text">{post.description}</p>
+              {post.link && (
+                <a
+                  href={post.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-overlay-link"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span className="blink">&gt;</span> read more
+                </a>
+              )}
+            </div>
+          )}
         </div>
       ) : (
         <div className="relative p-4 min-h-[120px] flex items-center justify-center"
@@ -47,24 +94,6 @@ export default function FeedCard({ post }: { post: FeedPost }) {
           </p>
         </div>
       )}
-      <div className="card-body">
-        <p className="card-body-text">{post.description}</p>
-        {post.link && (
-          <div className="mt-2 text-xs pixel-title text-neon-cyan">
-            <span className="blink">&gt;</span> read more
-          </div>
-        )}
-      </div>
     </div>
   );
-
-  if (post.link) {
-    return (
-      <a href={post.link} target="_blank" rel="noopener noreferrer" className="block no-underline">
-        {inner}
-      </a>
-    );
-  }
-
-  return inner;
 }
