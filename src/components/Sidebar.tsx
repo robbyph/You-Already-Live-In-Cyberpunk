@@ -101,9 +101,10 @@ export default function Sidebar() {
           &#9670; cool links
         </div>
         <div className="text-xs flex flex-col gap-1 text-muted">
-          <span>&#9733; <a href="https://neocities.org" target="_blank" rel="noopener noreferrer">neocities.org</a></span>
-          <span>&#9733; <a href="https://yesterweb.org" target="_blank" rel="noopener noreferrer">yesterweb.org</a></span>
-          <span>&#9733; <a href="https://wiby.me" target="_blank" rel="noopener noreferrer">wiby.me</a></span>
+          <span>&#9733; <a href="https://interconnection.neocities.org/" target="_blank" rel="noopener noreferrer">interconnection.neocities.org</a></span>
+          <span>&#9733; <a href="https://www.massline.org/" target="_blank" rel="noopener noreferrer">massline.org</a></span>
+          <span>&#9733; <a href="https://bannedthought.net/" target="_blank" rel="noopener noreferrer">bannedthought.net</a></span>
+          <span>&#9733; <a href="https://artificial-art.neocities.org//" target="_blank" rel="noopener noreferrer">artificial-art.neocities.org</a></span>
         </div>
       </div>
     </aside>
