@@ -343,6 +343,8 @@ a.no-underline:hover {
 .page-sidebar {
   width: 260px;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 @media (max-width: 900px) {
   .page-layout {
@@ -661,6 +663,29 @@ a.no-underline:hover {
          text-shadow: 0 0 3px currentColor; color: var(--color-neon-purple); }
   100% { opacity: 0.6; transform: scale(calc(1.15 * var(--size, 1))) translateY(var(--y, 0px));
          text-shadow: 0 0 3px currentColor; color: var(--color-neon-purple); }
+}
+
+/* ═══ SIDEBAR STARS (vertical zigzag) ═══ */
+.sidebar-stars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  color: var(--color-neon-purple);
+  opacity: 0.6;
+  gap: 8px;
+  padding: 12px 0;
+  overflow: hidden;
+}
+.sidebar-stars .star-twinkle {
+  margin: 0;
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .sidebar-stars {
+    display: none;
+  }
 }
 
 /* ═══ STAR PULSE ═══ */

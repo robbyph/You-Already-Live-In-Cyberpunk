@@ -3,6 +3,15 @@
 import { useEffect, useState } from "react";
 import BadgeWall from "./BadgeWall";
 
+function sidebarStarX(i: number): number {
+  const zigzag = Math.sin(i * 0.5) * 65;
+  const wave2 = Math.sin(i * 1.3 + 2.0) * 35;
+  const jitter = Math.sin(i * 4.7) * 10;
+  return zigzag + wave2 + jitter;
+}
+
+const SIDEBAR_STAR_COUNT = 150;
+
 const STATUSES = [
   "doom-scrolling the dystopia",
   "extremely cyberpunk rn",
@@ -82,6 +91,27 @@ export default function Sidebar() {
           <span >&#9733; Cyberpunk: Edgerunners</span>
           <span className="pb-1">&#9733; Severance</span>
         </div>
+      </div>
+
+      {/* ═══ VERTICAL TWINKLING STARS ═══ */}
+      <div className="sidebar-stars" aria-hidden="true">
+        {Array.from({ length: SIDEBAR_STAR_COUNT }, (_, i) => (
+          <span
+            key={i}
+            style={{ transform: `translateX(${sidebarStarX(i).toFixed(1)}px)` }}
+          >
+            <span
+              className="star-twinkle"
+              style={{
+                animationDelay: `${-(i * 0.7 + Math.sin(i * 2.3) * 1.5 + 1.5).toFixed(2)}s`,
+                '--y': '0px',
+                '--size': (0.7 + Math.abs(Math.sin(i * 1.9 + 0.5)) * 0.6).toFixed(2),
+              } as React.CSSProperties}
+            >
+              {i % 2 === 0 ? '✦' : '✧'}
+            </span>
+          </span>
+        ))}
       </div>
     </aside>
   );

@@ -1,4 +1,5 @@
 import { config, fields, collection } from "@keystatic/core";
+import { imageWithCrop } from "./src/keystatic/image-with-crop";
 
 export default config({
   storage:
@@ -29,7 +30,7 @@ export default config({
           multiline: true,
         }),
 
-        image: fields.image({ label: "Image" }),
+        image: imageWithCrop({ label: "Image" }),
 
         link: fields.url({ label: "Link" }),
       },
