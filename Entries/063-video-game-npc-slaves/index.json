@@ -1,25 +1,6 @@
-{
-  "id": "video-game-npc-slaves",
-  "notionPageId": "1842411b-dd50-806f-a31b-e00745e0de90",
-  "title": "Video Game NPC Slaves",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "20230506_145447.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Video Game NPC Slaves\\20230506_145447.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Video Game NPC Slaves 1842411bdd50806fa31be00745e0de90.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Video Game NPC Slaves",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

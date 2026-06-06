@@ -1,25 +1,6 @@
-{
-  "id": "blackstone-buys-your-genes",
-  "notionPageId": "1832411b-dd50-8073-bf2a-fce37724d900",
-  "title": "Blackstone Buys Your Genes",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "20230612_100641.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Blackstone Buys Your Genes\\20230612_100641.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Blackstone Buys Your Genes 1832411bdd508073bf2afce37724d900.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Blackstone Buys Your Genes",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

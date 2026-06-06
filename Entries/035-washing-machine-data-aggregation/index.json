@@ -1,25 +1,6 @@
-{
-  "id": "washing-machine-data-aggregation",
-  "notionPageId": "1832411b-dd50-80a7-bd2b-f2034bb07ae8",
-  "title": "Washing Machine Data Aggregation",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000014806.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Washing Machine Data Aggregation\\1000014806.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Washing Machine Data Aggregation 1832411bdd5080a7bd2bf2034bb07ae8.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Washing Machine Data Aggregation",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

@@ -1,33 +1,6 @@
-{
-  "id": "lucid-dream-slavery",
-  "notionPageId": "70af5cb2-8831-4c73-904c-a69432e70f6f",
-  "title": "Lucid Dream Slavery",
-  "description": "Prophetic’s Halo device could help workers practise demos or perform creative problem solving, its creator says",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "Untitled.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Lucid Dream Slavery\\Untitled.png",
-      "type": "image"
-    }
-  ],
-  "links": [
-    "https://www.independent.co.uk/tech/lucid-dream-work-prophetic-ai-b2457929.html"
-  ],
-  "bookmarks": [
-    {
-      "title": "Lucid dream startup says people can work in their sleep",
-      "description": "Prophetic’s Halo device could help workers practise demos or perform creative problem solving, its creator says",
-      "link": "https://www.independent.co.uk/tech/lucid-dream-work-prophetic-ai-b2457929.html"
-    }
-  ],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Lucid Dream Slavery 70af5cb288314c73904ca69432e70f6f.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Lucid Dream Slavery",
+    "description":  "Prophetic’s Halo device could help workers practise demos or perform creative problem solving, its creator says",
+    "image":  "media-01.png",
+    "link":  "https://www.independent.co.uk/tech/lucid-dream-work-prophetic-ai-b2457929.html"
 }

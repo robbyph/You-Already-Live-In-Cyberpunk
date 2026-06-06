@@ -1,25 +1,6 @@
-{
-  "id": "food-delivery-bot-bomb-threat",
-  "notionPageId": "2b37750f-1e98-4124-ba0b-678d55042a2d",
-  "title": "Food Delivery Bot Bomb Threat",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000013951.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Food Delivery Bot Bomb Threat\\1000013951.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Food Delivery Bot Bomb Threat 2b37750f1e984124ba0b678d55042a2d.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Food Delivery Bot Bomb Threat",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

@@ -1,29 +1,6 @@
-{
-  "id": "plastic-general-mills",
-  "notionPageId": "82c31033-161d-4493-b720-f1abbbfa4829",
-  "title": "Plastic General Mills",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000015316.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Plastic General Mills\\1000015316.png",
-      "type": "image"
-    }
-  ],
-  "links": [
-    "https://www.wbay.com/2024/02/09/general-mills-urged-take-plastics-out-cheerios-soup-canned-corn/"
-  ],
-  "bookmarks": [],
-  "notes": [
-    "https://www.wbay.com/2024/02/09/general-mills-urged-take-plastics-out-cheerios-soup-canned-corn/"
-  ],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Plastic General Mills 82c31033161d4493b720f1abbbfa4829.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Plastic General Mills",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  "https://www.wbay.com/2024/02/09/general-mills-urged-take-plastics-out-cheerios-soup-canned-corn/"
 }

@@ -1,20 +1,6 @@
-{
-  "id": "www-crikey-com-au-2023-11-01-israel-gaza-adobe-artificial-intelligence-images-fake-news",
-  "title": null,
-  "description": "",
-  "localImage": "",
-  "media": [],
-  "links": [
-    "https://www.crikey.com.au/2023/11/01/israel-gaza-adobe-artificial-intelligence-images-fake-news/"
-  ],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_top_level_raw_url",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already 5ca2d502223e462ea205a206c7d1fa06.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": true,
-  "reviewReason": "Raw URL from assorted top-level Notion notes; title and description were not exported.",
-  "notionPageId": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  null,
+    "description":  "",
+    "image":  "",
+    "link":  "https://www.crikey.com.au/2023/11/01/israel-gaza-adobe-artificial-intelligence-images-fake-news/"
 }

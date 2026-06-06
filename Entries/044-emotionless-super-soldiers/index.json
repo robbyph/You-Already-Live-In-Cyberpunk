@@ -1,25 +1,6 @@
-{
-  "id": "emotionless-super-soldiers",
-  "notionPageId": "1832411b-dd50-80d2-82d9-fd9188aa7947",
-  "title": "Emotionless Super Soldiers",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000013291.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Emotionless Super Soldiers\\1000013291.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Emotionless Super Soldiers 1832411bdd5080d282d9fd9188aa7947.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Emotionless Super Soldiers",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

@@ -1,25 +1,6 @@
-{
-  "id": "dead-internet-theory-coming-true",
-  "notionPageId": "1832411b-dd50-8092-8607-cc51b2b15509",
-  "title": "Dead Internet Theory Coming True",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000013100.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Dead Internet Theory Coming True\\1000013100.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Dead Internet Theory Coming True 1832411bdd5080928607cc51b2b15509.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Dead Internet Theory Coming True",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

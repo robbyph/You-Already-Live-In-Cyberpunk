@@ -1,25 +1,6 @@
-{
-  "id": "ai-generated-church-service",
-  "notionPageId": "1832411b-dd50-80a1-af21-eb165d099b9c",
-  "title": "AI Generated Church Service",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000013629.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\AI Generated Church Service\\1000013629.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\AI Generated Church Service 1832411bdd5080a1af21eb165d099b9c.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "AI Generated Church Service",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

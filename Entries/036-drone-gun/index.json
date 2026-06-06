@@ -1,34 +1,6 @@
-{
-  "id": "drone-gun",
-  "notionPageId": "1832411b-dd50-80d5-878f-e20e444eeec1",
-  "title": "Drone Gun",
-  "description": "Even more Cyberpunk, apparently the claims of 4 drones struck down was nothing but a marketing campaign. Especially evident given that the dude’s scope is on backwards.",
-  "localImage": "",
-  "media": [],
-  "links": [
-    "https://dronedj.com/2023/01/04/anti-drone-gun-brazil/",
-    "https://www.reddit.com/r/Damnthatsinteresting/comments/100p5fs/anti_drone_weapon_used_by_a_brazilian_agent_in/"
-  ],
-  "bookmarks": [
-    {
-      "title": "This gun downed four drones at Brazil's presidential inauguration",
-      "description": "Federal law enforcement officials at Sunday's inauguration ceremony for Brazil's president-elect, Luiz Inácio Lula da Silva, say they used an anti-drone gun to bring down four \"suspicious\" aircraft heading toward the president. According to reports, Brazilian presidential security utilized DroneGun Tactical, a long-range counter-drone system developed by US/Australian company DroneShield.",
-      "link": "https://dronedj.com/2023/01/04/anti-drone-gun-brazil/"
-    },
-    {
-      "title": "Anti drone weapon used by a Brazilian agent in Brazil's presidential inauguration.",
-      "description": "79.7k votes, 2.6k comments. 8.4m members in the Damnthatsinteresting community. The most interesting place on reddit",
-      "link": "https://www.reddit.com/r/Damnthatsinteresting/comments/100p5fs/anti_drone_weapon_used_by_a_brazilian_agent_in/"
-    }
-  ],
-  "notes": [
-    "Even more Cyberpunk, apparently the claims of 4 drones struck down was nothing but a marketing campaign. Especially evident given that the dude’s scope is on backwards."
-  ],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Drone Gun 1832411bdd5080d5878fe20e444eeec1.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Drone Gun",
+    "description":  "Even more Cyberpunk, apparently the claims of 4 drones struck down was nothing but a marketing campaign. Especially evident given that the dude’s scope is on backwards.",
+    "image":  "",
+    "link":  "https://dronedj.com/2023/01/04/anti-drone-gun-brazil/"
 }

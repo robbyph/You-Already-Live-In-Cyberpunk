@@ -1,25 +1,6 @@
-{
-  "id": "perceived-rapid-decline-of-amerikkka",
-  "notionPageId": "1832411b-dd50-8065-ba2a-e29bc9f7cc56",
-  "title": "Perceived Rapid Decline of Amerikkka",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000014870.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Perceived Rapid Decline of Amerikkka\\1000014870.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Perceived Rapid Decline of Amerikkka 1832411bdd508065ba2ae29bc9f7cc56.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Perceived Rapid Decline of Amerikkka",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

@@ -1,25 +1,6 @@
-{
-  "id": "federal-medelling-with-wikipedia",
-  "notionPageId": "1832411b-dd50-8052-ba9b-ea0e0ef48be7",
-  "title": "Federal medelling with Wikipedia",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000013104.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Federal medelling with Wikipedia\\1000013104.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Federal medelling with Wikipedia 1832411bdd508052ba9bea0e0ef48be7.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Federal medelling with Wikipedia",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

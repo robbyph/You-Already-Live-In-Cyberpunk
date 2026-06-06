@@ -1,25 +1,6 @@
-{
-  "id": "ai-girlfriend-ad",
-  "title": "AI girlfriend ad",
-  "description": "Mobile ad for an AI chat companion using sexualized companion-app messaging.",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000028580.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\1000028580.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_top_level_media",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already 5ca2d502223e462ea205a206c7d1fa06.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "notionPageId": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "AI girlfriend ad",
+    "description":  "Mobile ad for an AI chat companion using sexualized companion-app messaging.",
+    "image":  "media-01.png",
+    "link":  null
 }

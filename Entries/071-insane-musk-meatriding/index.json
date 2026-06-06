@@ -1,25 +1,6 @@
-{
-  "id": "insane-musk-meatriding",
-  "notionPageId": "18d2411b-dd50-8083-8bbb-f40039f38865",
-  "title": "Insane Musk Meatriding",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "Screenshot_20230708-133820.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Insane Musk Meatriding\\Screenshot_20230708-133820.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Insane Musk Meatriding 18d2411bdd5080838bbbf40039f38865.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Insane Musk Meatriding",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

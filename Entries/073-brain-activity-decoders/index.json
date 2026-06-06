@@ -1,31 +1,6 @@
-{
-  "id": "brain-activity-decoders",
-  "notionPageId": "18d2411b-dd50-8007-89f8-d372c4791bfb",
-  "title": "Brain Activity Decoders",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "Screenshot_20230505-091426.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Brain Activity Decoders\\Screenshot_20230505-091426.png",
-      "type": "image"
-    },
-    {
-      "localPath": "media-02.png",
-      "originalFilename": "Screenshot_20230501-160002.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Brain Activity Decoders\\Screenshot_20230501-160002.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Brain Activity Decoders 18d2411bdd50800789f8d372c4791bfb.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Brain Activity Decoders",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

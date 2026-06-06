@@ -1,25 +1,6 @@
-{
-  "id": "aging-can-be-cured",
-  "notionPageId": "1832411b-dd50-8096-97c9-d07ef23c2d3b",
-  "title": "Aging Can Be Cured",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "PXL_20230429_161429709.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Aging Can Be Cured\\PXL_20230429_161429709.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Aging Can Be Cured 1832411bdd50809697c9d07ef23c2d3b.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Aging Can Be Cured",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

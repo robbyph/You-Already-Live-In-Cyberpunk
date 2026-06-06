@@ -1,25 +1,6 @@
-{
-  "id": "megacorp-pavilion",
-  "notionPageId": "1832411b-dd50-80f9-9a09-cf487b01963b",
-  "title": "MegaCorp Pavilion",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "300789216_590035612805274_789265098884457901_n.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\MegaCorp Pavilion\\300789216_590035612805274_789265098884457901_n.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\MegaCorp Pavilion 1832411bdd5080f99a09cf487b01963b.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "MegaCorp Pavilion",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

@@ -1,25 +1,6 @@
-{
-  "id": "ai-developed-opioids",
-  "notionPageId": "18d2411b-dd50-80f0-b87a-ff97854b5c73",
-  "title": "AI Developed Opioids",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "Screenshot_20230220-111442.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\AI Developed Opioids\\Screenshot_20230220-111442.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\AI Developed Opioids 18d2411bdd5080f0b87aff97854b5c73.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "AI Developed Opioids",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

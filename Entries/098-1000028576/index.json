@@ -1,25 +1,6 @@
-{
-  "id": "1000028576",
-  "title": null,
-  "description": "Short vertical video exported from the Notion page.",
-  "localImage": "",
-  "media": [
-    {
-      "localPath": "media-01.mp4",
-      "originalFilename": "1000028576.mp4",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\1000028576.mp4",
-      "type": "video"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_top_level_media",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already 5ca2d502223e462ea205a206c7d1fa06.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": true,
-  "reviewReason": "Loose media has no explicit title in the Notion page.",
-  "notionPageId": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  null,
+    "description":  "Short vertical video exported from the Notion page.",
+    "image":  "",
+    "link":  null
 }

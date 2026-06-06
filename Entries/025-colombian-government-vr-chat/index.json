@@ -1,31 +1,6 @@
-{
-  "id": "colombian-government-vr-chat",
-  "notionPageId": "1832411b-dd50-803c-8c4a-ee4d085ebff6",
-  "title": "Colombian Government VR Chat",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000013751.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Colombian Government VR Chat\\1000013751.png",
-      "type": "image"
-    },
-    {
-      "localPath": "media-02.png",
-      "originalFilename": "1000013752.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Colombian Government VR Chat\\1000013752.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Colombian Government VR Chat 1832411bdd50803c8c4aee4d085ebff6.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Colombian Government VR Chat",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

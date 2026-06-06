@@ -15,16 +15,8 @@ function getAccentClass(id: string) {
   return ACCENT_CLASSES[num % ACCENT_CLASSES.length];
 }
 
-function isRecent(dateStr: string) {
-  const postDate = new Date(dateStr);
-  const now = new Date();
-  const diffDays = (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24);
-  return diffDays < 30;
-}
-
 export default function FeedCard({ post }: { post: FeedPost }) {
   const accentClass = getAccentClass(post.id);
-  const recent = isRecent(post.date);
   const [revealed, setRevealed] = useState(false);
 
   const dismiss = useCallback(() => setRevealed(false), []);
@@ -60,7 +52,6 @@ export default function FeedCard({ post }: { post: FeedPost }) {
     >
       {post.imageUrl ? (
         <div className="card-image-wrap">
-          {recent && <div className="new-tag">NEW!</div>}
           <img
             src={post.imageUrl}
             alt={post.description}
@@ -87,7 +78,6 @@ export default function FeedCard({ post }: { post: FeedPost }) {
       ) : (
         <div className="relative p-4 min-h-[120px] flex items-center justify-center"
              style={{ background: "linear-gradient(135deg, var(--color-card-dark), var(--color-bg-alt))" }}>
-          {recent && <div className="new-tag">NEW!</div>}
           <p className="text-sm text-center text-soft-white/70 pixel-title">
             {post.description.slice(0, 80)}
             {post.description.length > 80 ? "..." : ""}

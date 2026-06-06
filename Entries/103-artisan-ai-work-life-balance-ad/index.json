@@ -1,25 +1,6 @@
-{
-  "id": "artisan-ai-work-life-balance-ad",
-  "title": "Artisan AI work-life balance ad",
-  "description": "Street ad from Artisan AI reading “Artisans won’t complain about work-life balance.”",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000029322.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\1000029322.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_top_level_media",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already 5ca2d502223e462ea205a206c7d1fa06.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "notionPageId": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Artisan AI work-life balance ad",
+    "description":  "Street ad from Artisan AI reading “Artisans won’t complain about work-life balance.”",
+    "image":  "media-01.jpg",
+    "link":  null
 }

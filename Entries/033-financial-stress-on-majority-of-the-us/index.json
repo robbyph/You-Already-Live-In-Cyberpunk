@@ -1,25 +1,6 @@
-{
-  "id": "financial-stress-on-majority-of-the-us",
-  "notionPageId": "1832411b-dd50-8084-8115-fc3c11f6134d",
-  "title": "Financial stress on majority of the US",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000014868.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Financial stress on majority of the US\\1000014868.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Financial stress on majority of the US 1832411bdd5080848115fc3c11f6134d.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Financial stress on majority of the US",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

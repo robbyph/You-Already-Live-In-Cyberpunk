@@ -1,25 +1,6 @@
-{
-  "id": "living-paycheck-to-paycheck",
-  "notionPageId": "1832411b-dd50-80c5-ba75-c93827803e1e",
-  "title": "Living Paycheck to Paycheck",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000014865.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Living Paycheck to Paycheck\\1000014865.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Living Paycheck to Paycheck 1832411bdd5080c5ba75c93827803e1e.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Living Paycheck to Paycheck",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

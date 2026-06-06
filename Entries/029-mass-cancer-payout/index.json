@@ -1,25 +1,6 @@
-{
-  "id": "mass-cancer-payout",
-  "notionPageId": "1832411b-dd50-80c9-956a-e0621cc847e2",
-  "title": "Mass Cancer Payout",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "1000014761.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Mass Cancer Payout\\1000014761.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Mass Cancer Payout 1832411bdd5080c9956ae0621cc847e2.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Mass Cancer Payout",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }

@@ -1,25 +1,6 @@
-{
-  "id": "vr-military-drone-operator",
-  "notionPageId": "c0348334-8f17-4070-aea2-d2337327436a",
-  "title": "VR Military Drone Operator",
-  "description": "",
-  "localImage": "media-01.jpeg",
-  "media": [
-    {
-      "localPath": "media-01.jpeg",
-      "originalFilename": "Untitled.jpeg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\VR Military Drone Operator\\Untitled.jpeg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\VR Military Drone Operator c03483348f174070aea2d2337327436a.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "VR Military Drone Operator",
+    "description":  "",
+    "image":  "media-01.jpeg",
+    "link":  null
 }

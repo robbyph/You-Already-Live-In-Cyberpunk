@@ -1,25 +1,6 @@
-{
-  "id": "harder-to-tax-the-rich",
-  "notionPageId": "18d2411b-dd50-808a-8d36-edcd78b74e1e",
-  "title": "Harder To Tax the Rich",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000013401.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Harder To Tax the Rich\\1000013401.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Harder To Tax the Rich 18d2411bdd50808a8d36edcd78b74e1e.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Harder To Tax the Rich",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

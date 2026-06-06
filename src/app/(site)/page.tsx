@@ -12,15 +12,11 @@ export default async function Home() {
   const posts: FeedPost[] = allEntries
     .map(({ slug, entry }) => ({
       id: slug,
-      imageUrl: entry.localImage
-        ? `/api/media/${slug}/${entry.localImage}`
+      imageUrl: entry.image
+        ? `/api/media/${slug}/${entry.image}`
         : "",
       description: entry.description || entry.title,
-      link:
-        entry.links[0] ||
-        (entry.bookmarks[0]?.link ?? undefined),
-      tags: entry.tags,
-      date: entry.date || "2025-01-01",
+      link: entry.link || undefined,
     }))
     .filter((post) => post.imageUrl || post.description);
 

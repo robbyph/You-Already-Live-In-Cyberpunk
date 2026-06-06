@@ -1,25 +1,6 @@
-{
-  "id": "increasingly-impoverished-youth",
-  "notionPageId": "18d2411b-dd50-80d9-9b56-cfd0e4d0fa89",
-  "title": "Increasingly Impoverished Youth",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000014911.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Increasingly Impoverished Youth\\1000014911.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Increasingly Impoverished Youth 18d2411bdd5080d99b56cfd0e4d0fa89.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Increasingly Impoverished Youth",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

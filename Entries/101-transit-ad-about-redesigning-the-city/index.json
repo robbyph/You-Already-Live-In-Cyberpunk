@@ -1,25 +1,6 @@
-{
-  "id": "transit-ad-about-redesigning-the-city",
-  "title": "Transit ad about redesigning the city",
-  "description": "Photo of a transit station wall ad about redesigning the city and people who need it most.",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000029004.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\1000029004.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_top_level_media",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already 5ca2d502223e462ea205a206c7d1fa06.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "notionPageId": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Transit ad about redesigning the city",
+    "description":  "Photo of a transit station wall ad about redesigning the city and people who need it most.",
+    "image":  "media-01.jpg",
+    "link":  null
 }

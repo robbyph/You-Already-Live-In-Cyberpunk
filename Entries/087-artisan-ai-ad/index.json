@@ -1,25 +1,6 @@
-{
-  "id": "artisan-ai-ad",
-  "notionPageId": "35a2411b-dd50-80e7-90db-d551c5b262e2",
-  "title": "Artisan AI ad",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000032354.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Artisan AI ad\\1000032354.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Artisan AI ad 35a2411bdd5080e790dbd551c5b262e2.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Artisan AI ad",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

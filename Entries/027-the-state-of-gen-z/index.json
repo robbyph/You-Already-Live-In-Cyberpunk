@@ -1,31 +1,6 @@
-{
-  "id": "the-state-of-gen-z",
-  "notionPageId": "1832411b-dd50-80cc-b98f-f34267674017",
-  "title": "The State of Gen Z",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000014588.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\The State of Gen Z\\1000014588.jpg",
-      "type": "image"
-    },
-    {
-      "localPath": "media-02.png",
-      "originalFilename": "1000014876.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\The State of Gen Z\\1000014876.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\The State of Gen Z 1832411bdd5080ccb98ff34267674017.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "The State of Gen Z",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

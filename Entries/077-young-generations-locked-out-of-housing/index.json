@@ -1,25 +1,6 @@
-{
-  "id": "young-generations-locked-out-of-housing",
-  "notionPageId": "18d2411b-dd50-809b-a23e-da00cba06c67",
-  "title": "Young Generations Locked Out of Housing",
-  "description": "",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000015064.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Young Generations Locked Out of Housing\\1000015064.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Young Generations Locked Out of Housing 18d2411bdd50809ba23eda00cba06c67.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Young Generations Locked Out of Housing",
+    "description":  "",
+    "image":  "media-01.jpg",
+    "link":  null
 }

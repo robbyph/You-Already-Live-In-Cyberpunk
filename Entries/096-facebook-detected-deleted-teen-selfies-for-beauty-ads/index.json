@@ -1,25 +1,6 @@
-{
-  "id": "facebook-detected-deleted-teen-selfies-for-beauty-ads",
-  "title": "Facebook detected deleted teen selfies for beauty ads",
-  "description": "Screenshot of an article about Meta allegedly detecting deleted selfies from teen girls to serve beauty ads.",
-  "localImage": "media-01.jpg",
-  "media": [
-    {
-      "localPath": "media-01.jpg",
-      "originalFilename": "1000027070.jpg",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\1000027070.jpg",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_top_level_media",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already 5ca2d502223e462ea205a206c7d1fa06.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "notionPageId": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Facebook detected deleted teen selfies for beauty ads",
+    "description":  "Screenshot of an article about Meta allegedly detecting deleted selfies from teen girls to serve beauty ads.",
+    "image":  "media-01.jpg",
+    "link":  null
 }

@@ -1,31 +1,6 @@
-{
-  "id": "skyrocketing-wealth-disparity",
-  "notionPageId": "1832411b-dd50-8063-ac7e-d057c3b65f5a",
-  "title": "Skyrocketing Wealth Disparity",
-  "description": "",
-  "localImage": "media-01.png",
-  "media": [
-    {
-      "localPath": "media-01.png",
-      "originalFilename": "Screenshot_20230207-115732.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Skyrocketing Wealth Disparity\\Screenshot_20230207-115732.png",
-      "type": "image"
-    },
-    {
-      "localPath": "media-02.png",
-      "originalFilename": "2022CEOPay4-950x950.png",
-      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Skyrocketing Wealth Disparity\\2022CEOPay4-950x950.png",
-      "type": "image"
-    }
-  ],
-  "links": [],
-  "bookmarks": [],
-  "notes": [],
-  "source": "html_export_database_row",
-  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Skyrocketing Wealth Disparity 1832411bdd508063ac7ed057c3b65f5a.html",
-  "tags": [],
-  "checked": false,
-  "needsReview": false,
-  "reviewReason": "",
-  "date": "2025-01-01"
+﻿{
+    "title":  "Skyrocketing Wealth Disparity",
+    "description":  "",
+    "image":  "media-01.png",
+    "link":  null
 }
