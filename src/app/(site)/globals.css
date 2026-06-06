@@ -631,6 +631,7 @@ a.no-underline:hover {
 .star-pulse {
   display: inline-block;
   animation: star-pulse 6.4s ease-in-out infinite;
+  transition: color 0.6s ease;
 }
 
 @keyframes star-pulse {

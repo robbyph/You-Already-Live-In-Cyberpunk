@@ -90,6 +90,7 @@ export default function Header() {
   const star2Ref = useRef<HTMLSpanElement>(null);
   const dividerRef = useRef<HTMLDivElement>(null);
   const [starCount, setStarCount] = useState(0);
+  const [starPhase, setStarPhase] = useState(false);
 
   useEffect(() => {
     const s1 = star1Ref.current;
@@ -97,6 +98,11 @@ export default function Header() {
     if (!s1 || !s2) return;
     const t = document.timeline.currentTime as number;
     [...s1.getAnimations(), ...s2.getAnimations()].forEach(a => { a.startTime = t; });
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => setStarPhase(s => !s), 2000);
+    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -140,9 +146,13 @@ export default function Header() {
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
-          <span ref={star1Ref} className="text-neon-cyan star-pulse">&#10022;</span>{" "}
+          <span ref={star1Ref} className={`${starPhase ? 'text-neon-purple' : 'text-neon-cyan'} star-pulse`}>
+            {starPhase ? '✧' : '✦'}
+          </span>{" "}
           dystopia is now!{" "}
-          <span ref={star2Ref} className="text-neon-cyan star-pulse">&#10022;</span>
+          <span ref={star2Ref} className={`${starPhase ? 'text-neon-cyan' : 'text-neon-purple'} star-pulse`}>
+            {starPhase ? '✦' : '✧'}
+          </span>
         </div>
       </div>
 
