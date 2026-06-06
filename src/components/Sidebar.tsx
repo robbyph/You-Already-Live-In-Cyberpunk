@@ -29,13 +29,13 @@ export default function Sidebar() {
           &#9670; what is this?
         </div>
         <p className="text-xs text-soft-white/70 leading-relaxed">
-          a carefully curated collection of news, images, and other media snippets, offering an insight into our present cyberpunk circumstances.
+          a carefully curated collection of news, images, and other media snippets, offering an insight into our current cyberpunk circumstances.
         </p>
         <p className="text-xs text-muted mt-2">
-          Cyberpunk is High Tech, High Inequality
+          High Tech, High Inequality
         </p>
         <div className="mt-3 text-[0.6rem] text-muted/50">
-          curated by a human (for now)
+          fuck israel
         </div>
       </div>
 

@@ -90,7 +90,7 @@ export default function Header() {
   const star2Ref = useRef<HTMLSpanElement>(null);
   const dividerRef = useRef<HTMLDivElement>(null);
   const [starCount, setStarCount] = useState(0);
-  const [starPhase, setStarPhase] = useState(false);
+  const [starPhase, setStarPhase] = useState(0);
 
   useEffect(() => {
     const s1 = star1Ref.current;
@@ -101,9 +101,24 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const id = setInterval(() => setStarPhase(s => !s), 2000);
+    const bounce = [
+      { transform: 'scale(1)', offset: 0 },
+      { transform: 'scale(1.4)', offset: 0.25 },
+      { transform: 'scale(0.85)', offset: 0.55 },
+      { transform: 'scale(1.1)', offset: 0.8 },
+      { transform: 'scale(1)', offset: 1 },
+    ];
+    const id = setInterval(() => {
+      setStarPhase(s => (s + 1) % 4);
+      [star1Ref.current, star2Ref.current].forEach(el => {
+        el?.animate(bounce, { duration: 500, easing: 'ease-out' });
+      });
+    }, 2000);
     return () => clearInterval(id);
   }, []);
+
+  const starSolid = starPhase < 2;
+  const starCyan = starPhase === 0 || starPhase === 3;
 
   useEffect(() => {
     const el = dividerRef.current;
@@ -146,23 +161,21 @@ export default function Header() {
         </div>
 
         <div className="mt-4 text-center text-muted text-sm">
-          <span ref={star1Ref} className={`${starPhase ? 'text-neon-purple' : 'text-neon-cyan'} star-pulse`}>
-            {starPhase ? '✧' : '✦'}
-          </span>{" "}
+          <span ref={star1Ref} className={`${starCyan ? 'text-neon-cyan' : 'text-neon-purple'} star-phase`}><span className="star-swap"><span style={{ opacity: starSolid ? 1 : 0 }}>✦</span><span style={{ opacity: starSolid ? 0 : 1 }}>✧</span></span></span>{" "}
           dystopia is now!{" "}
-          <span ref={star2Ref} className={`${starPhase ? 'text-neon-cyan' : 'text-neon-purple'} star-pulse`}>
-            {starPhase ? '✦' : '✧'}
-          </span>
+          <span ref={star2Ref} className={`${starCyan ? 'text-neon-cyan' : 'text-neon-purple'} star-phase`}><span className="star-swap"><span style={{ opacity: starSolid ? 1 : 0 }}>✦</span><span style={{ opacity: starSolid ? 0 : 1 }}>✧</span></span></span>
         </div>
       </div>
 
       {/* Marquee ticker */}
-      <div className="border-y-2 border-dashed border-hot-pink/40 py-1 my-3">
+      <div className="py-1 my-3">
+        <div className="glitch-strip" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
         <div className="marquee-track">
           <span className="marquee-text text-neon-purple pixel-title text-sm sm:text-base tracking-widest">
             {ticker + "  ╱╱╱  " + ticker + "  ╱╱╱  "}
           </span>
         </div>
+        <div className="glitch-strip" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
       </div>
 
       {/* Decorative divider — count driven by container width, never wraps */}
