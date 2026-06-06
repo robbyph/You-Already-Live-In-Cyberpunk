@@ -1,17 +1,19 @@
 import { config, fields, collection } from "@keystatic/core";
 
 export default config({
-  storage: process.env.KEYSTATIC_GITHUB_CLIENT_ID
-    ? {
-        kind: "github",
-        repo: {
-          owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "robbyph",
-          name:
-            process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
-            "You-Already-Live-In-Cyberpunk",
-        },
-      }
-    : { kind: "local" },
+  storage:
+    process.env.NODE_ENV === "production"
+      ? {
+          kind: "github",
+          repo: {
+            owner:
+              process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "robbyph",
+            name:
+              process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
+              "You-Already-Live-In-Cyberpunk",
+          },
+        }
+      : { kind: "local" },
 
   collections: {
     entries: collection({
