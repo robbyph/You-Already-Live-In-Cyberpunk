@@ -57,14 +57,13 @@ export default function Sidebar() {
         <div className="sidebar-panel-title" style={{ color: "var(--color-neon-cyan)", borderColor: "var(--color-neon-cyan)" }}>
           &#9670; check out
         </div>
-        <div className="text-xs flex flex-col gap-1 text-muted">
+        <div className="text-xs flex flex-col gap-1 text-soft-white/70">
           <strong>Texts</strong>
-          <span >&#9733; Principles of Communism</span>
-          <span>&#9733; Towards a New Socialism</span>
+          <span>&#9733; Cyber-Marx</span>
+          <span>&#9733; Cyber-Proletariat</span>
           <span>&#9733; Cybernetic Revolutionaries</span>
           <span>&#9733; How Not to Network a Nation</span>
-          <span>&#9733; Cyber-Marx</span>
-          <span className="pb-1">&#9733; Cyber-Proletariat</span>
+          <span className="pb-1">&#9733; Towards a New Socialism</span>
           <strong>Novels</strong>
           <span >&#9733; Pattern Recognition</span>
           <span >&#9733; The Peripheral</span>
