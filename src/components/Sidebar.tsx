@@ -64,15 +64,23 @@ export default function Sidebar() {
           <span>&#9733; Cybernetic Revolutionaries</span>
           <span>&#9733; How Not to Network a Nation</span>
           <span>&#9733; Cyber-Marx</span>
-          <span>&#9733; Cyber-Proletariat</span>
+          <span className="pb-1">&#9733; Cyber-Proletariat</span>
+          <strong>Novels</strong>
+          <span >&#9733; Pattern Recognition</span>
+          <span >&#9733; The Peripheral</span>
+          <span >&#9733; Snow Crash</span>
           <span className="pb-1">&#9733; The Dispossessed</span>
           <strong>Games</strong>
           <span >&#9733; Disco Elysium</span>
+          <span >&#9733; Cruelty Squad</span>
+          <span >&#9733; Citizen Sleeper</span>
           <span className="pb-1">&#9733; Deus Ex</span>
           <strong>Film</strong>
           <span >&#9733; Ghost in the Shell</span>
+          <span >&#9733; Blade Runner</span>
           <span className="pb-1">&#9733; Akira</span>
           <strong>Television</strong>
+          <span >&#9733; Cyberpunk: Edgerunners</span>
           <span className="pb-1">&#9733; Severance</span>
         </div>
       </div>
