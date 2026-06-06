@@ -3,6 +3,7 @@ export type FeedPost = {
   imageUrl: string;
   description: string;
   link?: string;
-  tags: string[];
+  tags: readonly string[];
   date: string;
+  title?: string;
 };

@@ -1,0 +1,27 @@
+{
+  "id": "car-update-failed",
+  "notionPageId": "41a0bec8-e841-4729-871e-83d34f90be3a",
+  "title": "Car Update Failed",
+  "description": "Get Walking!",
+  "localImage": "media-01.jpeg",
+  "media": [
+    {
+      "localPath": "media-01.jpeg",
+      "originalFilename": "Untitled.jpeg",
+      "sourcePath": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Car Update Failed\\Untitled.jpeg",
+      "type": "image"
+    }
+  ],
+  "links": [],
+  "bookmarks": [],
+  "notes": [
+    "Get Walking!"
+  ],
+  "source": "html_export_database_row",
+  "sourceHtml": "A:\\Storage\\Projects\\Cyberpunk Images\\HTML Export\\We Live in Cyberpunk Already\\We Already Live In Cyberpunk\\Car Update Failed 41a0bec8e8414729871e83d34f90be3a.html",
+  "tags": [],
+  "checked": false,
+  "needsReview": false,
+  "reviewReason": "",
+  "date": "2025-01-01"
+}

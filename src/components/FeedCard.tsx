@@ -27,15 +27,26 @@ export default function FeedCard({ post }: { post: FeedPost }) {
 
   const inner = (
     <div className={`feed-card ${accentClass}`}>
-      <div className="relative">
-        {recent && <div className="new-tag">NEW!</div>}
-        <img
-          src={post.imageUrl}
-          alt={post.description}
-          className="w-full block"
-          loading="lazy"
-        />
-      </div>
+      {post.imageUrl ? (
+        <div className="relative">
+          {recent && <div className="new-tag">NEW!</div>}
+          <img
+            src={post.imageUrl}
+            alt={post.description}
+            className="w-full block"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div className="relative p-4 min-h-[120px] flex items-center justify-center"
+             style={{ background: "linear-gradient(135deg, var(--color-card-dark), var(--color-bg-alt))" }}>
+          {recent && <div className="new-tag">NEW!</div>}
+          <p className="text-sm text-center text-soft-white/70 pixel-title">
+            {post.description.slice(0, 80)}
+            {post.description.length > 80 ? "..." : ""}
+          </p>
+        </div>
+      )}
       <div className="card-body">
         <p className="card-body-text">{post.description}</p>
         {post.link && (

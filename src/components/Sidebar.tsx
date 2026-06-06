@@ -13,12 +13,11 @@ const STATUSES = [
 ];
 
 export default function Sidebar() {
-  const [visitorCount] = useState(
-    () => Math.floor(Math.random() * 90000) + 13337
-  );
+  const [visitorCount, setVisitorCount] = useState(0);
   const [status, setStatus] = useState("");
 
   useEffect(() => {
+    setVisitorCount(Math.floor(Math.random() * 90000) + 13337);
     setStatus(STATUSES[Math.floor(Math.random() * STATUSES.length)]);
   }, []);
 
