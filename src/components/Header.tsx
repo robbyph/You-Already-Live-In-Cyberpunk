@@ -1,17 +1,31 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 const TICKER_PHRASES = [
   "YOUR TOASTER HAS A MORE POWERFUL PROCESSOR THAN THE APOLLO MISSIONS",
-  "YOU NO LONGERR OWN YOUR DNA SEQUENCE",
+  "YOU NO LONGER OWN YOUR OWN DNA SEQUENCE",
   "AI IS WRITING YOUR CHILDREN'S HOMEWORK",
   "FACIAL RECOGNITION AT EVERY CORNER STORE",
   "YOUR CAR SELLS YOUR DRIVING DATA",
   "NEURAL IMPLANTS ARE FDA APPROVED",
   "ROBOT DOGS PATROL THE STREETS",
   "DEEPFAKES HAVE ENTERED THE COURTROOM",
-  "THEY NO LONGER NEED TO SEE YOUR FACE, THEY CAN TRACK YOUR GAIT"
+  "YOUR GAIT IS YOUR NEW FINGERPRINT",
+  "PLATE READERS LOG YOUR LOCATION HUNDREDS OF TIMES A MONTH",
+  "YOUR TV WATCHES YOU MORE THAN YOU WATCH IT",
+  "YOUR KEYBOARD RHYTHM IS BIOMETRIC",
+  "YOUR VACUUM SOLD THE FLOORPLAN OF YOUR HOME",
+  "AI POLICING DECIDES WHO GETS WATCHED"
 ];
 
 function MarqueeBorder() {
@@ -70,7 +84,8 @@ function starY(i: number): number {
 }
 
 export default function Header() {
-  const ticker = TICKER_PHRASES.join("  ╱╱╱  ");
+  const shuffled = useMemo(() => shuffle(TICKER_PHRASES), []);
+  const ticker = shuffled.join("  ╱╱╱  ");
   const star1Ref = useRef<HTMLSpanElement>(null);
   const star2Ref = useRef<HTMLSpanElement>(null);
   const dividerRef = useRef<HTMLDivElement>(null);
