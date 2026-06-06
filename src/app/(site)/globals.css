@@ -358,11 +358,11 @@ a.no-underline:hover {
 /* ═══ MASONRY ═══ */
 .masonry {
   columns: 3;
-  column-gap: 8px;
+  column-gap: 12px;
 }
 .masonry > * {
   break-inside: avoid;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 @media (max-width: 1200px) {
   .masonry { columns: 2; }
@@ -387,6 +387,9 @@ a.no-underline:hover {
   cursor: pointer;
 }
 /* no shimmer border on feed cards */
+.feed-card {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
 .feed-card:hover {
   box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 25%, transparent);
 }
