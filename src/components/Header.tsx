@@ -156,7 +156,7 @@ export default function Header() {
       </div>
 
       {/* Decorative divider — count driven by container width, never wraps */}
-      <div ref={dividerRef} className="divider-blocks select-none my-3.5 py-3" aria-hidden="true">
+      <div ref={dividerRef} className="divider-blocks select-none my-3.5 py-3 -mx-3.5" aria-hidden="true">
         {Array.from({ length: starCount }, (_, i) => (
           <span
             key={i}
