@@ -8,21 +8,11 @@ function createHandler() {
     config.storage.kind === "github" &&
     !process.env.KEYSTATIC_GITHUB_CLIENT_ID
   ) {
-    return {
-      GET: () =>
-        new Response("CMS credentials not configured", { status: 503 }),
-      POST: () =>
-        new Response("CMS credentials not configured", { status: 503 }),
-    };
+    const stub = () =>
+      new Response("CMS credentials not configured", { status: 503 });
+    return { GET: stub, POST: stub };
   }
-
-  return makeRouteHandler({
-    config,
-    clientId: process.env.KEYSTATIC_GITHUB_CLIENT_ID,
-    clientSecret: process.env.KEYSTATIC_GITHUB_CLIENT_SECRET,
-    secret: process.env.KEYSTATIC_SECRET,
-  });
+  return makeRouteHandler({ config });
 }
 
-const handler = createHandler();
-export const { GET, POST } = handler;
+export const { GET, POST } = createHandler();
