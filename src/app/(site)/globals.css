@@ -267,11 +267,6 @@ a.no-underline:hover {
   animation: shimmer 3s linear infinite;
   opacity: 0.7;
 }
-.divider-dots {
-  border: none;
-  border-top: 3px dotted var(--color-neon-cyan);
-  opacity: 0.5;
-}
 .divider-blocks {
   text-align: center;
   color: var(--color-neon-purple);
@@ -363,10 +358,30 @@ a.no-underline:hover {
 .feed-card {
   position: relative;
   overflow: hidden;
-  border: 2px solid var(--accent, var(--color-muted));
+  border: none;
   background: var(--color-card-dark);
   transition: box-shadow 0.2s ease;
   cursor: pointer;
+}
+.feed-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-hot-pink),
+    var(--color-neon-cyan),
+    var(--color-neon-purple),
+    var(--color-hot-pink)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
 }
 .feed-card:hover {
   box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 25%, transparent);
