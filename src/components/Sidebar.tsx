@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BadgeWall from "./BadgeWall";
 
 function sidebarStarX(i: number): number {
@@ -10,7 +10,7 @@ function sidebarStarX(i: number): number {
   return zigzag + wave2 + jitter;
 }
 
-const SIDEBAR_STAR_COUNT = 150;
+const STAR_V_PX = 23;
 
 const STATUSES = [
   "doom-scrolling the dystopia",
@@ -25,9 +25,31 @@ export default function Sidebar() {
   const [visitorCount, setVisitorCount] = useState(0);
   const [status, setStatus] = useState("");
 
+  const starsRef = useRef<HTMLDivElement>(null);
+  const [starCount, setStarCount] = useState(0);
+
   useEffect(() => {
     setVisitorCount(Math.floor(Math.random() * 90000) + 13337);
     setStatus(STATUSES[Math.floor(Math.random() * STATUSES.length)]);
+  }, []);
+
+  useEffect(() => {
+    const starsEl = starsRef.current;
+    const main = starsEl?.closest('.page-layout')?.querySelector('.page-main');
+    const feed = main?.firstElementChild;
+    if (!starsEl || !main || !feed) return;
+    const measure = () => {
+      const lastPost = feed.lastElementChild;
+      if (!lastPost) return;
+      const contentBottom = lastPost.getBoundingClientRect().bottom;
+      const starsTop = starsEl.getBoundingClientRect().top;
+      const available = contentBottom - starsTop;
+      setStarCount(Math.max(3, Math.floor(available / STAR_V_PX)));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(main);
+    return () => ro.disconnect();
   }, []);
 
   return (
@@ -94,8 +116,8 @@ export default function Sidebar() {
       </div>
 
       {/* ═══ VERTICAL TWINKLING STARS ═══ */}
-      <div className="sidebar-stars" aria-hidden="true">
-        {Array.from({ length: SIDEBAR_STAR_COUNT }, (_, i) => (
+      <div ref={starsRef} className="sidebar-stars" aria-hidden="true">
+        {Array.from({ length: starCount }, (_, i) => (
           <span
             key={i}
             style={{ transform: `translateX(${sidebarStarX(i).toFixed(1)}px)` }}

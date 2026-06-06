@@ -343,8 +343,6 @@ a.no-underline:hover {
 .page-sidebar {
   width: 260px;
   flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
 }
 @media (max-width: 900px) {
   .page-layout {
@@ -667,7 +665,6 @@ a.no-underline:hover {
 
 /* ═══ SIDEBAR STARS (vertical zigzag) ═══ */
 .sidebar-stars {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -676,11 +673,10 @@ a.no-underline:hover {
   opacity: 0.6;
   gap: 8px;
   padding: 12px 0;
-  overflow: hidden;
+  line-height: 1;
 }
 .sidebar-stars .star-twinkle {
   margin: 0;
-  flex-shrink: 0;
 }
 @media (max-width: 900px) {
   .sidebar-stars {

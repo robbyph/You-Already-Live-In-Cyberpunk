@@ -15,7 +15,7 @@ function useObjectURL(data: Uint8Array | null, extension?: string) {
     if (data) {
       const type = extension === "svg" ? "image/svg+xml" : undefined;
       const objectUrl = URL.createObjectURL(
-        new Blob([data], type ? { type } : undefined)
+        new Blob([data.buffer as ArrayBuffer], type ? { type } : undefined)
       );
       setUrl(objectUrl);
       return () => URL.revokeObjectURL(objectUrl);
