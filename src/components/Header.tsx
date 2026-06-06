@@ -156,7 +156,7 @@ export default function Header() {
       </div>
 
       {/* Decorative divider — count driven by container width, never wraps */}
-      <div ref={dividerRef} className="divider-blocks select-none my-2 py-2" aria-hidden="true">
+      <div ref={dividerRef} className="divider-blocks select-none my-3.5 py-3" aria-hidden="true">
         {Array.from({ length: starCount }, (_, i) => (
           <span
             key={i}
@@ -164,6 +164,7 @@ export default function Header() {
             style={{
               animationDelay: `${-(i * 0.7 + Math.sin(i * 2.3) * 1.5 + 1.5).toFixed(2)}s`,
               '--y': `${starY(i).toFixed(1)}px`,
+              '--size': (0.7 + Math.abs(Math.sin(i * 1.9 + 0.5)) * 0.6).toFixed(2),
             } as React.CSSProperties}
           >
             {i % 2 === 0 ? '✦' : '✧'}
