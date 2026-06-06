@@ -98,8 +98,8 @@ body::after {
     0deg,
     transparent,
     transparent 3px,
-    rgba(0, 0, 0, 0.06) 3px,
-    rgba(0, 0, 0, 0.06) 4px
+    rgba(0, 0, 0, 0.025) 3px,
+    rgba(0, 0, 0, 0.025) 4px
   );
   pointer-events: none;
   z-index: 9999;
@@ -398,7 +398,7 @@ a.no-underline:hover {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 }
 .feed-card:hover {
-  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 25%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .feed-card img {
