@@ -5,6 +5,7 @@ export const dynamic = "force-dynamic";
 
 function createHandler() {
   if (
+    process.env.NODE_ENV === "production" &&
     config.storage.kind === "github" &&
     !process.env.KEYSTATIC_GITHUB_CLIENT_ID
   ) {

@@ -1,20 +1,22 @@
 import { config, fields, collection } from "@keystatic/core";
 import { imageWithCrop } from "./src/keystatic/image-with-crop";
 
+const useGitHubStorage =
+  process.env.NODE_ENV === "production" ||
+  process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
+
 export default config({
-  storage:
-    process.env.NODE_ENV === "production"
-      ? {
-          kind: "github",
-          repo: {
-            owner:
-              process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "robbyph",
-            name:
-              process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
-              "You-Already-Live-In-Cyberpunk",
-          },
-        }
-      : { kind: "local" },
+  storage: useGitHubStorage
+    ? {
+        kind: "github",
+        repo: {
+          owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "robbyph",
+          name:
+            process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
+            "You-Already-Live-In-Cyberpunk",
+        },
+      }
+    : { kind: "local" },
 
   collections: {
     entries: collection({
