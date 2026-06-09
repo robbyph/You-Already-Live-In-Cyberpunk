@@ -115,6 +115,16 @@ export default function Sidebar() {
         </div>
       </div>
 
+      {/* ═══ GIBSON QUOTE ═══ */}
+      <div className="sidebar-panel pixel-border-pink text-center">
+        <p className="text-xs text-soft-white/70 italic leading-relaxed">
+          &ldquo;the future is already here &mdash; it&rsquo;s just not evenly distributed&rdquo;
+        </p>
+        <p className="text-[0.65rem] text-muted mt-1">
+          &mdash; william gibson
+        </p>
+      </div>
+
       {/* ═══ VERTICAL TWINKLING STARS ═══ */}
       <div ref={starsRef} className="sidebar-stars" aria-hidden="true">
         {Array.from({ length: starCount }, (_, i) => (

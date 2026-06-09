@@ -43,16 +43,6 @@ export default async function Home() {
           <div className="glitch-row" style={{fontSize: '0.6rem', opacity: 0.25}}>&#9617;&#9617;&#9618;&#9617;&#9617;&#9617;&#9618;&#9619;&#9617;&#9617;&#9618;&#9617;&#9617;&#9617;&#9618;&#9617;&#9617;&#9619;&#9617;&#9617;&#9618;&#9617;&#9617;&#9617;&#9618;&#9617;&#9617;&#9619;&#9617;&#9618;&#9617;&#9617;&#9617;&#9618;&#9619;&#9617;&#9617;&#9618;&#9617;&#9617;&#9617;&#9618;&#9617;&#9617;&#9619;&#9617;&#9617;&#9618;&#9617;&#9617;&#9617;</div>
         </div>
 
-                {/* ASCII art footer */}
-        <pre className="text-[0.65rem] sm:text-[0.8rem] text-muted/70 select-none leading-tight mb-4 overflow-hidden">
-{`    ___________________________________________
-   /                                           \\
-  |  the future is already here --              |
-  |  it's just not evenly distributed           |
-  |                          - william gibson   |
-   \\___________________________________________ /`}
-        </pre>
-
       </footer>
     </div>
   );
