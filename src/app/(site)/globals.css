@@ -290,21 +290,6 @@ a.no-underline:hover {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
-.divider-neon {
-  height: 3px;
-  border: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-hot-pink),
-    var(--color-neon-cyan),
-    var(--color-neon-purple),
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
-  opacity: 0.7;
-}
 .divider-blocks {
   text-align: center;
   color: var(--color-neon-purple);
@@ -347,7 +332,7 @@ a.no-underline:hover {
   display: flex;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 12px;
+  padding: 0 1rem;
   gap: 16px;
   position: relative;
   z-index: 1;
