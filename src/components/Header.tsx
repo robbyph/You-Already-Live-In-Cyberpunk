@@ -72,16 +72,11 @@ function MarqueeBorder() {
   );
 }
 
-// Row offsets for 3-row vertical distribution (px)
-const ROW_OFFSETS = [-7, 0, 7] as const;
-// Conservative px-per-star estimate (char + margins + letter-spacing)
-const STAR_PX = 27;
+const FIELD_HEIGHT = 50;
+const CELL_W = 42;
+const CELL_H = 25;
 
-function starY(i: number): number {
-  const rowIndex = Math.floor(Math.abs(Math.sin(i * 127.1)) * 3) % 3;
-  const noise = Math.sin(i * 3.7 + 0.9) * 2;
-  return ROW_OFFSETS[rowIndex] + noise;
-}
+type StarPos = { x: number; y: number; char: string; delay: number; size: number };
 
 export default function Header() {
   const [shuffled, setShuffled] = useState(TICKER_PHRASES);
@@ -90,7 +85,7 @@ export default function Header() {
   const star1Ref = useRef<HTMLSpanElement>(null);
   const star2Ref = useRef<HTMLSpanElement>(null);
   const dividerRef = useRef<HTMLDivElement>(null);
-  const [starCount, setStarCount] = useState(0);
+  const [headerStars, setHeaderStars] = useState<StarPos[]>([]);
   const [starPhase, setStarPhase] = useState(0);
 
   useEffect(() => {
@@ -124,14 +119,22 @@ export default function Header() {
   useEffect(() => {
     const el = dividerRef.current;
     if (!el) return;
-    const measure = () => {
-      const w = el.getBoundingClientRect().width;
-      setStarCount(Math.max(3, Math.floor(w / STAR_PX)));
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
+    const w = el.getBoundingClientRect().width;
+    const cols = Math.max(1, Math.floor(w / CELL_W));
+    const rows = Math.max(1, Math.floor(FIELD_HEIGHT / CELL_H));
+    const stars: StarPos[] = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        stars.push({
+          x: ((c + 0.15 + Math.random() * 0.7) / cols) * 100,
+          y: ((r + 0.15 + Math.random() * 0.7) / rows) * 100,
+          char: Math.random() < 0.5 ? '✦' : '✧',
+          delay: -(Math.random() * 8),
+          size: 0.7 + Math.random() * 0.6,
+        });
+      }
+    }
+    setHeaderStars(stars);
   }, []);
 
   return (
@@ -169,7 +172,7 @@ export default function Header() {
       </div>
 
       {/* Marquee ticker */}
-      <div className="py-1 my-3">
+      <div className="pt-1 mt-3">
         <div className="glitch-strip" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
         <div className="marquee-track">
           <span className="marquee-text text-neon-purple pixel-title text-sm sm:text-base tracking-widest">
@@ -179,19 +182,25 @@ export default function Header() {
         <div className="glitch-strip" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
       </div>
 
-      {/* Decorative divider — count driven by container width, never wraps */}
-      <div ref={dividerRef} className="divider-blocks select-none my-3.5 py-3 -mx-3.5" aria-hidden="true">
-        {Array.from({ length: starCount }, (_, i) => (
+      {/* Decorative star field */}
+      <div ref={dividerRef} className="select-none mt-1 mb-3.5 mx-1 relative text-neon-purple opacity-60 text-[0.7rem] overflow-visible" style={{ height: FIELD_HEIGHT }} aria-hidden="true">
+        {headerStars.map((star, i) => (
           <span
             key={i}
             className="star-twinkle"
             style={{
-              animationDelay: `${-(i * 0.7 + Math.sin(i * 2.3) * 1.5 + 1.5).toFixed(2)}s`,
-              '--y': `${starY(i).toFixed(1)}px`,
-              '--size': (0.7 + Math.abs(Math.sin(i * 1.9 + 0.5)) * 0.6).toFixed(2),
+              position: 'absolute',
+              left: `${star.x.toFixed(1)}%`,
+              top: `${star.y.toFixed(1)}%`,
+              margin: 0,
+              animationDelay: `${star.delay.toFixed(2)}s`,
+              '--delay': `${star.delay.toFixed(2)}s`,
+              '--y': '0px',
+              '--size': star.size.toFixed(2),
             } as React.CSSProperties}
           >
-            {i % 2 === 0 ? '✦' : '✧'}
+            <span className="star-glyph-solid">✦</span>
+            <span className="star-glyph-hollow">✧</span>
           </span>
         ))}
       </div>

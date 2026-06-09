@@ -1,3 +1,5 @@
+import CircuitBoardBg from "@/components/CircuitBoardBg";
+
 export default function RootLayout({
   children,
 }: {
@@ -6,7 +8,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="grid-wave" aria-hidden="true" />
+        <CircuitBoardBg />
         {children}
       </body>
     </html>
