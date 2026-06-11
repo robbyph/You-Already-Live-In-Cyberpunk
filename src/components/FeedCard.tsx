@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { FeedPost } from "@/data/types";
 import ImageModal from "./ImageModal";
 
@@ -21,6 +22,15 @@ export default function FeedCard({ post }: { post: FeedPost }) {
   const accentClass = getAccentClass(post.id);
   const [revealed, setRevealed] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Handle images that were cached and loaded before React hydrated
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setImgLoaded(true);
+    }
+  }, []);
 
   const dismiss = useCallback(() => setRevealed(false), []);
 
@@ -62,11 +72,16 @@ export default function FeedCard({ post }: { post: FeedPost }) {
       >
         {post.imageUrl ? (
           <div className="card-image-wrap">
-            <img
+            <Image
+              ref={imgRef}
               src={post.imageUrl}
-              alt={post.description}
-              className="w-full block"
-              loading="lazy"
+              alt={post.description || ""}
+              width={600}
+              height={400}
+              sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className={`w-full h-auto block card-img${imgLoaded ? " card-img-loaded" : ""}`}
+              loading="eager"
+              onLoad={() => setImgLoaded(true)}
             />
             {post.description && (
               <div className="card-overlay">
