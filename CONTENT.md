@@ -29,8 +29,8 @@ Open `src/data/feed.json` and add a new entry to the array:
 | `date` | Yes | Date string (YYYY-MM-DD) |
 
 ### Tips
-- Posts are randomly shuffled on each page load
-- Each card gets a random accent color and slight rotation
+- Posts render in stable slug order so each card keeps its canonical position
+- Each card gets a deterministic accent color
 - Images can be any aspect ratio — the masonry layout handles it
 - Keep descriptions punchy — they overlay the dimmed image on hover
 - Use high quality image URLs for best results

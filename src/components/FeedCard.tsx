@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
 import { FeedPost } from "@/data/types";
 import ImageModal from "./ImageModal";
 
@@ -72,15 +71,16 @@ export default function FeedCard({ post }: { post: FeedPost }) {
       >
         {post.imageUrl ? (
           <div className="card-image-wrap">
-            <Image
+            <img
               ref={imgRef}
               src={post.imageUrl}
-              alt={post.description || ""}
-              width={600}
-              height={400}
-              sizes="(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              alt={post.description}
+              width={post.imageWidth}
+              height={post.imageHeight}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
               className={`w-full h-auto block card-img${imgLoaded ? " card-img-loaded" : ""}`}
-              loading="eager"
               onLoad={() => setImgLoaded(true)}
             />
             {post.description && (
