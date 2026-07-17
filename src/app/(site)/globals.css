@@ -221,7 +221,11 @@ a.no-underline:hover {
 }
 .marquee-text {
   display: inline-block;
-  animation: marquee 30s linear infinite;
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .marquee-text {
+    animation: marquee 30s linear infinite;
+  }
 }
 .glitch-strip {
   font-size: 8px;

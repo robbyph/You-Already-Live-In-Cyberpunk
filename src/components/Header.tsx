@@ -174,12 +174,12 @@ export default function Header() {
       {/* Marquee ticker */}
       <div className="pt-1 mt-3">
         <div className="glitch-strip" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
-        <div className="marquee-track">
+        <div className="marquee-track hidden lg:block">
           <span className="marquee-text text-neon-purple pixel-title text-sm sm:text-base tracking-widest">
             {ticker + "  ╱╱╱  " + ticker + "  ╱╱╱  "}
           </span>
         </div>
-        <div className="glitch-strip" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
+        <div className="glitch-strip hidden lg:block" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
       </div>
 
       {/* Decorative star field */}
