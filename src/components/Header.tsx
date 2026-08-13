@@ -142,6 +142,11 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Standalone responsive glitch bar */}
+      <div className="glitch-strip" aria-hidden="true">
+        {"░▒▓█▓▒░".repeat(50)}
+      </div>
+
       {/* Decorative star field */}
       <div ref={dividerRef} className="select-none mt-1 mb-3.5 mx-1 relative text-neon-purple opacity-60 text-[0.7rem] overflow-visible" style={{ height: FIELD_HEIGHT }} aria-hidden="true">
         {headerStars.map((star, i) => (
