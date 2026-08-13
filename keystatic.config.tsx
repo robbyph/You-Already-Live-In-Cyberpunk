@@ -5,15 +5,19 @@ const useGitHubStorage =
   process.env.NODE_ENV === "production" ||
   process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
 
+const githubOwner =
+  process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER?.trim() || "robbyph";
+const githubRepo =
+  process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO?.trim() ||
+  "You-Already-Live-In-Cyberpunk";
+
 export default config({
   storage: useGitHubStorage
     ? {
         kind: "github",
         repo: {
-          owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "robbyph",
-          name:
-            process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ??
-            "You-Already-Live-In-Cyberpunk",
+          owner: githubOwner,
+          name: githubRepo,
         },
       }
     : { kind: "local" },
@@ -33,7 +37,6 @@ export default config({
         }),
 
         image: imageWithCrop({ label: "Image" }),
-
       },
     }),
   },
