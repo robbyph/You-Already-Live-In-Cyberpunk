@@ -2,32 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-const TICKER_PHRASES = [
-  "YOUR TOASTER HAS A MORE POWERFUL PROCESSOR THAN THE APOLLO MISSIONS",
-  "YOU NO LONGER OWN YOUR OWN DNA SEQUENCE",
-  "AI IS WRITING YOUR CHILDREN'S HOMEWORK",
-  "FACIAL RECOGNITION AT EVERY CORNER STORE",
-  "YOUR CAR SELLS YOUR DRIVING DATA",
-  "NEURAL IMPLANTS ARE FDA APPROVED",
-  "ROBOT DOGS PATROL THE STREETS",
-  "DEEPFAKES HAVE ENTERED THE COURTROOM",
-  "YOUR GAIT IS YOUR NEW FINGERPRINT",
-  "PLATE READERS LOG YOUR LOCATION HUNDREDS OF TIMES A MONTH",
-  "YOUR TV WATCHES YOU MORE THAN YOU WATCH IT",
-  "YOUR KEYBOARD RHYTHM IS BIOMETRIC",
-  "YOUR VACUUM SOLD THE FLOORPLAN OF YOUR HOME",
-  "AI POLICING DECIDES WHO GETS WATCHED"
-];
-
 function MarqueeBorder() {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
@@ -79,9 +53,6 @@ const CELL_H = 25;
 type StarPos = { x: number; y: number; char: string; delay: number; size: number };
 
 export default function Header() {
-  const [shuffled, setShuffled] = useState(TICKER_PHRASES);
-  useEffect(() => { setShuffled(shuffle(TICKER_PHRASES)); }, []);
-  const ticker = shuffled.join("  ╱╱╱  ");
   const star1Ref = useRef<HTMLSpanElement>(null);
   const star2Ref = useRef<HTMLSpanElement>(null);
   const dividerRef = useRef<HTMLDivElement>(null);
@@ -169,17 +140,6 @@ export default function Header() {
           dystopia is now!{" "}
           <span ref={star2Ref} className={`${starCyan ? 'text-neon-cyan' : 'text-neon-purple'} star-phase`}><span className="star-swap"><span style={{ opacity: starSolid ? 1 : 0 }}>✦</span><span style={{ opacity: starSolid ? 0 : 1 }}>✧</span></span></span>
         </div>
-      </div>
-
-      {/* Marquee ticker */}
-      <div className="pt-1 mt-3">
-        <div className="glitch-strip" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
-        <div className="marquee-track hidden lg:block">
-          <span className="marquee-text text-neon-purple pixel-title text-sm sm:text-base tracking-widest">
-            {ticker + "  ╱╱╱  " + ticker + "  ╱╱╱  "}
-          </span>
-        </div>
-        <div className="glitch-strip hidden lg:block" aria-hidden="true">{"░▒▓█▓▒░".repeat(50)}</div>
       </div>
 
       {/* Decorative star field */}
