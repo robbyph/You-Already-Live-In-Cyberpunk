@@ -8,6 +8,18 @@ import { FeedPost } from "@/data/types";
 import path from "path";
 import { readFileSync } from "fs";
 import sizeOf from "image-size";
+import { connection } from "next/server";
+
+function shuffle<T>(items: T[]) {
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
 
 function getImageDimensions(slug: string, filename: string) {
   try {
@@ -21,13 +33,13 @@ function getImageDimensions(slug: string, filename: string) {
 }
 
 export default async function Home() {
+  // Generate a new order for each visit instead of baking one into the build.
+  await connection();
+
   const reader = createReader(process.cwd(), config);
   const allEntries = await reader.collections.entries.all();
 
-  const posts: FeedPost[] = [...allEntries]
-    .sort(({ slug: a }, { slug: b }) =>
-      a.localeCompare(b, undefined, { numeric: true }),
-    )
+  const posts: FeedPost[] = shuffle(allEntries)
     .map(({ slug, entry }) => {
       const dims = entry.image
         ? getImageDimensions(slug, entry.image)
