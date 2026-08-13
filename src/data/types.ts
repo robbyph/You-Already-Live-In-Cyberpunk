@@ -4,5 +4,4 @@ export type FeedPost = {
   imageWidth?: number;
   imageHeight?: number;
   description: string;
-  link?: string;
 };

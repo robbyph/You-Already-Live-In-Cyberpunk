@@ -42,9 +42,7 @@ export default function FeedCard({ post }: { post: FeedPost }) {
     return () => document.removeEventListener("click", handle);
   }, [revealed, dismiss]);
 
-  const handleClick = (e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).closest("a")) return;
-
+  const handleClick = () => {
     const isTouch = window.matchMedia("(hover: none)").matches;
     if (isTouch && post.description && post.imageUrl) {
       if (!revealed) {
@@ -56,10 +54,6 @@ export default function FeedCard({ post }: { post: FeedPost }) {
     if (!isTouch && post.imageUrl) {
       setModalOpen(true);
       return;
-    }
-
-    if (post.link) {
-      window.open(post.link, "_blank", "noopener,noreferrer");
     }
   };
 
@@ -86,17 +80,6 @@ export default function FeedCard({ post }: { post: FeedPost }) {
             {post.description && (
               <div className="card-overlay">
                 <p className="card-overlay-text">{post.description}</p>
-                {post.link && (
-                  <a
-                    href={post.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="card-overlay-link"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <span className="blink">&gt;</span> read more
-                  </a>
-                )}
               </div>
             )}
           </div>

@@ -40,7 +40,6 @@ export default async function Home() {
         imageWidth: dims.width,
         imageHeight: dims.height,
         description: entry.description || entry.title,
-        link: entry.link || undefined,
       };
     })
     .filter((post) => post.imageUrl || post.description);

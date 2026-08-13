@@ -34,7 +34,6 @@ export default config({
 
         image: imageWithCrop({ label: "Image" }),
 
-        link: fields.url({ label: "Link" }),
       },
     }),
   },

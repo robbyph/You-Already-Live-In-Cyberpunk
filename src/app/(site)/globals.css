@@ -512,20 +512,6 @@ a.no-underline:hover {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.card-overlay-link {
-  display: inline-block;
-  margin-top: 4px;
-  font-family: var(--font-family-pixel);
-  font-size: 0.75rem;
-  color: var(--color-neon-cyan);
-  text-decoration: none;
-  letter-spacing: 1px;
-}
-.card-overlay-link:hover {
-  color: var(--color-hot-pink);
-  text-decoration: none;
-}
-
 /* desktop hover reveal */
 @media (hover: hover) {
   .feed-card:hover .card-overlay {
