@@ -6,7 +6,8 @@ import { createReader } from "@keystatic/core/reader";
 import config from "../../../keystatic.config";
 import { FeedPost } from "@/data/types";
 import path from "path";
-import { readFileSync } from "fs";
+import { readFileSync, statSync } from "fs";
+import { createHash } from "crypto";
 import sizeOf from "image-size";
 import { connection } from "next/server";
 
@@ -21,14 +22,45 @@ function shuffle<T>(items: T[]) {
   return shuffled;
 }
 
-function getImageDimensions(slug: string, filename: string) {
+type ImageMetadata = {
+  width: number | undefined;
+  height: number | undefined;
+  version: string | undefined;
+};
+
+const imageMetadataCache = new Map<
+  string,
+  { size: number; mtimeMs: number; metadata: ImageMetadata }
+>();
+
+function getImageMetadata(slug: string, filename: string) {
+  const filePath = path.join(process.cwd(), "Entries", slug, filename);
   try {
-    const filePath = path.join(process.cwd(), "Entries", slug, filename);
+    const { size, mtimeMs } = statSync(filePath);
+    const cached = imageMetadataCache.get(filePath);
+    if (cached?.size === size && cached.mtimeMs === mtimeMs) {
+      return cached.metadata;
+    }
+
     const buffer = readFileSync(filePath);
-    const { width, height } = sizeOf(buffer);
-    return { width, height };
+    const version = createHash("sha256")
+      .update(buffer)
+      .digest("hex")
+      .slice(0, 12);
+    let width: number | undefined;
+    let height: number | undefined;
+    try {
+      ({ width, height } = sizeOf(buffer));
+    } catch {
+      // A cache-busting version is still useful if dimensions cannot be read.
+    }
+
+    const metadata = { width, height, version };
+    imageMetadataCache.set(filePath, { size, mtimeMs, metadata });
+    return metadata;
   } catch {
-    return { width: undefined, height: undefined };
+    imageMetadataCache.delete(filePath);
+    return { width: undefined, height: undefined, version: undefined };
   }
 }
 
@@ -41,16 +73,18 @@ export default async function Home() {
 
   const posts: FeedPost[] = shuffle(allEntries)
     .map(({ slug, entry }) => {
-      const dims = entry.image
-        ? getImageDimensions(slug, entry.image)
-        : { width: undefined, height: undefined };
+      const imageMetadata = entry.image
+        ? getImageMetadata(slug, entry.image)
+        : { width: undefined, height: undefined, version: undefined };
       return {
         id: slug,
         imageUrl: entry.image
-          ? `/api/media/${slug}/${entry.image}`
+          ? `/api/media/${slug}/${entry.image}${
+              imageMetadata.version ? `?v=${imageMetadata.version}` : ""
+            }`
           : "",
-        imageWidth: dims.width,
-        imageHeight: dims.height,
+        imageWidth: imageMetadata.width,
+        imageHeight: imageMetadata.height,
         description: entry.description || entry.title,
       };
     })

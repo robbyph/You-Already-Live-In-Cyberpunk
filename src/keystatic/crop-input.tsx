@@ -1,5 +1,12 @@
 "use client";
 import { useState, useRef, useEffect, useCallback } from "react";
+import SliceModal from "./slice-modal";
+import {
+  encodeCanvas,
+  getSourceMimeType,
+  prepareCanvas,
+  replaceFileExtension,
+} from "./image-canvas";
 
 type ImageValue = {
   data: Uint8Array;
@@ -13,9 +20,12 @@ function useObjectURL(data: Uint8Array | null, extension?: string) {
   const [url, setUrl] = useState<string | null>(null);
   useEffect(() => {
     if (data) {
-      const type = extension === "svg" ? "image/svg+xml" : undefined;
+      const type = getSourceMimeType(extension);
+      const start = data.byteOffset;
+      const end = start + data.byteLength;
+      const bytes = data.buffer.slice(start, end) as ArrayBuffer;
       const objectUrl = URL.createObjectURL(
-        new Blob([data.buffer as ArrayBuffer], type ? { type } : undefined)
+        new Blob([bytes], type ? { type } : undefined)
       );
       setUrl(objectUrl);
       return () => URL.revokeObjectURL(objectUrl);
@@ -24,14 +34,6 @@ function useObjectURL(data: Uint8Array | null, extension?: string) {
   }, [data, extension]);
   return url;
 }
-
-const MIME_MAP: Record<string, string> = {
-  png: "image/png",
-  webp: "image/webp",
-  gif: "image/gif",
-  jpg: "image/jpeg",
-  jpeg: "image/jpeg",
-};
 
 // --- Crop Modal ---
 
@@ -141,18 +143,55 @@ function CropModal({
   onApply: (data: Uint8Array, extension: string) => void;
   onCancel: () => void;
 }) {
+  const dialogRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [crop, setCrop] = useState<Crop | null>(null);
   const [drag, setDrag] = useState<DragState>(DRAG_IDLE);
   const [cursor, setCursor] = useState("default");
+  const [isApplying, setIsApplying] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const applyingRef = useRef(false);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
+    mountedRef.current = true;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    dialogRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onCancel();
+      if (e.key === "Escape" && !applyingRef.current) {
+        onCancel();
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const focusable = Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((element) => !element.hidden && element.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      } else if (!dialog.contains(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      mountedRef.current = false;
+      window.removeEventListener("keydown", onKey);
+      previouslyFocused?.focus();
+    };
   }, [onCancel]);
 
   const onImgLoad = useCallback(() => {
@@ -261,32 +300,43 @@ function CropModal({
   const applyCrop = useCallback(async () => {
     if (!crop || crop.w < 5 || crop.h < 5 || !imgRef.current) return;
     const img = imgRef.current;
-    const scaleX = img.naturalWidth / img.clientWidth;
-    const scaleY = img.naturalHeight / img.clientHeight;
-    const sw = Math.round(crop.w * scaleX);
-    const sh = Math.round(crop.h * scaleY);
+    applyingRef.current = true;
+    setIsApplying(true);
+    setError(null);
 
-    const canvas = document.createElement("canvas");
-    canvas.width = sw;
-    canvas.height = sh;
-    canvas.getContext("2d")!.drawImage(
-      img,
-      Math.round(crop.x * scaleX),
-      Math.round(crop.y * scaleY),
-      sw,
-      sh,
-      0,
-      0,
-      sw,
-      sh
-    );
+    try {
+      const scaleX = img.naturalWidth / img.clientWidth;
+      const scaleY = img.naturalHeight / img.clientHeight;
+      const sx = Math.max(0, Math.floor(crop.x * scaleX));
+      const sy = Math.max(0, Math.floor(crop.y * scaleY));
+      const right = Math.min(
+        img.naturalWidth,
+        Math.ceil((crop.x + crop.w) * scaleX)
+      );
+      const bottom = Math.min(
+        img.naturalHeight,
+        Math.ceil((crop.y + crop.h) * scaleY)
+      );
+      const sw = right - sx;
+      const sh = bottom - sy;
 
-    const outExt = extension === "svg" ? "png" : extension;
-    const mime = MIME_MAP[outExt] ?? "image/png";
-    const blob = await new Promise<Blob>((res) =>
-      canvas.toBlob((b) => res(b!), mime, 0.92)
-    );
-    onApply(new Uint8Array(await blob.arrayBuffer()), outExt);
+      const canvas = document.createElement("canvas");
+      const context = prepareCanvas(canvas, sw, sh);
+      context.drawImage(img, sx, sy, sw, sh, 0, 0, sw, sh);
+      const result = await encodeCanvas(canvas, extension);
+      onApply(result.data, result.extension);
+    } catch (cropError) {
+      if (mountedRef.current) {
+        setError(
+          cropError instanceof Error
+            ? cropError.message
+            : "The image could not be cropped."
+        );
+      }
+    } finally {
+      applyingRef.current = false;
+      if (mountedRef.current) setIsApplying(false);
+    }
   }, [crop, extension, onApply]);
 
   const valid = crop && crop.w >= 5 && crop.h >= 5;
@@ -295,6 +345,11 @@ function CropModal({
 
   return (
     <div
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Crop image"
+      tabIndex={-1}
       style={{
         position: "fixed",
         inset: 0,
@@ -378,8 +433,9 @@ function CropModal({
       </div>
       <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
         <button
+          type="button"
           onClick={applyCrop}
-          disabled={!valid}
+          disabled={!valid || isApplying}
           style={{
             padding: "8px 22px",
             fontSize: 14,
@@ -388,14 +444,16 @@ function CropModal({
             color: "#fff",
             border: "none",
             borderRadius: 6,
-            opacity: valid ? 1 : 0.4,
-            cursor: valid ? "pointer" : "not-allowed",
+            opacity: valid && !isApplying ? 1 : 0.4,
+            cursor: valid && !isApplying ? "pointer" : "not-allowed",
           }}
         >
-          Apply Crop
+          {isApplying ? "Applying…" : "Apply Crop"}
         </button>
         <button
+          type="button"
           onClick={onCancel}
+          disabled={isApplying}
           style={{
             padding: "8px 22px",
             fontSize: 14,
@@ -403,12 +461,18 @@ function CropModal({
             color: "#fff",
             border: "1px solid rgba(255,255,255,0.3)",
             borderRadius: 6,
-            cursor: "pointer",
+            opacity: isApplying ? 0.4 : 1,
+            cursor: isApplying ? "not-allowed" : "pointer",
           }}
         >
           Cancel
         </button>
       </div>
+      {error && (
+        <p role="alert" style={{ color: "#fecaca", fontSize: 13, marginTop: 10 }}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }
@@ -431,7 +495,7 @@ export default function ImageWithCropInput({
   description?: string;
   validation?: { isRequired?: boolean };
 }) {
-  const [cropping, setCropping] = useState(false);
+  const [activeEditor, setActiveEditor] = useState<"crop" | "slice" | null>(null);
   const [blurred, setBlurred] = useState(false);
   const objectUrl = useObjectURL(value?.data ?? null, value?.extension);
 
@@ -448,14 +512,19 @@ export default function ImageWithCropInput({
     document.body.removeChild(input);
     if (!file) return;
     const data = new Uint8Array(await file.arrayBuffer());
-    const ext = file.name.match(/\.([^.]+)$/)?.[1] ?? "";
+    const ext = (file.name.match(/\.([^.]+)$/)?.[1] ?? "").toLowerCase();
     onChange({ data, extension: ext, filename: file.name });
   };
 
-  const onCropApply = (data: Uint8Array, ext: string) => {
+  const onEditApply = (data: Uint8Array, ext: string) => {
     if (!value) return;
-    onChange({ ...value, data, extension: ext });
-    setCropping(false);
+    onChange({
+      ...value,
+      data,
+      extension: ext,
+      filename: replaceFileExtension(value.filename, ext),
+    });
+    setActiveEditor(null);
   };
 
   const showError =
@@ -476,7 +545,9 @@ export default function ImageWithCropInput({
 
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         <button
+          type="button"
           onClick={pickFile}
+          disabled={activeEditor !== null}
           style={{
             padding: "4px 14px",
             fontSize: 14,
@@ -490,10 +561,12 @@ export default function ImageWithCropInput({
         </button>
         {value && (
           <button
+            type="button"
             onClick={() => {
               onChange(null);
               setBlurred(true);
             }}
+            disabled={activeEditor !== null}
             style={{
               padding: "4px 14px",
               fontSize: 14,
@@ -508,7 +581,9 @@ export default function ImageWithCropInput({
         )}
         {value && (
           <button
-            onClick={() => setCropping(true)}
+            type="button"
+            onClick={() => setActiveEditor("crop")}
+            disabled={activeEditor !== null}
             style={{
               padding: "4px 14px",
               fontSize: 14,
@@ -519,6 +594,23 @@ export default function ImageWithCropInput({
             }}
           >
             Crop
+          </button>
+        )}
+        {value && (
+          <button
+            type="button"
+            onClick={() => setActiveEditor("slice")}
+            disabled={activeEditor !== null}
+            style={{
+              padding: "4px 14px",
+              fontSize: 14,
+              background: "none",
+              border: "1px solid #d1d5db",
+              borderRadius: 6,
+              cursor: "pointer",
+            }}
+          >
+            Slice
           </button>
         )}
       </div>
@@ -546,12 +638,20 @@ export default function ImageWithCropInput({
         </span>
       )}
 
-      {cropping && objectUrl && value && (
+      {activeEditor === "crop" && objectUrl && value && (
         <CropModal
           imageUrl={objectUrl}
           extension={value.extension}
-          onApply={onCropApply}
-          onCancel={() => setCropping(false)}
+          onApply={onEditApply}
+          onCancel={() => setActiveEditor(null)}
+        />
+      )}
+      {activeEditor === "slice" && objectUrl && value && (
+        <SliceModal
+          imageUrl={objectUrl}
+          extension={value.extension}
+          onApply={onEditApply}
+          onCancel={() => setActiveEditor(null)}
         />
       )}
     </div>
