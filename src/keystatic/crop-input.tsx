@@ -16,6 +16,45 @@ type ImageValue = {
 
 type Crop = { x: number; y: number; w: number; h: number };
 
+const IMAGE_EXTENSIONS_BY_MIME_TYPE: Record<string, string> = {
+  "image/avif": "avif",
+  "image/bmp": "bmp",
+  "image/gif": "gif",
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "image/svg+xml": "svg",
+  "image/webp": "webp",
+  "image/x-icon": "ico",
+};
+
+function getImageExtension(file: Blob & { name?: string }) {
+  const extensionFromName = file.name
+    ?.match(/\.([a-zA-Z0-9]+)$/)?.[1]
+    .toLowerCase();
+  return IMAGE_EXTENSIONS_BY_MIME_TYPE[file.type] ?? extensionFromName ?? null;
+}
+
+async function toImageValue(
+  file: Blob & { name?: string },
+  fallbackName = "pasted-image"
+): Promise<NonNullable<ImageValue>> {
+  const extension = getImageExtension(file);
+  if (file.type && !file.type.startsWith("image/")) {
+    throw new Error("The clipboard does not contain an image.");
+  }
+
+  if (!extension) {
+    throw new Error("That image format is not supported.");
+  }
+
+  const filename = file.name?.trim() || `${fallbackName}.${extension}`;
+  return {
+    data: new Uint8Array(await file.arrayBuffer()),
+    extension,
+    filename: replaceFileExtension(filename, extension),
+  };
+}
+
 function useObjectURL(data: Uint8Array | null, extension?: string) {
   const [url, setUrl] = useState<string | null>(null);
   useEffect(() => {
@@ -497,7 +536,22 @@ export default function ImageWithCropInput({
 }) {
   const [activeEditor, setActiveEditor] = useState<"crop" | "slice" | null>(null);
   const [blurred, setBlurred] = useState(false);
+  const [inputError, setInputError] = useState<string | null>(null);
   const objectUrl = useObjectURL(value?.data ?? null, value?.extension);
+
+  const applyImage = useCallback(
+    async (file: Blob & { name?: string }, fallbackName?: string) => {
+      try {
+        onChange(await toImageValue(file, fallbackName));
+        setInputError(null);
+      } catch (error) {
+        setInputError(
+          error instanceof Error ? error.message : "The image could not be added."
+        );
+      }
+    },
+    [onChange]
+  );
 
   const pickFile = async () => {
     const input = document.createElement("input");
@@ -511,9 +565,45 @@ export default function ImageWithCropInput({
     });
     document.body.removeChild(input);
     if (!file) return;
-    const data = new Uint8Array(await file.arrayBuffer());
-    const ext = (file.name.match(/\.([^.]+)$/)?.[1] ?? "").toLowerCase();
-    onChange({ data, extension: ext, filename: file.name });
+    await applyImage(file);
+  };
+
+  const pasteFromClipboard = async () => {
+    if (!navigator.clipboard?.read) {
+      setInputError(
+        "Clipboard access is unavailable here. Focus this field and press Ctrl+V or Cmd+V."
+      );
+      return;
+    }
+
+    try {
+      const clipboardItems = await navigator.clipboard.read();
+      for (const item of clipboardItems) {
+        const imageType = item.types.find((type) => type.startsWith("image/"));
+        if (imageType) {
+          await applyImage(await item.getType(imageType));
+          return;
+        }
+      }
+      setInputError("The clipboard does not contain an image.");
+    } catch (error) {
+      setInputError(
+        error instanceof DOMException && error.name === "NotAllowedError"
+          ? "Clipboard access was denied. Focus this field and press Ctrl+V or Cmd+V."
+          : "The clipboard image could not be read."
+      );
+    }
+  };
+
+  const handlePaste = (event: React.ClipboardEvent<HTMLDivElement>) => {
+    if (activeEditor !== null) return;
+    const image = Array.from(event.clipboardData.items)
+      .find((item) => item.kind === "file" && item.type.startsWith("image/"))
+      ?.getAsFile();
+    if (!image) return;
+
+    event.preventDefault();
+    void applyImage(image);
   };
 
   const onEditApply = (data: Uint8Array, ext: string) => {
@@ -531,7 +621,10 @@ export default function ImageWithCropInput({
     (forceValidation || blurred) && validation?.isRequired && value === null;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+    <div
+      onPaste={handlePaste}
+      style={{ display: "flex", flexDirection: "column", gap: 8 }}
+    >
       <span style={{ fontSize: 14, fontWeight: 500 }}>
         {label}
         {validation?.isRequired && (
@@ -558,6 +651,22 @@ export default function ImageWithCropInput({
           }}
         >
           Choose file
+        </button>
+        <button
+          type="button"
+          onClick={pasteFromClipboard}
+          disabled={activeEditor !== null}
+          title="You can also focus this image field and press Ctrl+V or Cmd+V"
+          style={{
+            padding: "4px 14px",
+            fontSize: 14,
+            background: "none",
+            border: "1px solid #d1d5db",
+            borderRadius: 6,
+            cursor: "pointer",
+          }}
+        >
+          Paste image
         </button>
         {value && (
           <button
@@ -635,6 +744,12 @@ export default function ImageWithCropInput({
       {showError && (
         <span style={{ fontSize: 13, color: "#dc2626" }}>
           {label} is required
+        </span>
+      )}
+
+      {inputError && (
+        <span role="alert" style={{ fontSize: 13, color: "#dc2626" }}>
+          {inputError}
         </span>
       )}
 
