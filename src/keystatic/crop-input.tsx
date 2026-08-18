@@ -1,5 +1,11 @@
 "use client";
-import { useState, useRef, useEffect, useCallback } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import SliceModal from "./slice-modal";
 import {
   encodeCanvas,
@@ -107,10 +113,10 @@ function handlePositions(c: Crop) {
 
 function hitTestHandle(
   pos: { x: number; y: number },
-  crop: Crop
+  crop: Crop,
+  threshold = 10
 ): Handle | null {
   const handles = handlePositions(crop);
-  const threshold = 10;
   for (const [key, hp] of Object.entries(handles)) {
     if (
       Math.abs(pos.x - hp.x) <= threshold &&
@@ -158,6 +164,7 @@ function computeResize(
 
 type DragState = {
   mode: "none" | "move" | "resize";
+  pointerId?: number;
   startX: number;
   startY: number;
   origCrop: Crop;
@@ -240,7 +247,7 @@ function CropModal({
     }
   }, []);
 
-  const relPos = useCallback((e: React.MouseEvent) => {
+  const relPos = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
     const r = containerRef.current!.getBoundingClientRect();
     return {
       x: Math.max(0, Math.min(e.clientX - r.left, r.width)),
@@ -248,16 +255,26 @@ function CropModal({
     };
   }, []);
 
-  const onMouseDown = useCallback(
-    (e: React.MouseEvent) => {
-      if (!crop) return;
+  const onPointerDown = useCallback(
+    (e: ReactPointerEvent<HTMLDivElement>) => {
+      if (
+        !crop ||
+        isApplying ||
+        !e.isPrimary ||
+        (e.pointerType === "mouse" && e.button !== 0)
+      ) {
+        return;
+      }
       e.preventDefault();
       const p = relPos(e);
+      const threshold = e.pointerType === "mouse" ? 10 : 24;
 
-      const handle = hitTestHandle(p, crop);
+      const handle = hitTestHandle(p, crop, threshold);
       if (handle) {
+        e.currentTarget.setPointerCapture(e.pointerId);
         setDrag({
           mode: "resize",
+          pointerId: e.pointerId,
           startX: p.x,
           startY: p.y,
           origCrop: { ...crop },
@@ -272,23 +289,26 @@ function CropModal({
         p.y >= crop.y &&
         p.y <= crop.y + crop.h
       ) {
+        e.currentTarget.setPointerCapture(e.pointerId);
         setDrag({
           mode: "move",
+          pointerId: e.pointerId,
           startX: p.x,
           startY: p.y,
           origCrop: { ...crop },
         });
       }
     },
-    [crop, relPos]
+    [crop, isApplying, relPos]
   );
 
-  const onMouseMove = useCallback(
-    (e: React.MouseEvent) => {
+  const onPointerMove = useCallback(
+    (e: ReactPointerEvent<HTMLDivElement>) => {
       if (!crop) return;
       const p = relPos(e);
 
       if (drag.mode === "none") {
+        if (e.pointerType !== "mouse") return;
         const handle = hitTestHandle(p, crop);
         if (handle) {
           setCursor(HANDLE_CURSORS[handle]);
@@ -304,6 +324,7 @@ function CropModal({
         }
         return;
       }
+      if (drag.pointerId !== e.pointerId) return;
 
       e.preventDefault();
 
@@ -332,9 +353,17 @@ function CropModal({
     [crop, drag, relPos]
   );
 
-  const onMouseUp = useCallback(() => {
+  const finishPointer = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
+    if (drag.pointerId !== e.pointerId) return;
     setDrag(DRAG_IDLE);
-  }, []);
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch {
+      // Capture may already have been released by the browser.
+    }
+  }, [drag.pointerId]);
 
   const applyCrop = useCallback(async () => {
     if (!crop || crop.w < 5 || crop.h < 5 || !imgRef.current) return;
@@ -408,10 +437,13 @@ function CropModal({
       </p>
       <div
         ref={containerRef}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        onMouseLeave={onMouseUp}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={finishPointer}
+        onPointerCancel={finishPointer}
+        onLostPointerCapture={(event) => {
+          if (drag.pointerId === event.pointerId) setDrag(DRAG_IDLE);
+        }}
         style={{
           position: "relative",
           cursor,
@@ -419,6 +451,7 @@ function CropModal({
           maxHeight: "70vh",
           lineHeight: 0,
           userSelect: "none",
+          touchAction: "none",
         }}
       >
         <img
@@ -432,6 +465,7 @@ function CropModal({
             maxWidth: "90vw",
             maxHeight: "70vh",
             objectFit: "contain",
+            pointerEvents: "none",
           }}
         />
         {crop && crop.w > 0 && crop.h > 0 && (
