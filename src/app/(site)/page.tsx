@@ -10,6 +10,7 @@ import { readFileSync, statSync } from "fs";
 import { createHash } from "crypto";
 import sizeOf from "image-size";
 import { connection } from "next/server";
+import { getVercelMediaUrl } from "@/lib/media";
 
 function shuffle<T>(items: T[]) {
   const shuffled = [...items];
@@ -28,12 +29,28 @@ type ImageMetadata = {
   version: string | undefined;
 };
 
+function readBuiltImageMetadata(): Record<string, ImageMetadata> {
+  if (process.env.NODE_ENV !== "production") return {};
+  try {
+    return JSON.parse(
+      readFileSync(path.join(process.cwd(), ".generated/image-metadata.json"), "utf8"),
+    );
+  } catch {
+    // Direct `next dev` / older builds can still read local originals below.
+    return {};
+  }
+}
+
+const builtImageMetadata = readBuiltImageMetadata();
+
 const imageMetadataCache = new Map<
   string,
   { size: number; mtimeMs: number; metadata: ImageMetadata }
 >();
 
 function getImageMetadata(slug: string, filename: string) {
+  const built = builtImageMetadata[`${slug}/${filename}`];
+  if (built) return built;
   const filePath = path.join(process.cwd(), "Entries", slug, filename);
   try {
     const { size, mtimeMs } = statSync(filePath);
@@ -76,13 +93,15 @@ export default async function Home() {
       const imageMetadata = entry.image
         ? getImageMetadata(slug, entry.image)
         : { width: undefined, height: undefined, version: undefined };
+      const imageUrl = entry.image
+        ? getVercelMediaUrl([slug, entry.image]) ||
+          `/api/media/${encodeURIComponent(slug)}/${encodeURIComponent(entry.image)}${
+            imageMetadata.version ? `?v=${imageMetadata.version}` : ""
+          }`
+        : "";
       return {
         id: slug,
-        imageUrl: entry.image
-          ? `/api/media/${slug}/${entry.image}${
-              imageMetadata.version ? `?v=${imageMetadata.version}` : ""
-            }`
-          : "",
+        imageUrl,
         imageWidth: imageMetadata.width,
         imageHeight: imageMetadata.height,
         description: entry.description || entry.title,

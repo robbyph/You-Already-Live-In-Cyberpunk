@@ -1,9 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import type { MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import { FeedPost } from "@/data/types";
 import ImageModal from "./ImageModal";
+import { getImageProps } from "next/image";
+import { FEED_IMAGE_SIZES } from "@/lib/feed-images";
 
 const ACCENT_CLASSES = [
   "card-accent-1",
@@ -17,12 +20,24 @@ function getAccentClass(id: string) {
   return ACCENT_CLASSES[num % ACCENT_CLASSES.length];
 }
 
-export default function FeedCard({ post }: { post: FeedPost }) {
+export default function FeedCard({ post, priority = false }: { post: FeedPost; priority?: boolean }) {
   const accentClass = getAccentClass(post.id);
   const [revealed, setRevealed] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [thumbnailFailed, setThumbnailFailed] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
+  // These URLs are still rendered into the initial HTML, but are no longer
+  // duplicated in the serialized post data sent across the server boundary.
+  const thumbnail = post.imageUrl && !thumbnailFailed
+    ? getImageProps({
+        src: post.imageUrl,
+        alt: post.description,
+        fill: true,
+        sizes: FEED_IMAGE_SIZES,
+        quality: 75,
+      }).props
+    : undefined;
 
   // Handle images that were cached and loaded before React hydrated
   useEffect(() => {
@@ -35,23 +50,26 @@ export default function FeedCard({ post }: { post: FeedPost }) {
 
   useEffect(() => {
     if (!revealed) return;
-    const handle = (e: MouseEvent) => {
+    const handle = (e: globalThis.MouseEvent) => {
       if (!(e.target as HTMLElement).closest(".feed-card")) dismiss();
     };
     document.addEventListener("click", handle);
     return () => document.removeEventListener("click", handle);
   }, [revealed, dismiss]);
 
-  const handleClick = () => {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    // Preserve the browser's native open-original behavior for modified clicks.
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
     const isTouch = window.matchMedia("(hover: none)").matches;
-    if (isTouch && post.description && post.imageUrl) {
+    if (isTouch && event.detail !== 0 && post.description && post.imageUrl) {
       if (!revealed) {
         setRevealed(true);
         return;
       }
     }
 
-    if (!isTouch && post.imageUrl) {
+    if (post.imageUrl) {
       setModalOpen(true);
       return;
     }
@@ -61,28 +79,34 @@ export default function FeedCard({ post }: { post: FeedPost }) {
     <>
       <div
         className={`feed-card ${accentClass}${revealed ? " overlay-revealed" : ""}`}
-        onClick={handleClick}
       >
         {post.imageUrl ? (
-          <div className="card-image-wrap">
+          <a
+            className="card-image-wrap card-image-link"
+            href={post.imageUrl}
+            onClick={handleClick}
+          >
             <img
               ref={imgRef}
-              src={post.imageUrl}
+              src={thumbnail?.src || post.imageUrl}
+              srcSet={thumbnail?.srcSet}
+              sizes={thumbnail?.sizes}
               alt={post.description}
               width={post.imageWidth}
               height={post.imageHeight}
-              loading="lazy"
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : undefined}
               decoding="async"
-              fetchPriority="low"
-              className={`w-full h-auto block card-img${imgLoaded ? " card-img-loaded" : ""}`}
+              className={`w-full h-auto block card-img${priority || imgLoaded ? " card-img-loaded" : ""}`}
               onLoad={() => setImgLoaded(true)}
+              onError={() => setThumbnailFailed(true)}
             />
             {post.description && (
               <div className="card-overlay">
                 <p className="card-overlay-text">{post.description}</p>
               </div>
             )}
-          </div>
+          </a>
         ) : (
           <div className="relative p-4 min-h-[120px] flex items-center justify-center"
                style={{ background: "linear-gradient(135deg, var(--color-card-dark), var(--color-bg-alt))" }}>

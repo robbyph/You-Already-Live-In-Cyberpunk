@@ -27,6 +27,15 @@ export default function ImageModal({ src, alt, onClose }: ImageModalProps) {
 
   return (
     <div className="image-modal-backdrop" onClick={onClose}>
+      <a
+        className="image-modal-original"
+        href={src}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+      >
+        Open original ↗
+      </a>
       <button
         className="image-modal-close"
         onClick={(e) => { e.stopPropagation(); onClose(); }}

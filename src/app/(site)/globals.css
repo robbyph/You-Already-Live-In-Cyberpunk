@@ -486,6 +486,16 @@ a.no-underline:hover {
   position: relative;
   overflow: hidden;
 }
+.card-image-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: inherit;
+}
+.card-image-link:focus-visible {
+  outline: 3px solid var(--color-neon-cyan);
+  outline-offset: -3px;
+}
 
 /* ═══ CARD OVERLAY (hidden by default, revealed on hover/tap) ═══ */
 .card-overlay {
@@ -597,6 +607,23 @@ a.no-underline:hover {
 .image-modal-close:hover {
   border-color: var(--color-hot-pink);
   color: var(--color-hot-pink);
+}
+.image-modal-original {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid var(--color-muted);
+  background: var(--color-bg);
+  color: var(--color-neon-cyan);
+  font-size: 0.85rem;
+}
+.image-modal-original:focus-visible {
+  outline: 2px solid var(--color-neon-cyan);
+  outline-offset: 3px;
 }
 @keyframes modal-fade-in {
   from { opacity: 0; }
