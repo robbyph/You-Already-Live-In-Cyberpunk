@@ -35,42 +35,65 @@ export default function Sidebar() {
     const main = starsEl?.closest('.page-layout')?.querySelector('.page-main');
     const feed = main?.firstElementChild;
     if (!starsEl || !main || !feed) return;
-    let prevGrid = '';
+
+    // Match the CSS breakpoint. Header and other visible stars are independent.
+    const hidden = window.matchMedia('(max-width: 900px)');
+    const content = feed.querySelector('.feed-batches');
+    if (!content) return;
+    let cols = 0;
+    let stars: StarPos[] = [];
     const measure = () => {
-      const lastPost = feed.lastElementChild;
-      if (!lastPost) return;
-      const contentBottom = lastPost.getBoundingClientRect().bottom;
+      if (hidden.matches) return;
+      const contentBottom = content.getBoundingClientRect().bottom;
       const starsTop = starsEl.getBoundingClientRect().top;
       const available = Math.max(0, contentBottom - starsTop);
-      if (available <= 0) return;
-
       setFieldHeight(available);
 
       const sidebarWidth = starsEl.getBoundingClientRect().width || 260;
-      const cols = Math.max(1, Math.floor(sidebarWidth / SIDEBAR_CELL_W));
-      const rows = Math.max(1, Math.floor(available / SIDEBAR_CELL_H));
-      const gridKey = `${cols}x${rows}`;
-      if (gridKey === prevGrid) return;
-      prevGrid = gridKey;
+      const nextCols = Math.max(1, Math.floor(sidebarWidth / SIDEBAR_CELL_W));
+      const rows = Math.max(0, Math.floor(available / SIDEBAR_CELL_H));
+      if (nextCols !== cols) {
+        cols = nextCols;
+        stars = [];
+      }
+      const count = rows * cols;
+      if (count === stars.length) return;
 
-      const stars: StarPos[] = [];
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          stars.push({
-            x: ((c + 0.15 + Math.random() * 0.7) / cols) * 100,
-            y: ((r + 0.15 + Math.random() * 0.7) / rows) * 100,
-            char: Math.random() < 0.5 ? '✦' : '✧',
-            delay: -(Math.random() * 8),
-            size: 0.7 + Math.random() * 0.6,
-          });
-        }
+      // Extend the same scattered field as batches arrive, without moving or
+      // restarting the desktop stars that are already on screen.
+      stars = stars.slice(0, count);
+      for (let i = stars.length; i < count; i++) {
+        const r = Math.floor(i / cols);
+        const c = i % cols;
+        stars.push({
+          x: ((c + 0.15 + Math.random() * 0.7) / cols) * 100,
+          y: (r + 0.15 + Math.random() * 0.7) * SIDEBAR_CELL_H,
+          char: Math.random() < 0.5 ? '✦' : '✧',
+          delay: -(Math.random() * 8),
+          size: 0.7 + Math.random() * 0.6,
+        });
       }
       setSidebarStars(stars);
     };
-    measure();
     const ro = new ResizeObserver(measure);
-    ro.observe(main);
-    return () => ro.disconnect();
+    const updateVisibility = () => {
+      ro.disconnect();
+      if (hidden.matches) {
+        stars = [];
+        cols = 0;
+        setSidebarStars([]);
+        setFieldHeight(0);
+        return;
+      }
+      measure();
+      ro.observe(content);
+    };
+    updateVisibility();
+    hidden.addEventListener('change', updateVisibility);
+    return () => {
+      ro.disconnect();
+      hidden.removeEventListener('change', updateVisibility);
+    };
   }, []);
 
   return (
@@ -155,7 +178,7 @@ export default function Sidebar() {
             style={{
               position: 'absolute',
               left: `${star.x.toFixed(1)}%`,
-              top: `${star.y.toFixed(1)}%`,
+              top: `${star.y.toFixed(1)}px`,
               margin: 0,
               animationDelay: `${star.delay.toFixed(2)}s`,
               '--delay': `${star.delay.toFixed(2)}s`,

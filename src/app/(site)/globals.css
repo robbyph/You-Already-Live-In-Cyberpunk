@@ -443,6 +443,27 @@ a.no-underline:hover {
   .masonry { columns: 1; }
 }
 
+.feed-load-more {
+  padding: 12px 0;
+  text-align: center;
+  overflow-anchor: none;
+}
+.feed-load-more button {
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 1px solid var(--color-neon-cyan);
+  background: var(--color-card-dark);
+  color: var(--color-neon-cyan);
+  cursor: pointer;
+}
+.feed-load-more button:hover {
+  background: var(--color-bg-alt);
+}
+.feed-load-more button:focus-visible {
+  outline: 2px solid var(--color-hot-pink);
+  outline-offset: 4px;
+}
+
 /* card accent color cycling */
 .card-accent-1 { --accent: var(--color-hot-pink); }
 .card-accent-2 { --accent: var(--color-neon-cyan); }
