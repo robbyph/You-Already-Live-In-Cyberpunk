@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import type { MouseEvent } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import { FeedPost } from "@/data/types";
 import ImageModal from "./ImageModal";
@@ -20,7 +20,12 @@ function getAccentClass(id: string) {
   return ACCENT_CLASSES[num % ACCENT_CLASSES.length];
 }
 
-export default function FeedCard({ post, priority = false }: { post: FeedPost; priority?: boolean }) {
+export default function FeedCard({ post, priority = false, style, onImageSize }: {
+  post: FeedPost;
+  priority?: boolean;
+  style?: CSSProperties;
+  onImageSize?: (id: string, width: number, height: number) => void;
+}) {
   const accentClass = getAccentClass(post.id);
   const [revealed, setRevealed] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -41,12 +46,17 @@ export default function FeedCard({ post, priority = false }: { post: FeedPost; p
 
   // Handle images that were cached and loaded before React hydrated
   useEffect(() => {
-    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+    const image = imgRef.current;
+    if (image?.complete && image.naturalWidth > 0) {
       setImgLoaded(true);
+      if (!post.imageWidth || !post.imageHeight) {
+        onImageSize?.(post.id, image.naturalWidth, image.naturalHeight);
+      }
     }
-  }, []);
+  }, [post.id, post.imageWidth, post.imageHeight, onImageSize]);
 
   const dismiss = useCallback(() => setRevealed(false), []);
+  const closeModal = useCallback(() => setModalOpen(false), []);
 
   useEffect(() => {
     if (!revealed) return;
@@ -70,6 +80,9 @@ export default function FeedCard({ post, priority = false }: { post: FeedPost; p
     }
 
     if (post.imageUrl) {
+      // Some browsers do not focus links on pointer clicks. Give the viewer a
+      // reliable element to return focus to when it closes.
+      event.currentTarget.focus({ preventScroll: true });
       setModalOpen(true);
       return;
     }
@@ -79,6 +92,7 @@ export default function FeedCard({ post, priority = false }: { post: FeedPost; p
     <>
       <div
         className={`feed-card ${accentClass}${revealed ? " overlay-revealed" : ""}`}
+        style={style}
       >
         {post.imageUrl ? (
           <a
@@ -98,7 +112,13 @@ export default function FeedCard({ post, priority = false }: { post: FeedPost; p
               fetchPriority={priority ? "high" : undefined}
               decoding="async"
               className={`w-full h-auto block card-img${priority || imgLoaded ? " card-img-loaded" : ""}`}
-              onLoad={() => setImgLoaded(true)}
+              onLoad={(event) => {
+                setImgLoaded(true);
+                if (!post.imageWidth || !post.imageHeight) {
+                  const image = event.currentTarget;
+                  onImageSize?.(post.id, image.naturalWidth, image.naturalHeight);
+                }
+              }}
               onError={() => setThumbnailFailed(true)}
             />
             {post.description && (
@@ -122,7 +142,7 @@ export default function FeedCard({ post, priority = false }: { post: FeedPost; p
           <ImageModal
             src={post.imageUrl!}
             alt={post.description}
-            onClose={() => setModalOpen(false)}
+            onClose={closeModal}
           />,
           document.body,
         )}

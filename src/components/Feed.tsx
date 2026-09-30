@@ -2,44 +2,38 @@
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FeedPost } from "@/data/types";
+import { createFeedLayout, type ImageDimensions } from "@/lib/feed-layout";
 import FeedCard from "./FeedCard";
 
 const BATCH_SIZE = 30;
 
-const FeedBatch = memo(function FeedBatch({
-  posts,
-  first,
-}: {
-  posts: FeedPost[];
-  first: boolean;
-}) {
-  return (
-    <div className="masonry">
-      {posts.map((post, index) => (
-        <FeedCard key={post.id} post={post} priority={first && index === 0} />
-      ))}
-    </div>
-  );
-});
+const MasonryCard = memo(FeedCard);
 
 export default function Feed({ posts }: { posts: FeedPost[] }) {
   const [visibleBatches, setVisibleBatches] = useState(1);
+  const [measured, setMeasured] = useState<ReadonlyMap<string, ImageDimensions>>(new Map());
   const batchesRef = useRef<HTMLDivElement>(null);
   const loadMoreRef = useRef<HTMLDivElement>(null);
-  const focusBatchRef = useRef<number | null>(null);
-  const batches = useMemo(() => {
-    const result: FeedPost[][] = [];
-    for (let i = 0; i < posts.length; i += BATCH_SIZE) {
-      result.push(posts.slice(i, i + BATCH_SIZE));
-    }
-    return result;
-  }, [posts]);
-  const hasMore = visibleBatches < batches.length;
+  const focusPostRef = useRef<number | null>(null);
+  const layout = useMemo(() => createFeedLayout(posts, measured), [posts, measured]);
+  const batchCount = Math.ceil(posts.length / BATCH_SIZE);
+  const hasMore = visibleBatches < batchCount;
   const visibleCount = Math.min(visibleBatches * BATCH_SIZE, posts.length);
 
   const loadMore = useCallback(() => {
-    setVisibleBatches((count) => Math.min(count + 1, batches.length));
-  }, [batches.length]);
+    setVisibleBatches((count) => Math.min(count + 1, batchCount));
+  }, [batchCount]);
+
+  const recordImageSize = useCallback((id: string, width: number, height: number) => {
+    if (!width || !height) return;
+    setMeasured(previous => {
+      const existing = previous.get(id);
+      if (existing?.width === width && existing.height === height) return previous;
+      const next = new Map(previous);
+      next.set(id, { width, height });
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -56,20 +50,26 @@ export default function Feed({ posts }: { posts: FeedPost[] }) {
   }, [hasMore, loadMore, visibleBatches]);
 
   useEffect(() => {
-    const batchIndex = focusBatchRef.current;
-    if (batchIndex === null) return;
-    const firstLink = batchesRef.current?.children[batchIndex]
+    const postIndex = focusPostRef.current;
+    if (postIndex === null) return;
+    const firstLink = batchesRef.current?.children[postIndex]
       ?.querySelector<HTMLAnchorElement>(".card-image-link");
     firstLink?.focus();
-    focusBatchRef.current = null;
+    focusPostRef.current = null;
   }, [visibleBatches]);
 
   return (
     <section className="pb-6" id="feed">
-      {/* Separate column containers keep earlier cards in place on append. */}
-      <div ref={batchesRef} className="feed-batches">
-        {batches.slice(0, visibleBatches).map((batch, index) => (
-          <FeedBatch key={index} posts={batch} first={index === 0} />
+      {/* Positions depend only on preceding posts, so appending cannot move them. */}
+      <div ref={batchesRef} className="feed-batches masonry" style={layout.heights[visibleCount]}>
+        {posts.slice(0, visibleCount).map((post, index) => (
+          <MasonryCard
+            key={post.id}
+            post={post}
+            priority={index === 0}
+            style={layout.cards[index]}
+            onImageSize={recordImageSize}
+          />
         ))}
       </div>
       {hasMore && (
@@ -77,7 +77,7 @@ export default function Feed({ posts }: { posts: FeedPost[] }) {
           <button
             type="button"
             onClick={() => {
-              focusBatchRef.current = visibleBatches;
+              focusPostRef.current = visibleCount;
               loadMore();
             }}
           >

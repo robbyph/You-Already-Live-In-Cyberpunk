@@ -114,9 +114,9 @@ export default async function Home() {
       <Header />
 
       <div className="page-layout">
-        <div className="page-main">
+        <main className="page-main">
           <Feed posts={posts} />
-        </div>
+        </main>
         <Sidebar />
       </div>
 

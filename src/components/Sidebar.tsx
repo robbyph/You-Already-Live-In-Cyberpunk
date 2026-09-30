@@ -86,7 +86,8 @@ export default function Sidebar() {
         return;
       }
       measure();
-      ro.observe(content);
+      // The masonry reserves its height with padding before images load.
+      ro.observe(content, { box: 'border-box' });
     };
     updateVisibility();
     hidden.addEventListener('change', updateVisibility);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 function MarqueeBorder() {
   const ref = useRef<HTMLDivElement>(null);
@@ -58,6 +59,7 @@ export default function Header() {
   const dividerRef = useRef<HTMLDivElement>(null);
   const [headerStars, setHeaderStars] = useState<StarPos[]>([]);
   const [starPhase, setStarPhase] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const s1 = star1Ref.current;
@@ -68,6 +70,7 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
+    if (reduceMotion) return;
     const bounce = [
       { transform: 'scale(1)', offset: 0 },
       { transform: 'scale(1.4)', offset: 0.25 },
@@ -75,14 +78,18 @@ export default function Header() {
       { transform: 'scale(1.1)', offset: 0.8 },
       { transform: 'scale(1)', offset: 1 },
     ];
+    let animations: Animation[] = [];
     const id = setInterval(() => {
       setStarPhase(s => (s + 1) % 4);
-      [star1Ref.current, star2Ref.current].forEach(el => {
-        el?.animate(bounce, { duration: 500, easing: 'ease-out' });
-      });
+      animations = [star1Ref.current, star2Ref.current].flatMap(el =>
+        el ? [el.animate(bounce, { duration: 500, easing: 'ease-out' })] : [],
+      );
     }, 2000);
-    return () => clearInterval(id);
-  }, []);
+    return () => {
+      clearInterval(id);
+      animations.forEach(animation => animation.cancel());
+    };
+  }, [reduceMotion]);
 
   const starSolid = starPhase < 2;
   const starCyan = starPhase === 0 || starPhase === 3;

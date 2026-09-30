@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const BLOCK_CHARS = ["░", "▒", "▓", "█"];
 
@@ -40,6 +41,7 @@ function fillPattern(pattern: string, count: number): string {
 
 export default function FooterGlitch() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
   const [width, setWidth] = useState(0);
   const [glitchMap, setGlitchMap] = useState<Map<string, SegmentGlitch>>(
     new Map()
@@ -66,7 +68,7 @@ export default function FooterGlitch() {
   );
 
   useEffect(() => {
-    if (!width) return;
+    if (!width || reduceMotion) return;
     let tickTimer: ReturnType<typeof setTimeout>;
     let clearTimer: ReturnType<typeof setTimeout>;
 
@@ -154,7 +156,7 @@ export default function FooterGlitch() {
       clearTimeout(tickTimer);
       clearTimeout(clearTimer);
     };
-  }, [width, getCharCount]);
+  }, [width, getCharCount, reduceMotion]);
 
   return (
     <div
@@ -173,7 +175,7 @@ export default function FooterGlitch() {
 
           for (let s = 0; s < segCount; s++) {
             const start = s * SEG_SIZE;
-            const glitch = glitchMap.get(`${ri}-${s}`);
+            const glitch = reduceMotion ? undefined : glitchMap.get(`${ri}-${s}`);
 
             if (glitch) {
               segments.push(
