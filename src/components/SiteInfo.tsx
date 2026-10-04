@@ -9,7 +9,7 @@ export default function SiteInfo() {
           &#9670; what is this?
         </div>
         <p className="text-xs text-soft-white/70 leading-relaxed">
-          a carefully curated collection of news, images, and other media snippets, offering an insight into our current cyberpunk circumstances.
+          a carefully curated collection of news, images, and other media snippets.
         </p>
         <p className="text-xs text-muted mt-2">
           High Tech, High Inequality
