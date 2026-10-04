@@ -28,6 +28,7 @@ type ImageMetadata = {
   width: number | undefined;
   height: number | undefined;
   version: string | undefined;
+  url?: string;
 };
 
 function readBuiltImageMetadata(): Record<string, ImageMetadata> {
@@ -49,7 +50,7 @@ const imageMetadataCache = new Map<
   { size: number; mtimeMs: number; metadata: ImageMetadata }
 >();
 
-function getImageMetadata(slug: string, filename: string) {
+function getImageMetadata(slug: string, filename: string): ImageMetadata {
   const built = builtImageMetadata[`${slug}/${filename}`];
   if (built) return built;
   const filePath = path.join(process.cwd(), "Entries", slug, filename);
@@ -91,11 +92,11 @@ export default async function Home() {
 
   const posts: FeedPost[] = shuffle(allEntries)
     .map(({ slug, entry }) => {
-      const imageMetadata = entry.image
+      const imageMetadata: ImageMetadata = entry.image
         ? getImageMetadata(slug, entry.image)
         : { width: undefined, height: undefined, version: undefined };
       const imageUrl = entry.image
-        ? getVercelMediaUrl([slug, entry.image]) ||
+        ? imageMetadata.url || getVercelMediaUrl([slug, entry.image]) ||
           `/api/media/${encodeURIComponent(slug)}/${encodeURIComponent(entry.image)}${
             imageMetadata.version ? `?v=${imageMetadata.version}` : ""
           }`

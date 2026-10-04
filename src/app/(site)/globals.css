@@ -372,19 +372,30 @@ a.no-underline:hover {
 .mobile-about-trigger {
   display: none;
   position: fixed;
-  left: max(12px, env(safe-area-inset-left));
-  bottom: calc(12px + env(safe-area-inset-bottom));
+  left: 0;
+  bottom: 0;
+  transform: scale(0.75);
+  transform-origin: bottom left;
   z-index: 100;
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  padding: 4px 14px;
-  border: 1px solid var(--color-neon-cyan);
-  background: var(--color-bg);
+  padding: 4px 44px;
+  border: 0;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 17.5%,
+    color-mix(in srgb, var(--color-bg) 70%, transparent) 32.5%,
+    color-mix(in srgb, var(--color-bg) 85%, transparent) 50%,
+    color-mix(in srgb, var(--color-bg) 70%, transparent) 67.5%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 82.5%,
+    transparent 100%
+  );
   color: var(--color-neon-cyan);
   font-family: var(--font-family-pixel);
   font-size: 1.2rem;
-  box-shadow: 0 0 12px rgb(56 189 248 / 15%), 0 4px 16px rgb(0 0 0 / 50%);
+  box-shadow: none;
   cursor: pointer;
 }
 .mobile-about-trigger:hover,
@@ -400,13 +411,12 @@ a.no-underline:hover {
 }
 .about-dialog {
   position: fixed;
-  inset: auto;
-  left: max(12px, env(safe-area-inset-left));
-  bottom: calc(12px + env(safe-area-inset-bottom));
-  width: min(420px, calc(100% - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  inset: 0;
+  width: 90vw;
+  max-width: none;
   max-height: min(80vh, 720px);
   max-height: min(80dvh, 720px);
-  margin: 0;
+  margin: auto;
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--color-neon-cyan);

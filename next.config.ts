@@ -15,11 +15,11 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/": ["./.generated/image-metadata.json"],
   },
-  // Entry media is served from the exact Git commit on Vercel. Keeping these
-  // files out of server traces prevents the media library from being bundled
-  // into every function that reads from Entries at runtime.
+  // Feed images are published as static assets during prebuild. Other entry
+  // media uses GitHub. Neither library belongs in the server function bundles.
   outputFileTracingExcludes: {
     "/*": [
+      "./public/feed-media/**",
       "./Entries/**/*.avif",
       "./Entries/**/*.gif",
       "./Entries/**/*.jpeg",
@@ -30,11 +30,21 @@ const nextConfig: NextConfig = {
       "./Entries/**/*.webp",
     ],
   },
+  async headers() {
+    return [{
+      source: "/feed-media/:path*",
+      headers: [{ key: "Cache-Control", value: "public, max-age=2678400, immutable" }],
+    }];
+  },
   images: {
+    minimumCacheTTL: 2678400, // 31 days; replaced images get a new content hash.
     // Keep thumbnail variants bounded, including crisp mobile / Retina sizes.
     deviceSizes: [384, 640, 828, 1080, 1440],
     imageSizes: [256],
-    localPatterns: [{ pathname: "/api/media/**" }],
+    localPatterns: [
+      { pathname: "/feed-media/**", search: "" },
+      { pathname: "/api/media/**" },
+    ],
     remotePatterns: [
       {
         protocol: "https",

@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /.generated/
+/public/feed-media/
 /out/
 
 # production
