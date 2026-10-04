@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
-import SupportLink from "./SupportLink";
 
 function MarqueeBorder() {
   const ref = useRef<HTMLDivElement>(null);
@@ -147,9 +146,6 @@ export default function Header() {
           <span ref={star1Ref} className={`${starCyan ? 'text-neon-cyan' : 'text-neon-purple'} star-phase`}><span className="star-swap"><span style={{ opacity: starSolid ? 1 : 0 }}>✦</span><span style={{ opacity: starSolid ? 0 : 1 }}>✧</span></span></span>{" "}
           dystopia is now!{" "}
           <span ref={star2Ref} className={`${starCyan ? 'text-neon-cyan' : 'text-neon-purple'} star-phase`}><span className="star-swap"><span style={{ opacity: starSolid ? 1 : 0 }}>✦</span><span style={{ opacity: starSolid ? 0 : 1 }}>✧</span></span></span>
-        </div>
-        <div className="support-mobile mt-2 text-center">
-          <SupportLink />
         </div>
       </div>
 

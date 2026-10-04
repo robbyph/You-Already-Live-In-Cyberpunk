@@ -476,7 +476,7 @@ a.no-underline:hover {
   }
 }
 
-/* Shared support control; the header placement follows the sidebar breakpoint. */
+/* Support link in the desktop sidebar and mobile about panel. */
 .support-link {
   display: inline-block;
   padding: 4px 0;
@@ -497,15 +497,6 @@ a.no-underline:hover {
   outline: 2px solid var(--color-neon-cyan);
   outline-offset: 4px;
 }
-.support-mobile {
-  display: none;
-}
-@media (max-width: 900px) {
-  .support-mobile {
-    display: block;
-  }
-}
-
 /* ═══ SIDEBAR PANELS ═══ */
 .sidebar-panel {
   position: relative;
