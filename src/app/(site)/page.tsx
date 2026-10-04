@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Feed from "@/components/Feed";
 import Sidebar from "@/components/Sidebar";
+import MobileAbout from "@/components/MobileAbout";
 import FooterGlitch from "@/components/FooterGlitch";
 import { createReader } from "@keystatic/core/reader";
 import config from "../../../keystatic.config";
@@ -120,8 +121,10 @@ export default async function Home() {
         <Sidebar />
       </div>
 
+      <MobileAbout />
+
       {/* ═══ FOOTER ═══ */}
-      <footer className="max-w-[1300px] mx-auto px-4 pb-5 text-center relative z-1">
+      <footer className="site-footer max-w-[1300px] mx-auto px-4 pb-5 text-center relative z-1">
         <FooterGlitch />
       </footer>
     </div>
