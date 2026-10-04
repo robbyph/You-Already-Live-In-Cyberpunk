@@ -29,6 +29,7 @@ type ImageMetadata = {
   height: number | undefined;
   version: string | undefined;
   url?: string;
+  thumbnail?: FeedPost["thumbnail"];
 };
 
 function readBuiltImageMetadata(): Record<string, ImageMetadata> {
@@ -106,6 +107,7 @@ export default async function Home() {
         imageUrl,
         imageWidth: imageMetadata.width,
         imageHeight: imageMetadata.height,
+        thumbnail: imageMetadata.thumbnail,
         description: entry.description || entry.title,
       };
     })

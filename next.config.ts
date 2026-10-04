@@ -1,16 +1,5 @@
 import type { NextConfig } from "next";
 
-const mediaOwner = encodeURIComponent(
-  process.env.VERCEL_GIT_REPO_OWNER?.trim() ||
-    process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER?.trim() ||
-    "robbyph",
-);
-const mediaRepo = encodeURIComponent(
-  process.env.VERCEL_GIT_REPO_SLUG?.trim() ||
-    process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO?.trim() ||
-    "You-Already-Live-In-Cyberpunk",
-);
-
 const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/": ["./.generated/image-metadata.json"],
@@ -37,21 +26,9 @@ const nextConfig: NextConfig = {
     }];
   },
   images: {
-    minimumCacheTTL: 2678400, // 31 days; replaced images get a new content hash.
-    // Keep thumbnail variants bounded, including crisp mobile / Retina sizes.
-    deviceSizes: [384, 640, 828, 1080, 1440],
-    imageSizes: [256],
-    localPatterns: [
-      { pathname: "/feed-media/**", search: "" },
-      { pathname: "/api/media/**" },
-    ],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "raw.githubusercontent.com",
-        pathname: `/${mediaOwner}/${mediaRepo}/**`,
-      },
-    ],
+    // Feed thumbnails are built ahead of time. Keep runtime optimization off
+    // globally, including any future use of next/image elsewhere in the site.
+    unoptimized: true,
   },
 };
 

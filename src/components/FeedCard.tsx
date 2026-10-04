@@ -5,7 +5,6 @@ import type { CSSProperties, MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import { FeedPost } from "@/data/types";
 import ImageModal from "./ImageModal";
-import { getImageProps } from "next/image";
 import { FEED_IMAGE_SIZES } from "@/lib/feed-images";
 
 const ACCENT_CLASSES = [
@@ -32,17 +31,9 @@ export default function FeedCard({ post, priority = false, style, onImageSize }:
   const [imgLoaded, setImgLoaded] = useState(false);
   const [thumbnailFailed, setThumbnailFailed] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
-  // These URLs are still rendered into the initial HTML, but are no longer
-  // duplicated in the serialized post data sent across the server boundary.
-  const thumbnail = post.imageUrl && !thumbnailFailed
-    ? getImageProps({
-        src: post.imageUrl,
-        alt: post.description,
-        fill: true,
-        sizes: FEED_IMAGE_SIZES,
-        quality: 75,
-      }).props
-    : undefined;
+  // Every candidate is a prebuilt static file. Falling back to the original
+  // also stays entirely outside Vercel's image transformation service.
+  const thumbnail = thumbnailFailed ? undefined : post.thumbnail;
 
   // Handle images that were cached and loaded before React hydrated
   useEffect(() => {
@@ -104,7 +95,7 @@ export default function FeedCard({ post, priority = false, style, onImageSize }:
               ref={imgRef}
               src={thumbnail?.src || post.imageUrl}
               srcSet={thumbnail?.srcSet}
-              sizes={thumbnail?.sizes}
+              sizes={thumbnail ? FEED_IMAGE_SIZES : undefined}
               alt={post.description}
               width={post.imageWidth}
               height={post.imageHeight}
