@@ -4,11 +4,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "YOU ALREADY LIVE IN CYBERPUNK",
   description:
-    "A collection of proof that the dystopian future is now. Updated whenever reality gets too cyberpunk.",
+    "A curated collection of news, images, and everyday evidence that you already live in cyberpunk.",
   openGraph: {
     title: "YOU ALREADY LIVE IN CYBERPUNK",
-    description: "The dystopia is now. Here's the proof.",
+    description: "High Tech, High Inequality. Dystopia is Now!",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
