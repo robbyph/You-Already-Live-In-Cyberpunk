@@ -689,28 +689,6 @@ a.no-underline:hover {
   pointer-events: auto;
 }
 
-/* mobile info hint */
-@media (hover: none) {
-  .card-image-wrap::after {
-    content: '[ i ]';
-    position: absolute;
-    bottom: 6px;
-    right: 8px;
-    font-family: var(--font-family-pixel);
-    font-size: 0.6rem;
-    color: var(--color-neon-cyan);
-    opacity: 0.5;
-    z-index: 3;
-    pointer-events: none;
-    letter-spacing: 1px;
-    text-shadow: 0 0 4px var(--color-neon-cyan);
-    transition: opacity 0.2s;
-  }
-  .feed-card.overlay-revealed .card-image-wrap::after {
-    opacity: 0;
-  }
-}
-
 /* ═══ IMAGE MODAL ═══ */
 .image-modal-backdrop {
   position: fixed;
